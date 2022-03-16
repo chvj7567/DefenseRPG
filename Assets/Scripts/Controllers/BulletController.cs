@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BulletController : MonoBehaviour
+{
+    public GameObject Target { get; set; }
+    Vector3 _direction;
+    float _speed;
+    Rigidbody _rb;
+
+    private void Awake()
+    {
+        _speed = 10f;
+        _rb = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        if (Target == null)
+        {
+            Debug.Log("NO Target (Bullet)");
+            return;
+        }
+
+        transform.SetParent(null);
+        _direction = (Target.transform.position - transform.position).normalized;
+        transform.position += _direction * Time.deltaTime * _speed;
+    }
+
+    public void SetPosition(Vector3 pos)
+    {
+        transform.localPosition = pos;
+    }
+
+    public void Shoot()
+    {
+        
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        MainManager.Resource.Destroy(gameObject);
+        if (collision.gameObject.name == "Capsule")
+        {
+            
+        }
+    }
+}
