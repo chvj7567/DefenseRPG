@@ -17,14 +17,8 @@ public class MonsterController : BaseController
         _agent.stoppingDistance = 5f;
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         Init();
-    }
-
-    private void Update()
-    {
-        float dis = (_target.transform.position - transform.position).magnitude;
-        
     }
 }

@@ -18,11 +18,13 @@ public class MainManager : MonoBehaviour
     ResourceManager _resource = new ResourceManager();
     UIManager _ui = new UIManager();
     AudioManager _audio = new AudioManager();
+    DataManager _data = new DataManager();
 
     public static PoolManager Pool { get { return Instance._pool; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static UIManager UI { get { return Instance._ui; } }
     public static AudioManager Audio { get { return Instance._audio; } }
+    public static DataManager Data { get { return Instance._data; } }
     #endregion
 
     void Start()
