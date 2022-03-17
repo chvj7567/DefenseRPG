@@ -33,12 +33,8 @@ public class BulletController : MonoBehaviour
         transform.localPosition = pos;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         MainManager.Resource.Destroy(gameObject);
-        if (collision.gameObject.name == "Capsule")
-        {
-            
-        }
     }
 }

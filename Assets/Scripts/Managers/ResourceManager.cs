@@ -34,11 +34,6 @@ public class ResourceManager
             return null;
         }
 
-        if (path == "Monster" || path == "Bullet")
-        {
-            Util.GetOrAddComponent<Poolable>(original);
-        }
-
         // 풀링 대상이면 Pop으로 꺼내준다.
         // 이미 풀링 되었다면 초기화 후 반환
         if (original.GetComponent<Poolable>() != null)

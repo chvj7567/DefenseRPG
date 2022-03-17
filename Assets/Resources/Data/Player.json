@@ -6,7 +6,7 @@
       "hp": 100,
       "moveSpeed": 1.5,
       "attackSpeed": 3,
-      "attack": 50,
+      "attack": 10,
       "defense": 3
     },
     {

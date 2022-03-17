@@ -16,13 +16,22 @@ public class SpawnMonster : MonoBehaviour
         {
             X = x; Y = y; Z = z;
         }
+        public SpawnPosition(Vector3 position)
+        {
+            X = position.x; Y = position.y; Z = position.z;
+        }
     }
 
     void Awake()
     {
+        GameObject[] positions = GameObject.FindGameObjectsWithTag("Respawn");
         _spawnTime = 3f;
         _pos = new List<SpawnPosition>();
-        _pos.Add(new SpawnPosition(-10f, 1f, 10f));
+        
+        foreach (GameObject go in positions)
+        {
+            _pos.Add(new SpawnPosition(go.transform.position));
+        }
     }
 
     void Start()
@@ -36,8 +45,9 @@ public class SpawnMonster : MonoBehaviour
         {
             foreach (SpawnPosition pos in _pos)
             {
-                GameObject monster = MainManager.Game.Spawn(Define.GameObjects.Monster, "Monster");
+                GameObject monster = MainManager.Game.Spawn(Define.GameObjects.Monster, "Mummy");
                 monster.transform.position = new Vector3(pos.X, pos.Y, pos.Z);
+                Debug.Log(monster.transform.position);
             }
 
             yield return new WaitForSeconds(_spawnTime);

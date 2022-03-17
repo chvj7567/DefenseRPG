@@ -22,28 +22,26 @@ public class MonsterController : BaseController
         Init();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        GameObject go = collision.gameObject;
-
-        if (go.name == "GreenBullet")
+        if (other.name == "GreenBullet")
         {
-            GetComponent<MonsterStat>().OnDamage(go.GetComponent<GreenStat>());
+            GetComponent<MonsterStat>().OnDamage(other.GetComponent<GreenStat>());
         }
 
-        if (go.name == "YellowBullet")
+        if (other.name == "YellowBullet")
         {
-            GetComponent<MonsterStat>().OnDamage(go.GetComponent<YellowStat>());
+            GetComponent<MonsterStat>().OnDamage(other.GetComponent<YellowStat>());
         }
 
-        if (go.name == "BlueBullet")
+        if (other.name == "BlueBullet")
         {
-            GetComponent<MonsterStat>().OnDamage(go.GetComponent<BlueStat>());
+            GetComponent<MonsterStat>().OnDamage(other.GetComponent<BlueStat>());
         }
 
-        if (go.name == "RedBullet")
+        if (other.name == "RedBullet")
         {
-            GetComponent<MonsterStat>().OnDamage(go.GetComponent<RedStat>());
+            GetComponent<MonsterStat>().OnDamage(other.GetComponent<RedStat>());
         }
     }
 }

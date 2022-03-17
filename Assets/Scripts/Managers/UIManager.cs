@@ -48,6 +48,19 @@ public class UIManager
         }
     }
 
+    public T MakeWorldSpaceUI<T>(Transform parent) where T : UI_Base
+    {
+        GameObject go = MainManager.Resource.Instantiate($"UI/WorldSpace/{typeof(T).Name}");
+
+        go.transform.SetParent(parent);
+
+        Canvas canvas = go.GetOrAddComponent<Canvas>();
+        canvas.renderMode = RenderMode.WorldSpace;
+        canvas.worldCamera = Camera.main;
+
+        return go.GetOrAddComponent<T>();
+    }
+
     public GameObject ShowUI(string name, Define.UI type)
     {
         GameObject go = null;
