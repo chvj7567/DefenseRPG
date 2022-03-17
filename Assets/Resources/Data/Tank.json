@@ -1,0 +1,40 @@
+{
+  "stats": [
+    {
+      "name": "Tank_Green",
+      "level": 1,
+      "hp": 100,
+      "moveSpeed": 1.5,
+      "attackSpeed": 3,
+      "attack": 50,
+      "defense": 3
+    },
+    {
+      "name": "Tank_Yellow",
+      "level": 1,
+      "hp": 200,
+      "moveSpeed": 2.5,
+      "attackSpeed": 3,
+      "attack": 12,
+      "defense": 3
+    },
+    {
+      "name": "Tank_Blue",
+      "level": 1,
+      "hp": 300,
+      "moveSpeed": 3.5,
+      "attackSpeed": 3,
+      "attack": 14,
+      "defense": 3
+    },
+    {
+      "name": "Tank_Red",
+      "level": 1,
+      "hp": 400,
+      "moveSpeed": 4.5,
+      "attackSpeed": 3,
+      "attack": 16,
+      "defense": 3
+    }
+  ]
+}
