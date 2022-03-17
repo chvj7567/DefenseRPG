@@ -10,11 +10,9 @@ public interface ILoader<Key, Value>
 
 public class DataManager
 {
-	
-
-    public Dictionary<int, Data.Stat> GetData(string path)
+    public Dictionary<string, Data.Stat> GetData(string path)
     {
-        return LoadJson<Data.StatData, int, Data.Stat>(path).MakeDict();
+        return LoadJson<Data.StatData, string, Data.Stat>(path).MakeDict();
     }
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>

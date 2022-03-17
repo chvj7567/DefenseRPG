@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class GameScene : BaseScene
 {
-    GameObject _player;
-    Vector3 _fristPos;
-    GameObject _map;
     protected override void Init()
     {
         base.Init();
-        MainManager.Audio.Play("MainBgm", Define.Audio.Bgm);
-        MainManager.Game.Spawn(Define.GameObjects.Background, "Background");
-        MainManager.UI.ShowUI("StartUI", Define.UI.Start);
+        MainManager.Game.Spawn(Define.GameObjects.Map, "Map");
+        MainManager.Game.Spawn(Define.GameObjects.Player, "Tank_Green").transform.position = new Vector3(0, 2, -12);
+
+        GameObject spawning = new GameObject { name = "@Spawning" };
+        spawning.GetOrAddComponent<SpawnMonster>();
     }
 
     public override void Clear()

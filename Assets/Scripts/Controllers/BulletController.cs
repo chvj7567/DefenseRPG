@@ -19,7 +19,7 @@ public class BulletController : MonoBehaviour
     {
         if (Target == null)
         {
-            Debug.Log("NO Target (Bullet)");
+            MainManager.Game.Despawn(gameObject);
             return;
         }
 
@@ -31,12 +31,6 @@ public class BulletController : MonoBehaviour
     public void SetPosition(Vector3 pos)
     {
         transform.localPosition = pos;
-    }
-
-    public void Shoot()
-    {
-        
-        
     }
 
     private void OnCollisionEnter(Collision collision)

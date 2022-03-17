@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class BaseStat : MonoBehaviour
 {
-    protected Dictionary<int, Data.Stat> statDict = new Dictionary<int, Data.Stat>();
-    protected int _stage;
-    protected int _hp;
-    protected float _moveSpeed;
-    protected float _attackSpeed;
-    protected int _attack;
-    protected int _defense;
+    protected Dictionary<string, Data.Stat> _statDict = new Dictionary<string, Data.Stat>();
+    protected Data.Stat _stat;
 
-    public int Stage { get { return _stage; } set { _stage = value; } }
-    public int Hp { get { return _hp; } set { _hp = value; } }
-    public float MoveSpeed { get { return _moveSpeed; } set { _moveSpeed = value; } }
-    public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
-    public int Attack { get { return _attack; } set { _attack = value; } }
-    public int Defense { get { return _defense; } set { _defense = value; } }
+    public string Name { get { return _stat.name; } set { _stat.name = value; } }
+    public int Stage { get { return _stat.level; } set { _stat.level = value; } }
+    public int Hp { get { return _stat.hp; } set { _stat.hp = value; } }
+    public float MoveSpeed { get { return _stat.moveSpeed; } set { _stat.moveSpeed = value; } }
+    public float AttackSpeed { get { return _stat.attackSpeed; } set { _stat.attackSpeed = value; } }
+    public int Attack { get { return _stat.attack; } set { _stat.attack = value; } }
+    public int Defense { get { return _stat.defense; } set { _stat.defense = value; } }
 
     public virtual void OnDamage(BaseStat attacker) { }
 }

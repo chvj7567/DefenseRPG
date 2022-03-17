@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class Define
 {
+    public enum Players
+    {
+        Tank_Green,
+        Tank_Yellow,
+        Tank_Blue,
+        Tank_Red
+    }
+
+    public enum Enemys
+    {
+        A,
+        B,
+    }
     public enum GameObjects
     {
         Unknown,

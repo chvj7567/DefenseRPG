@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
-    GameObject _target;
-    GameObject _tankTower;
-    bool _check;
-    float _bulletDelay;
-
+    protected GameObject _target;
+    protected GameObject _tankTower;
+    protected bool _check;
+    protected float _bulletDelay;
+    protected BulletController bullet;
     public override void Init()
     {
         _target = null;
@@ -32,19 +32,5 @@ public class PlayerController : BaseController
         StartCoroutine(CreateBullet(_check));
     }
 
-    IEnumerator CreateBullet(bool check)
-    {
-        if (!check)
-        {
-            _check = true;
-            BulletController bullet = MainManager.Resource.Instantiate("Bullet", _tankTower.transform).GetOrAddComponent<BulletController>();
-
-            bullet.SetPosition(new Vector3(0f, 0.3f, 1.7f));
-            bullet.Target = _target;
-            //bullet.Shoot();
-            yield return new WaitForSeconds(_bulletDelay);
-
-            _check = false;
-        }
-    }
+    protected virtual IEnumerator CreateBullet(bool check) { yield return -1; }
 }

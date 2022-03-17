@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 7218384379233196417}
   - component: {fileID: 2917808387102302364}
   - component: {fileID: 7349462140124621872}
-  - component: {fileID: 373911331821992041}
+  - component: {fileID: 6151000469708108915}
+  - component: {fileID: 306754837302492375}
   m_Layer: 0
   m_Name: Tank_Yellow
   m_TagString: Untagged
@@ -199,7 +200,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &373911331821992041
+--- !u!114 &6151000469708108915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,7 +209,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1013459266845585946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85a9723abe5b59b45a6e463e1a736b4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 10cc631843d0e5e4ba2d5fe6b96e5e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &306754837302492375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013459266845585946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65bff3b6c639c654699fd8a3bd2a9fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1641193759526630708

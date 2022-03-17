@@ -11,9 +11,10 @@ public class SpawnMonster : MonoBehaviour
     {
         public float X { get; private set; }
         public float Y { get; private set; }
-        public SpawnPosition(float x, float y)
+        public float Z { get; private set; }
+        public SpawnPosition(float x, float y, float z)
         {
-            X = x; Y = y;
+            X = x; Y = y; Z = z;
         }
     }
 
@@ -21,10 +22,7 @@ public class SpawnMonster : MonoBehaviour
     {
         _spawnTime = 3f;
         _pos = new List<SpawnPosition>();
-        _pos.Add(new SpawnPosition(21f, -2.4f));
-        _pos.Add(new SpawnPosition(-21f, -2.4f));
-        _pos.Add(new SpawnPosition(21f, 10f));
-        _pos.Add(new SpawnPosition(-21f, 10f));
+        _pos.Add(new SpawnPosition(-10f, 1f, 10f));
     }
 
     void Start()
@@ -39,7 +37,7 @@ public class SpawnMonster : MonoBehaviour
             foreach (SpawnPosition pos in _pos)
             {
                 GameObject monster = MainManager.Game.Spawn(Define.GameObjects.Monster, "Monster");
-                monster.transform.position = new Vector3(pos.X, pos.Y, 0f);
+                monster.transform.position = new Vector3(pos.X, pos.Y, pos.Z);
             }
 
             yield return new WaitForSeconds(_spawnTime);
