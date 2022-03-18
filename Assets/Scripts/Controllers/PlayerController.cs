@@ -15,8 +15,6 @@ public class PlayerController : BaseController
         _tankTower = Util.FindChild(gameObject, "Tank_Tower");
         _check = false;
         _bulletDelay = 1f;
-
-        MainManager.UI.MakeWorldSpaceUI<UI_HpBar>(transform);
     }
 
     void Update()

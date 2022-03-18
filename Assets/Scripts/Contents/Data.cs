@@ -10,6 +10,7 @@ namespace Data
 	{
 		public string name;
 		public int level;
+		public int maxHp;
 		public int hp;
 		public float moveSpeed;
 		public float attackSpeed;

@@ -20,7 +20,6 @@ public class MonsterStat : BaseStat
 
             if (Hp <= 0)
                 MainManager.Game.Despawn(gameObject);
-            Debug.Log(Hp);
         }
     }
 }

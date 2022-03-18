@@ -47,7 +47,6 @@ public class SpawnMonster : MonoBehaviour
             {
                 GameObject monster = MainManager.Game.Spawn(Define.GameObjects.Monster, "Mummy");
                 monster.transform.position = new Vector3(pos.X, pos.Y, pos.Z);
-                Debug.Log(monster.transform.position);
             }
 
             yield return new WaitForSeconds(_spawnTime);
