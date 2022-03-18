@@ -8,11 +8,12 @@ public class GameScene : BaseScene
     protected override void Init()
     {
         base.Init();
-        MainManager.Game.Spawn(Define.GameObjects.Map, "Map");
+        MainManager.UI.ShowUI("StartUI", Define.UI.Start);
+        /*MainManager.Game.Spawn(Define.GameObjects.Map, "Map");
         MainManager.Game.Spawn(Define.GameObjects.Player, "Tank_Green").transform.position = new Vector3(0, 2, -12);
 
         GameObject spawning = new GameObject { name = "@Spawning" };
-        spawning.GetOrAddComponent<SpawnMonster>();
+        spawning.GetOrAddComponent<SpawnMonster>();*/
     }
 
     public override void Clear()
