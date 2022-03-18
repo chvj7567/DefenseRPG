@@ -6,13 +6,11 @@ using UnityEngine.UI;
 
 public class UI_Setting : UI_Base
 {
-    Image _background, _title, _volume, _back;
+    Image _volume, _back;
     Slider _slider;
 
     enum Images
     {
-        Background,
-        Title,
         Volume,
         Back,
     }
@@ -20,8 +18,7 @@ public class UI_Setting : UI_Base
     public override void Init()
     {
         Bind<Image>(typeof(Images));
-        _background = GetImage((int)Images.Background);
-        _title = GetImage((int)Images.Title);
+
         _volume = GetImage((int)Images.Volume);
         _back = GetImage((int)Images.Back);
 

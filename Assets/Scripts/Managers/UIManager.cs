@@ -11,6 +11,7 @@ public class UIManager
     public GameObject MiniMap { get; private set; }
     public GameObject Score { get; private set; }
     public GameObject End { get; private set; }
+    public GameObject Loading { get; private set; }
 
     int _order = 1;
     public GameObject Root
@@ -122,6 +123,14 @@ public class UIManager
                     return End;
                 }
                 End = go = MainManager.Resource.Instantiate($"UI/{name}");
+                break;
+            case Define.UI.Loading:
+                if (Loading != null)
+                {
+                    Loading.SetActive(true);
+                    return Loading;
+                }
+                Loading = go = MainManager.Resource.Instantiate($"UI/{name}");
                 break;
         }
 

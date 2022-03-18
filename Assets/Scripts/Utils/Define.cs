@@ -49,6 +49,7 @@ public class Define
         MiniMap,
         Score,
         End,
+        Loading,
     }
 
     public enum UIEvent

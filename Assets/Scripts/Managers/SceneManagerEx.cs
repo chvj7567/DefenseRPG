@@ -8,9 +8,9 @@ public class SceneManagerEx
 {
     public BaseScene CurrentScene { get { return GameObject.FindObjectOfType<BaseScene>(); } }
 
-    public void LoadScene(Define.Scenes type)
+    public AsyncOperation LoadScene(Define.Scenes type)
     {
-        SceneManager.LoadScene(GetSceneName(type));
+        return SceneManager.LoadSceneAsync(GetSceneName(type));
     }
 
     public string GetSceneName(Define.Scenes type)
