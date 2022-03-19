@@ -9,6 +9,7 @@ public class PlayerController : BaseController
     protected bool _check;
     protected float _bulletDelay;
     protected BulletController bullet;
+
     public override void Init()
     {
         _target = null;
@@ -19,17 +20,15 @@ public class PlayerController : BaseController
 
     void Update()
     {
+        _target = GameObject.FindGameObjectWithTag("Enemy");
         if (_target == null)
-        {
-            _target = GameObject.FindGameObjectWithTag("Enemy");
-            if (_target == null)
-                return;
-        }
+            return;
 
         _tankTower.transform.LookAt(_target.transform.position);
 
-        StartCoroutine(CreateBullet(_check));
+        if (!_check)
+            StartCoroutine(CreateBullet());
     }
 
-    protected virtual IEnumerator CreateBullet(bool check) { yield return -1; }
+    protected virtual IEnumerator CreateBullet() { yield return null; }
 }

@@ -18,7 +18,10 @@ public class MonsterStat : BaseStat
             Hp -= attacker.Attack - Defense;
 
             if (Hp <= 0)
+            {
+                Hp = 0;
                 MainManager.Game.Despawn(gameObject);
+            }
         }
     }
 }
