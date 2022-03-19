@@ -12,6 +12,13 @@ public class UIManager
     public GameObject Score { get; private set; }
     public GameObject End { get; private set; }
     public GameObject Loading { get; private set; }
+    public GameObject Game { get; private set; }
+    public GameObject Research { get; private set; }
+    public GameObject Gold { get; private set; }
+    public GameObject Crystal { get; private set; }
+    public GameObject Inventory { get; private set; }
+
+    public GameObject CurrentSubUI { get; set; }
 
     int _order = 1;
     public GameObject Root
@@ -132,6 +139,46 @@ public class UIManager
                 }
                 Loading = go = MainManager.Resource.Instantiate($"UI/{name}");
                 break;
+            case Define.UI.Game:
+                if (Game != null)
+                {
+                    Loading.SetActive(true);
+                    return Game;
+                }
+                Game = go = MainManager.Resource.Instantiate($"UI/{name}");
+                break;
+            case Define.UI.Research:
+                if (Research != null)
+                {
+                    Research.SetActive(true);
+                    return Research;
+                }
+                Research = go = MainManager.Resource.Instantiate($"UI/{name}");
+                break;
+            case Define.UI.Gold:
+                if (Gold != null)
+                {
+                    Gold.SetActive(true);
+                    return Gold;
+                }
+                Gold = go = MainManager.Resource.Instantiate($"UI/{name}");
+                break;
+            case Define.UI.Crystal:
+                if (Crystal != null)
+                {
+                    Crystal.SetActive(true);
+                    return Crystal;
+                }
+                Crystal = go = MainManager.Resource.Instantiate($"UI/{name}");
+                break;
+            case Define.UI.Inventory:
+                if (Inventory != null)
+                {
+                    Inventory.SetActive(true);
+                    return Inventory;
+                }
+                Inventory = go = MainManager.Resource.Instantiate($"UI/{name}");
+                break;
         }
 
         go.transform.SetParent(Root.transform);
@@ -140,8 +187,9 @@ public class UIManager
         return go;
     }
 
-    public void HideUI(GameObject ui, Define.UI type)
+    public void HideUI(GameObject ui)
     {
-        ui.SetActive(false);
+        if (ui != null)
+            ui.SetActive(false);
     }
 }

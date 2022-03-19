@@ -29,15 +29,14 @@ public class UI_Start : UI_Base
         BindEvent(_setting.gameObject, SettingGame, Define.UIEvent.Click);
     }
 
-    void StartGame(PointerEventData eventData)
+    public void StartGame(PointerEventData eventData)
     {
         if (onStartAction != null)
             onStartAction.Invoke();
     }
 
-    void SettingGame(PointerEventData eventData)
+    public void SettingGame(PointerEventData eventData)
     {
-        MainManager.UI.HideUI(gameObject, Define.UI.Start);
         MainManager.UI.ShowUI("SettingUI", Define.UI.Setting);
     }
 }

@@ -22,10 +22,9 @@ public class PlayerController : BaseController
         if (_target == null)
         {
             _target = GameObject.FindGameObjectWithTag("Enemy");
+            if (_target == null)
+                return;
         }
-
-        if (_target == null)
-            return;
 
         _tankTower.transform.LookAt(_target.transform.position);
 

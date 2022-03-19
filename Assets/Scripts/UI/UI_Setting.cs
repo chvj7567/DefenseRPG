@@ -35,7 +35,6 @@ public class UI_Setting : UI_Base
 
     public void BackGame(PointerEventData data)
     {
-        MainManager.UI.HideUI(gameObject, Define.UI.Setting);
-        MainManager.UI.ShowUI("StartUI", Define.UI.Start);
+        MainManager.UI.HideUI(gameObject);
     }
 }

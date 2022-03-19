@@ -49,6 +49,11 @@ public class Define
         Score,
         End,
         Loading,
+        Game,
+        Research,
+        Gold,
+        Crystal,
+        Inventory,
     }
 
     public enum UIEvent
