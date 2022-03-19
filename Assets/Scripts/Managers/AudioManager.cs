@@ -27,9 +27,9 @@ public class AudioManager
             }
 
             _audioSources[(int)Define.Audio.Bgm].loop = true;
-        }
 
-        Object.DontDestroyOnLoad(root);
+            Object.DontDestroyOnLoad(root);
+        }
     }
 
     public void SetVolume(float ratio)

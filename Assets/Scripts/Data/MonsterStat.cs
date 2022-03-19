@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class MonsterStat : BaseStat
 {
-    void Awake()
+    public string MyName { get; private set; } = Enum.GetName(typeof(Define.Enemys), (int)Define.Enemys.Mummy);
+    public override void Init()
     {
-        
-        _statDict = MainManager.Data.GetData("Monster");
-        _stat = _statDict[Enum.GetName(typeof(Define.Enemys), (int)Define.Enemys.A)];
+        _stat = MainManager.Data.MonsterStat[MyName];
     }
 
     public override void OnDamage(BaseStat attacker)

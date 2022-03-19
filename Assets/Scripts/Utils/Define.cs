@@ -20,8 +20,7 @@ public class Define
 
     public enum Enemys
     {
-        A,
-        B,
+        Mummy,
     }
     public enum GameObjects
     {

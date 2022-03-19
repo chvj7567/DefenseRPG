@@ -52,9 +52,10 @@ public class MainManager : MonoBehaviour
 
             DontDestroyOnLoad(go);
             m_instance = go.GetComponent<MainManager>();
-        }
 
-        m_instance._pool.Init();
-        m_instance._audio.Init();
+            m_instance._pool.Init();
+            m_instance._audio.Init();
+            m_instance._data.init();
+        }
     }
 }

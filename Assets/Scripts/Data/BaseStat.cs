@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseStat : MonoBehaviour
+public abstract class BaseStat : MonoBehaviour
 {
-    protected Dictionary<string, Data.Stat> _statDict = new Dictionary<string, Data.Stat>();
     protected Data.Stat _stat;
 
     public string Name { get { return _stat.name; } set { _stat.name = value; } }
@@ -16,5 +15,11 @@ public class BaseStat : MonoBehaviour
     public int Attack { get { return _stat.attack; } set { _stat.attack = value; } }
     public int Defense { get { return _stat.defense; } set { _stat.defense = value; } }
 
+    void Start()
+    {
+        Init();
+    }
+
+    public abstract void Init();
     public virtual void OnDamage(BaseStat attacker) { }
 }
