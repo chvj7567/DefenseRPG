@@ -17,14 +17,14 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        if (Target == null)
+        if (!Target.activeSelf)
         {
-            MainManager.Game.Despawn(gameObject);
+            _rb.useGravity = true;
             return;
         }
 
         transform.SetParent(null);
-        _direction = (Target.transform.position - transform.position).normalized;
+        _direction = (Target.transform.position + Vector3.up - transform.position).normalized;
         transform.position += _direction * Time.deltaTime * _speed;
     }
 
@@ -35,6 +35,6 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        MainManager.Resource.Destroy(gameObject);
+        MainManager.Game.Despawn(gameObject);
     }
 }

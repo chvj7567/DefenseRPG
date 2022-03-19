@@ -21,6 +21,7 @@ public class PlayerController : BaseController
     void Update()
     {
         _target = GameObject.FindGameObjectWithTag("Enemy");
+
         if (_target == null)
             return;
 

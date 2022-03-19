@@ -8,7 +8,12 @@ public class MonsterStat : BaseStat
     public string MyName { get; private set; } = Enum.GetName(typeof(Define.Enemys), (int)Define.Enemys.Mummy);
     public override void Init()
     {
-        _stat = MainManager.Data.MonsterStat[MyName];
+        _stat = new Data.Stat(MainManager.Data.MonsterStat[MyName]);
+    }
+
+    void OnEnable()
+    {
+        Init();
     }
 
     public override void OnDamage(BaseStat attacker)

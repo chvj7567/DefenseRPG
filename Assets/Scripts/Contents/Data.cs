@@ -16,6 +16,17 @@ namespace Data
 		public float attackSpeed;
 		public int attack;
 		public int defense;
+
+		public Stat(Stat st)
+        {
+			name = st.name;
+			level = st.level;
+			maxHp = st.maxHp;
+			hp = st.hp;
+			moveSpeed = st.moveSpeed;
+			attackSpeed = st.attackSpeed;
+			defense = st.defense;
+        }
 	}
 
 	[Serializable]
