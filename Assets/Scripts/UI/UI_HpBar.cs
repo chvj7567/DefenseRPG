@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UI_HpBar : UI_Base
 {
+    Slider _hpBar;
     enum GameObjects
     {
         HpBar,
@@ -13,7 +14,8 @@ public class UI_HpBar : UI_Base
     BaseStat _stat;
     public override void Init()
     {
-        Bind<GameObject>(typeof(GameObjects));
+        Bind<Slider>(typeof(GameObjects));
+        _hpBar = Get<Slider>((int)GameObjects.HpBar);
         _stat = transform.parent.GetComponent<BaseStat>();
     }
 
@@ -33,6 +35,6 @@ public class UI_HpBar : UI_Base
 
     public void SetHp(float ratio)
     {
-        GetObject((int)GameObjects.HpBar).GetComponent<Slider>().value = ratio;
+        _hpBar.value = ratio;
     }
 }

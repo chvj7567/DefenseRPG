@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GreenController : PlayerController
 {
+    string[] _enemys = Enum.GetNames(typeof(Define.Enemys));
+
     protected override IEnumerator CreateBullet()
     {
         _check = true;
@@ -16,5 +18,16 @@ public class GreenController : PlayerController
         yield return new WaitForSeconds(_bulletDelay);
 
         _check = false;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        foreach (string name in _enemys)
+        {
+            if (collision.collider.name == name)
+            {
+                GetComponent<GreenStat>().OnDamage(collision.gameObject.GetComponent<MonsterStat>());
+            }
+        }
     }
 }

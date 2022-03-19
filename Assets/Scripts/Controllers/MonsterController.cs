@@ -14,7 +14,6 @@ public class MonsterController : BaseController
         _target = GameObject.Find("Tank_Green");
         _agent = gameObject.GetOrAddComponent<NavMeshAgent>();
         _agent.SetDestination(_target.transform.position);
-        _agent.stoppingDistance = 5f;
     }
 
     void OnEnable()

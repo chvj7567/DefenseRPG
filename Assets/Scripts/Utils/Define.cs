@@ -22,6 +22,7 @@ public class Define
     {
         Mummy,
     }
+
     public enum GameObjects
     {
         Unknown,

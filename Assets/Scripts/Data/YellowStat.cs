@@ -9,7 +9,7 @@ public class YellowStat : BaseStat
 
     public override void Init()
     {
-        _stat = MainManager.Data.TankStat[MyName];
+        _stat = new Data.Stat(MainManager.Data.TankStat[MyName]);
     }
 
     public override void OnDamage(BaseStat attacker)

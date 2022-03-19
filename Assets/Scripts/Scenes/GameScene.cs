@@ -10,7 +10,7 @@ public class GameScene : BaseScene
         base.Init();
 
         MainManager.Game.Spawn(Define.GameObjects.Map, "Map");
-        MainManager.Game.Spawn(Define.GameObjects.Player, "Tank_Green").transform.position = new Vector3(0, 2, -12);
+        MainManager.Game.Spawn(Define.GameObjects.Player, "Tank_Green").transform.position = new Vector3(0, 1, -12);
         MainManager.UI.ShowUI("GameUI", Define.UI.Game);
 
         GameObject spawning = new GameObject { name = "@Spawning" };

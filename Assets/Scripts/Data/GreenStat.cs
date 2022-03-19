@@ -9,11 +9,23 @@ public class GreenStat : BaseStat
 
     public override void Init()
     {
-        _stat = MainManager.Data.TankStat[MyName];
+        _stat = new Data.Stat(MainManager.Data.TankStat[MyName]);
     }
 
     public override void OnDamage(BaseStat attacker)
     {
+        if (attacker as MonsterStat)
+        {
+            if (attacker.Attack - Defense <= 0)
+                Hp -= 1;
+            else
+                Hp -= attacker.Attack - Defense;
 
+            if (Hp <= 0)
+            {
+                Hp = 0;
+                MainManager.Game.Despawn(gameObject);
+            }
+        }
     }
 }

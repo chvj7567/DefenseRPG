@@ -25,6 +25,7 @@ namespace Data
 			hp = st.hp;
 			moveSpeed = st.moveSpeed;
 			attackSpeed = st.attackSpeed;
+			attack = st.attack;
 			defense = st.defense;
         }
 	}

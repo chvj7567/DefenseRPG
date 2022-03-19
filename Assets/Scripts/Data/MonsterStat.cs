@@ -20,7 +20,10 @@ public class MonsterStat : BaseStat
     {
         if (attacker as GreenStat)
         {
-            Hp -= attacker.Attack - Defense;
+            if (attacker.Attack - Defense <= 0)
+                Hp -= 1;
+            else
+                Hp -= attacker.Attack - Defense;
 
             if (Hp <= 0)
             {
