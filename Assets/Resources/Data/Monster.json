@@ -8,7 +8,9 @@
       "moveSpeed": 1.5,
       "attackSpeed": 3,
       "attack": 10,
-      "defense": 3
+      "defense": 3,
+      "gold": 10,
+      "exp": 10
     }
   ]
 }

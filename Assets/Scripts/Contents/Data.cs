@@ -16,6 +16,9 @@ namespace Data
 		public float attackSpeed;
 		public int attack;
 		public int defense;
+		public int gold;
+		public int maxExp;
+		public int exp;
 
 		public Stat(Stat st)
         {
@@ -27,6 +30,9 @@ namespace Data
 			attackSpeed = st.attackSpeed;
 			attack = st.attack;
 			defense = st.defense;
+			gold = st.gold;
+			maxExp = st.maxExp;
+			exp = st.exp;
         }
 	}
 
