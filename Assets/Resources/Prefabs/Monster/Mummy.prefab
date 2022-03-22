@@ -509,8 +509,8 @@ GameObject:
   - component: {fileID: 4860940784066538346}
   - component: {fileID: 4353655904781623718}
   - component: {fileID: 7531376025742762169}
-  - component: {fileID: 4250306161378321627}
   - component: {fileID: 3079363124678692033}
+  - component: {fileID: -5298266579895514450}
   m_Layer: 0
   m_Name: Mummy
   m_TagString: Enemy
@@ -525,7 +525,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5841158948659557977}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -536,7 +536,7 @@ Transform:
   - {fileID: 5841158948659784315}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5841158948666934751
 Animator:
   serializedVersion: 3
@@ -598,19 +598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4351beace4a54ca45a6307911be5ba12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4250306161378321627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5841158948659557977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b80b38976d04234fb4ccc3964045bcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsUsing: 0
 --- !u!114 &3079363124678692033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,6 +610,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ed81f1d5163f64995e6d2c78bb2b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5298266579895514450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841158948659557977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b80b38976d04234fb4ccc3964045bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsUsing: 0
 --- !u!1 &5841158948659557979
 GameObject:
   m_ObjectHideFlags: 0

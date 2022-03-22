@@ -32,6 +32,7 @@ public class MonsterStat : BaseStat
             if (Hp <= 0)
             {
                 Booty();
+                transform.position = Vector3.zero;
                 MainManager.Game.Despawn(gameObject);
             }
         }

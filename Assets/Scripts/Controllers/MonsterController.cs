@@ -24,7 +24,7 @@ public class MonsterController : BaseController
     {
         Init();
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "GreenBullet")

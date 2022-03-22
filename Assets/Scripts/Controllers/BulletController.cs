@@ -7,17 +7,15 @@ public class BulletController : MonoBehaviour
     public GameObject Target { get; set; }
     Vector3 _direction;
     float _speed;
-    Rigidbody _rb;
 
     private void Awake()
     {
         _speed = 10f;
-        _rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (!Target.activeSelf)
+        if (Target == null || !Target.activeSelf)
         {
             MainManager.Game.Despawn(gameObject);
             return;

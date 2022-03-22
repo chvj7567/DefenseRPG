@@ -14,6 +14,6 @@ public abstract class BaseController : MonoBehaviour
     {
         Init();
     }
-
+    
     public abstract void Init();
 }

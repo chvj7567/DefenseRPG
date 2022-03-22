@@ -63,9 +63,10 @@ public class PoolManager
 
             // DontDestroyOnLoad 해제 용도
             if (parent == null)
-                poolable.transform.parent = GameObject.Find("Main Camera").transform;
+                poolable.transform.parent = GameObject.Find("@GameScene").transform;
 
             poolable.transform.parent = parent;
+            poolable.transform.localPosition = Vector3.zero;
             poolable.IsUsing = true;
 
             return poolable;
