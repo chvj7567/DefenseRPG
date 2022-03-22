@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class BaseController : MonoBehaviour
 {
     protected float _maxSpeed;
-    protected Rigidbody _rb;
 
     public Define.GameObjects GameObjectType { get; protected set; } = Define.GameObjects.Unknown;
 

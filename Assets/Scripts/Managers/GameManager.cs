@@ -36,7 +36,8 @@ public class GameManager
                 Tank.Add(go);
                 break;
             case Define.GameObjects.MainCamera:
-                MainCamera = GameObject.Find(path).GetComponent<Camera>();
+                go = GameObject.Find(path);
+                MainCamera = go.GetComponentInChildren<Camera>();
                 break;
         }
 
@@ -75,10 +76,11 @@ public class GameManager
         MainManager.Resource.Destroy(go);
     }
 
-    public void ChangeCamera()
+    public void ChangeCamera(Camera camera)
     {
-        if (MainCamera == Camera.main)
-            MainCamera = Player.GetComponentInChildren<Camera>();
+        MainCamera.enabled = false;
+        camera.enabled = true;
+        MainCamera = camera;
     }
 
     public void ExitGame()

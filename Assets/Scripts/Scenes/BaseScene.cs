@@ -17,6 +17,7 @@ public abstract class BaseScene : MonoBehaviour
         Object obj = FindObjectOfType(typeof(EventSystem));
         if (obj == null)
             MainManager.Resource.Instantiate("EventSystem").name = "@EventSystem";
+        MainManager.Game.Spawn(Define.GameObjects.MainCamera, "Main Camera");
     }
 
     public abstract void Clear();
