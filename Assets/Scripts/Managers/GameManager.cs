@@ -8,10 +8,10 @@ public class GameManager
     public GameObject Background { get; private set; }
     public GameObject Map { get; private set; }
     public GameObject Player { get; private set; }
+    public HashSet<GameObject> Tank { get; private set; } = new HashSet<GameObject>();
+    public Camera MainCamera { get; private set; }
 
     public bool IsGamimg { get; private set; }
-
-    GameObject Spawning;
 
     public GameObject Spawn(Define.GameObjects type, string path, Transform parent = null)
     {
@@ -29,7 +29,14 @@ public class GameManager
                 go = MainManager.Resource.Instantiate($"Monster/{path}", parent);
                 break;
             case Define.GameObjects.Player:
-                Player = go = MainManager.Resource.Instantiate($"Tanks/{path}", parent);
+                Player = go = MainManager.Resource.Instantiate(path, parent);
+                break;
+            case Define.GameObjects.Tank:
+                go = MainManager.Resource.Instantiate($"Tank/{path}", parent);
+                Tank.Add(go);
+                break;
+            case Define.GameObjects.MainCamera:
+                MainCamera = GameObject.Find(path).GetComponent<Camera>();
                 break;
         }
 
@@ -60,9 +67,18 @@ public class GameManager
             case Define.GameObjects.Player:
                 Player = null;
                 break;
+            case Define.GameObjects.Tank:
+                Tank.Remove(go);
+                break;
         }
 
         MainManager.Resource.Destroy(go);
+    }
+
+    public void ChangeCamera()
+    {
+        if (MainCamera == Camera.main)
+            MainCamera = Player.GetComponentInChildren<Camera>();
     }
 
     public void ExitGame()

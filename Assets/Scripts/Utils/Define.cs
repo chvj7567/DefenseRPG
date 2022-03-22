@@ -30,6 +30,8 @@ public class Define
         Map,
         Monster,
         Player,
+        Tank,
+        MainCamera,
     }
     public enum State
     {

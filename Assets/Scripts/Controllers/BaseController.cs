@@ -6,7 +6,6 @@ public abstract class BaseController : MonoBehaviour
 {
     protected float _maxSpeed;
     protected Rigidbody _rb;
-    protected Define.State _state;
 
     public Define.GameObjects GameObjectType { get; protected set; } = Define.GameObjects.Unknown;
 

@@ -24,7 +24,7 @@ public class UI_HpBar : UI_Base
         Transform parent = transform.parent;
         transform.position = parent.position + Vector3.up * (parent.GetComponent<Collider>().bounds.size.y);
 
-        Vector3 dir = transform.position - Camera.main.transform.position;
+        Vector3 dir = transform.position - MainManager.Game.MainCamera.transform.position;
         transform.forward = dir.normalized;
 
         transform.rotation = Camera.main.transform.rotation;
