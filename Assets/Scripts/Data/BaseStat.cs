@@ -14,6 +14,10 @@ public abstract class BaseStat : MonoBehaviour
     public float AttackSpeed { get { return _stat.attackSpeed; } set { _stat.attackSpeed = value; } }
     public int Attack { get { return _stat.attack; } set { _stat.attack = value; } }
     public int Defense { get { return _stat.defense; } set { _stat.defense = value; } }
+    public int Gold { get { return _stat.gold; } set { _stat.gold = value; } }
+    public int Crystal { get { return _stat.crystal; } set { _stat.crystal = value; } }
+    public int MaxExp { get { return _stat.maxExp; } set { _stat.maxExp = value; } }
+    public int Exp { get { return _stat.exp; } set { _stat.exp = value; } }
 
     void Start()
     {

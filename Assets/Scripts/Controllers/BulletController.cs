@@ -19,7 +19,7 @@ public class BulletController : MonoBehaviour
     {
         if (!Target.activeSelf)
         {
-            _rb.useGravity = true;
+            MainManager.Game.Despawn(gameObject);
             return;
         }
 
@@ -35,6 +35,7 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        MainManager.Game.Despawn(gameObject);
+        if (other.tag == "Enemy")
+            MainManager.Game.Despawn(gameObject);
     }
 }

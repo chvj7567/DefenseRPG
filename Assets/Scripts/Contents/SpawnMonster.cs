@@ -25,7 +25,7 @@ public class SpawnMonster : MonoBehaviour
     void Awake()
     {
         GameObject[] positions = GameObject.FindGameObjectsWithTag("Respawn");
-        _spawnTime = 3f;
+        _spawnTime = 0.5f;
         _pos = new List<SpawnPosition>();
         
         foreach (GameObject go in positions)

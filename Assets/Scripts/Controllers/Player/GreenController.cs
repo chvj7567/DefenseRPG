@@ -22,12 +22,6 @@ public class GreenController : PlayerController
 
     void OnCollisionEnter(Collision collision)
     {
-        foreach (string name in _enemys)
-        {
-            if (collision.collider.name == name)
-            {
-                GetComponent<GreenStat>().OnDamage(collision.gameObject.GetComponent<MonsterStat>());
-            }
-        }
+
     }
 }

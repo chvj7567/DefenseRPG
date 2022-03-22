@@ -14,6 +14,10 @@ public class MonsterController : BaseController
         _target = GameObject.Find("Tank_Green");
         _agent = gameObject.GetOrAddComponent<NavMeshAgent>();
         _agent.SetDestination(_target.transform.position);
+        GameObjectType = Define.GameObjects.Monster;
+        
+        if (GetComponentInChildren<UI_HpBar>() == null)
+            MainManager.UI.MakeWorldSpaceUI<UI_HpBar>(transform);
     }
 
     void OnEnable()

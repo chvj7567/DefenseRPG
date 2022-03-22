@@ -55,7 +55,7 @@ public class MainManager : MonoBehaviour
 
             m_instance._pool.Init();
             m_instance._audio.Init();
-            m_instance._data.init();
+            m_instance._data.Init();
         }
     }
 }

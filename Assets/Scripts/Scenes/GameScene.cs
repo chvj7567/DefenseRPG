@@ -13,8 +13,11 @@ public class GameScene : BaseScene
         MainManager.Game.Spawn(Define.GameObjects.Player, "Tank_Green").transform.position = new Vector3(0, 1, -12);
         MainManager.UI.ShowUI("GameUI", Define.UI.Game);
 
-        GameObject spawning = new GameObject { name = "@Spawning" };
-        spawning.GetOrAddComponent<SpawnMonster>();
+        if (GameObject.Find("@Spawning") == null)
+        {
+            GameObject spawning = new GameObject { name = "@Spawning" };
+            spawning.GetOrAddComponent<SpawnMonster>();
+        }
     }
 
     public override void Clear()

@@ -1,0 +1,31 @@
+{
+  "stats": [
+    {
+      "name": "Player",
+      "level": 1,
+      "maxHp": 100,
+      "hp": 100,
+      "defense": 5,
+      "gold": 0,
+      "crystal": 0,
+      "maxExp": 100,
+      "exp": 0
+    },
+    {
+      "name": "Tank_Green",
+      "attack": 110
+    },
+    {
+      "name": "Tank_Yellow",
+      "attack": 20
+    },
+    {
+      "name": "Tank_Blue",
+      "attack": 40
+    },
+    {
+      "name": "Tank_Red",
+      "attack": 80
+    }
+  ]
+}

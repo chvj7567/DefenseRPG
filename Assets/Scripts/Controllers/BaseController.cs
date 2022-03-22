@@ -13,18 +13,7 @@ public abstract class BaseController : MonoBehaviour
     void Start()
     {
         Init();
-        MainManager.UI.MakeWorldSpaceUI<UI_HpBar>(transform);
-    }
-
-    void FixedUpdate()
-    {
-        Run();
     }
 
     public abstract void Init();
-    protected virtual void UpdateIdle() { }
-    protected virtual void UpdateRun() { }
-    protected virtual void Run() { }
-    protected virtual void UpdateJump() { }
-    protected virtual void UpdateDie() { }
 }
