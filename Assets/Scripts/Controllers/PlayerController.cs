@@ -10,7 +10,7 @@ public class PlayerController : BaseController
     float _cameraUpdownLimit;
 
     Camera _playerCamera;
-    Rigidbody _rb;
+    Rigidbody _rb, _cameraRb;
     float _currentCameraRotationX;
     
     public override void Init()
@@ -18,6 +18,7 @@ public class PlayerController : BaseController
         _mouseSensitivity = 3f;
         _cameraUpdownLimit = 90f;
         _playerCamera = GetComponentInChildren<Camera>();
+        _cameraRb = _playerCamera.GetComponent<Rigidbody>();
         _rb = gameObject.GetOrAddComponent<Rigidbody>();
         _maxSpeed = 10f;
         GameObjectType = Define.GameObjects.Player;
@@ -35,29 +36,50 @@ public class PlayerController : BaseController
         float vertical = Input.GetAxisRaw("Vertical");
 
         if (horizontal != 0)
-            transform.Translate(Vector3.right * _maxSpeed * horizontal * Time.deltaTime);
+        {
+            //transform.position += transform.right * _maxSpeed * horizontal * Time.deltaTime;
+            //transform.Translate(Vector3.right * _maxSpeed * horizontal * Time.deltaTime);
+            //_rb.position += transform.right * _maxSpeed * horizontal * Time.deltaTime;
+            _rb.MovePosition(_rb.position + transform.right * _maxSpeed * horizontal * Time.deltaTime);
+        }
+
         if (vertical != 0)
-            transform.Translate(Vector3.forward * _maxSpeed * vertical * Time.deltaTime);
+        {
+            //transform.position += transform.forward * _maxSpeed * vertical * Time.deltaTime;
+            //transform.Translate(Vector3.forward * _maxSpeed * vertical * Time.deltaTime);
+            //_rb.position += transform.forward * _maxSpeed * vertical * Time.deltaTime;
+            _rb.MovePosition(_rb.position + transform.forward * _maxSpeed * vertical * Time.deltaTime);
+        }
     }
 
+    float _rotationY = 0f;
+    float _rotationX = 0f;
+    float _limitY = 45f;
     void Look()
     {
-        float upDown = Input.GetAxisRaw("Mouse Y");
-        float leftRight = Input.GetAxisRaw("Mouse X");
+        float lookY = Input.GetAxisRaw("Mouse Y");
+        float lookX = Input.GetAxisRaw("Mouse X");
 
-        if (upDown != 0)
+        _rotationX = 0f;
+
+        _rotationY += lookY * _mouseSensitivity;
+        _rotationX += lookX * _mouseSensitivity;
+
+        _rotationY = Mathf.Clamp(_rotationY, -_limitY, _limitY);
+
+        if (lookY != 0)
         {
-            float _cameraUpdownX = 0f;
-            _cameraUpdownX = upDown * _mouseSensitivity;
-            _currentCameraRotationX -= _cameraUpdownX;
-            _currentCameraRotationX = Mathf.Clamp(_currentCameraRotationX, -_cameraUpdownLimit, _cameraUpdownLimit);
-            _playerCamera.transform.localEulerAngles = new Vector3(_currentCameraRotationX, 0f, 0f);
+            _playerCamera.transform.localEulerAngles = new Vector3(-_rotationY, 0f, 0f);
+            //_cameraRb.rotation = Quaternion.Euler(new Vector3(-_rotationY, 0f, 0f));
+            //_cameraRb.MoveRotation(_cameraRb.rotation * Quaternion.Euler(new Vector3(-_rotationY, 0f, 0f)));
         }
-        if (leftRight != 0)
+        if (lookX != 0)
         {
-            float playerLeftRightY = 0f;
-            playerLeftRightY += leftRight * _mouseSensitivity;
-            _rb.MoveRotation(_rb.rotation * Quaternion.Euler(new Vector3(0f, playerLeftRightY, 0f)));
+            //transform.eulerAngles = new Vector3(0f, _rotationX, 0f);
+            //_rb.rotation = Quaternion.Euler(new Vector3(0f, _rotationX, 0f));
+            //_cameraRb.rotation = Quaternion.Euler(new Vector3(0f, _rotationX, 0f));
+            _rb.MoveRotation(_rb.rotation * Quaternion.Euler(new Vector3(0f, _rotationX, 0f)));
+            //_cameraRb.MoveRotation(_cameraRb.rotation * Quaternion.Euler(new Vector3(0f, _rotationX, 0f)));
         }
     }
 }
