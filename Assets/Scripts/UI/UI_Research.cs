@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UI_Research : UI_Base
 {
-    PlayerStat _stat;
+    PlayerStat _playerStat;
     Text _attackGoldT, _defenseGoldT, _attackIncrementT, _defenseIncrementT;
     Image _attackIncrease, _defenseIncrease;
 
@@ -27,7 +27,7 @@ public class UI_Research : UI_Base
 
     public override void Init()
     {
-        _stat = MainManager.Game.Player.GetComponent<PlayerStat>();
+        _playerStat = MainManager.Game.Player.GetComponent<PlayerStat>();
 
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
@@ -46,11 +46,41 @@ public class UI_Research : UI_Base
 
     void AddAttack(PointerEventData eventData)
     {
-        _stat.AddAttack(1);
+        if (_playerStat.Gold >= int.Parse(_attackGoldT.text))
+        {
+            _playerStat.AddGold(-int.Parse(_attackGoldT.text));
+            _playerStat.AddAttack(int.Parse(_attackIncrementT.text));
+            AddAttackGoldAndIncrement();
+        }
+        else
+        {
+            Debug.Log("∞ÒµÂ ∫Œ¡∑");
+        }
+    }
+
+    void AddAttackGoldAndIncrement()
+    {
+        _attackGoldT.text = $"{int.Parse(_attackGoldT.text) + 10}";
+        _attackIncrementT.text = $"{int.Parse(_attackIncrementT.text) + 1}";
     }
 
     void AddDefense(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+        if (_playerStat.Gold >= int.Parse(_attackGoldT.text))
+        {
+            _playerStat.AddGold(-int.Parse(_defenseGoldT.text));
+            _playerStat.AddDefense(int.Parse(_defenseIncrementT.text));
+            AddDefenseGoldAndIncrement();
+        }
+        else
+        {
+            Debug.Log("∞ÒµÂ ∫Œ¡∑");
+        }
+    }
+
+    void AddDefenseGoldAndIncrement()
+    {
+        _defenseGoldT.text = $"{int.Parse(_defenseGoldT.text) + 10}";
+        _defenseIncrementT.text = $"{int.Parse(_defenseIncrementT.text) + 1}";
     }
 }
