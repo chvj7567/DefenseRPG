@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
-    [SerializeField]
-    float _mouseSensitivity;
-    [SerializeField]
-    float _cameraUpdownLimit;
-
     Camera _playerCamera;
-    Rigidbody _rb, _cameraRb;
-    float _currentCameraRotationX;
-    
+    Rigidbody _rb;
+    float _mouseSensitivity;
+    float _rotationY;
+    float _rotationX;
+    float _limitY;
+
     public override void Init()
     {
         _mouseSensitivity = 3f;
-        _cameraUpdownLimit = 90f;
+        _limitY = 45f;
         _playerCamera = GetComponentInChildren<Camera>();
-        _cameraRb = _playerCamera.GetComponent<Rigidbody>();
         _rb = gameObject.GetOrAddComponent<Rigidbody>();
         _maxSpeed = 10f;
         GameObjectType = Define.GameObjects.Player;
@@ -52,9 +49,7 @@ public class PlayerController : BaseController
         }
     }
 
-    float _rotationY = 0f;
-    float _rotationX = 0f;
-    float _limitY = 45f;
+    
     void Look()
     {
         float lookY = Input.GetAxisRaw("Mouse Y");
@@ -70,16 +65,13 @@ public class PlayerController : BaseController
         if (lookY != 0)
         {
             _playerCamera.transform.localEulerAngles = new Vector3(-_rotationY, 0f, 0f);
-            //_cameraRb.rotation = Quaternion.Euler(new Vector3(-_rotationY, 0f, 0f));
-            //_cameraRb.MoveRotation(_cameraRb.rotation * Quaternion.Euler(new Vector3(-_rotationY, 0f, 0f)));
         }
         if (lookX != 0)
         {
-            //transform.eulerAngles = new Vector3(0f, _rotationX, 0f);
-            //_rb.rotation = Quaternion.Euler(new Vector3(0f, _rotationX, 0f));
-            //_cameraRb.rotation = Quaternion.Euler(new Vector3(0f, _rotationX, 0f));
+            //transform.rotation *= Quaternion.Euler(new Vector3(0f, _rotationX, 0f));
+            //transform.Rotate(new Vector3(0f, _rotationX, 0f));
+            //_rb.rotation *= Quaternion.Euler(new Vector3(0f, _rotationX, 0f));
             _rb.MoveRotation(_rb.rotation * Quaternion.Euler(new Vector3(0f, _rotationX, 0f)));
-            //_cameraRb.MoveRotation(_cameraRb.rotation * Quaternion.Euler(new Vector3(0f, _rotationX, 0f)));
         }
     }
 }

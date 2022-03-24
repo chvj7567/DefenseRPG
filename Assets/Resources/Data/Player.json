@@ -1,1 +1,19 @@
-{"stats":[{"name":"Player","level":3,"maxHp":400,"hp":400,"moveSpeed":0.0,"attackSpeed":0.0,"attack":0,"defense":20,"gold":60,"crystal":6,"maxExp":400,"exp":0},{"name":"Tank_Green","level":0,"maxHp":0,"hp":0,"moveSpeed":0.0,"attackSpeed":0.0,"attack":110,"defense":0,"gold":0,"crystal":0,"maxExp":0,"exp":0},{"name":"Tank_Yellow","level":0,"maxHp":0,"hp":0,"moveSpeed":0.0,"attackSpeed":0.0,"attack":20,"defense":0,"gold":0,"crystal":0,"maxExp":0,"exp":0},{"name":"Tank_Blue","level":0,"maxHp":0,"hp":0,"moveSpeed":0.0,"attackSpeed":0.0,"attack":40,"defense":0,"gold":0,"crystal":0,"maxExp":0,"exp":0},{"name":"Tank_Red","level":0,"maxHp":0,"hp":0,"moveSpeed":0.0,"attackSpeed":0.0,"attack":80,"defense":0,"gold":0,"crystal":0,"maxExp":0,"exp":0}]}
+{
+  "stats": [
+    {
+      "name": "Player",
+      "level": 1,
+      "maxHp": 100,
+      "hp": 100,
+      "greenAttack": 100,
+      "yellowAttack": 20,
+      "blueAttack": 30,
+      "redAttack": 40,
+      "defense": 5,
+      "gold": 0,
+      "crystal": 0,
+      "maxExp": 100,
+      "exp": 0
+    }
+  ]
+}

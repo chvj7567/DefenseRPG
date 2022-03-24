@@ -6,13 +6,25 @@ using UnityEngine.AI;
 
 public class MonsterStat : BaseStat
 {
-    public string MyName { get; private set; } = Enum.GetName(typeof(Define.Enemys), (int)Define.Enemys.Mummy);
+    Data.Stat _stat;
+    PlayerStat _player;
+    public override string Name { get; protected set; }
+    public override int Attack { get { return _stat.attack; } protected set { _stat.attack = value; } }
+    public override int Defense { get { return _stat.defense; } protected set { _stat.defense = value; } }
+    public override int Level { get { return _stat.level; } protected set { _stat.level = value; } }
+    public override int MaxHp { get { return _stat.maxHp; } protected set { _stat.maxHp = value; } }
+    public override int Hp { get { return _stat.hp; } protected set { _stat.hp = value; } }
+    public override float MoveSpeed { get { return _stat.moveSpeed; } protected set { _stat.moveSpeed = value; } }
+    public override float AttackSpeed { get { return _stat.attackSpeed; } protected set { _stat.attackSpeed = value; } }
+    public override int Gold { get { return _stat.gold; } protected set { _stat.gold = value; } }
+    public override int Crystal { get { return _stat.crystal; } protected set { _stat.crystal = value; } }
+    public override int Exp { get { return _stat.exp; } protected set { _stat.exp = value; } }
 
-    UI_Game _game;
     public override void Init()
     {
-        _stat = new Data.Stat(MainManager.Data.MonsterStat[MyName]);
-        _game = MainManager.UI.Game.GetComponent<UI_Game>();
+        Name = MainManager.Data.MonsterStat[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)].name;
+        _stat = new Data.Stat(MainManager.Data.MonsterStat[Name]);
+        _player = MainManager.Game.Player.GetComponent<PlayerStat>();
     }
 
     void OnEnable()
@@ -22,7 +34,7 @@ public class MonsterStat : BaseStat
 
     public override void OnDamage(BaseStat attacker)
     {
-        if (attacker as GreenStat)
+        if (attacker as PlayerStat)
         {
             if (attacker.Attack - Defense <= 0)
                 Hp -= 1;
@@ -32,7 +44,6 @@ public class MonsterStat : BaseStat
             if (Hp <= 0)
             {
                 Booty();
-                transform.position = Vector3.zero;
                 MainManager.Game.Despawn(gameObject);
             }
         }
@@ -40,8 +51,8 @@ public class MonsterStat : BaseStat
 
     void Booty()
     {
-        _game.SetGold(Gold);
-        _game.SetCrystal(Crystal);
-        _game.SetExp(Exp);
+        _player.AddGold(Gold);
+        _player.AddCrystal(Crystal);
+        _player.AddExp(Exp);
     }
 }

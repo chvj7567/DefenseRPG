@@ -12,20 +12,13 @@ public interface ILoader<Key, Value>
 
 public class DataManager
 {
-    enum List
-    {
-        OriginPlayer,
-        Player,
-        Monster,
-    }
-
     public Dictionary<string, Data.Stat> PlayerStat = new Dictionary<string, Data.Stat>();
     public Dictionary<string, Data.Stat> MonsterStat = new Dictionary<string, Data.Stat>();
 
     public void Init()
     {
-        PlayerStat = LoadJson<Data.StatData, string, Data.Stat>(Enum.GetName(typeof(List), (int)List.Player)).MakeDict();
-        MonsterStat = LoadJson<Data.StatData, string, Data.Stat>(Enum.GetName(typeof(List), (int)List.Monster)).MakeDict();
+        PlayerStat = LoadJson<Data.StatData, string, Data.Stat>(Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)).MakeDict();
+        MonsterStat = LoadJson<Data.StatData, string, Data.Stat>(Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)).MakeDict();
     }
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
@@ -44,11 +37,5 @@ public class DataManager
         File.WriteAllText(path, json);
 
         Init();
-    }
-
-    public void Reset()
-    {
-        PlayerStat = LoadJson<Data.StatData, string, Data.Stat>(Enum.GetName(typeof(List), (int)List.OriginPlayer)).MakeDict();
-        ChangeLevel();
     }
 }

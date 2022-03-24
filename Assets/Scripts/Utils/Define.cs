@@ -10,18 +10,6 @@ public class Define
         Lobby,
         Game,
     }
-    public enum Players
-    {
-        Tank_Green,
-        Tank_Yellow,
-        Tank_Blue,
-        Tank_Red
-    }
-
-    public enum Enemys
-    {
-        Mummy,
-    }
 
     public enum GameObjects
     {

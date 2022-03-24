@@ -11,8 +11,8 @@ public class TankController : BaseController
     protected GameObject _tankTower;
     protected bool _check;
     protected float _bulletDelay;
-    protected BulletController bullet;
-
+    protected BulletController _bullet;
+    IEnumerator _bulletCoroutine;
     public override void Init()
     {
         _targetMask = LayerMask.GetMask("Monster");
@@ -22,6 +22,7 @@ public class TankController : BaseController
         _check = false;
         _bulletDelay = 1f;
         GameObjectType = Define.GameObjects.Player;
+        _bulletCoroutine = CreateBullet();
     }
 
     void OnDrawGizmos()
@@ -34,6 +35,7 @@ public class TankController : BaseController
     void Update()
     {
         AttackAble();
+        Debug.Log(_target);
     }
 
     void AttackAble()
@@ -48,27 +50,65 @@ public class TankController : BaseController
         // 범위에 걸린 타겟들
         Collider[] targets = Physics.OverlapSphere(transform.position, _attackRange, _targetMask);
 
-        if (_target == null || !_target.activeSelf)
+        if (targets.Length <= 0)
         {
-            if (targets.Length > 0)
-                _target = targets[0].gameObject;
-            else
-                _target = null;
+            _target = null;
+
+            if (_check)
+            {
+                _check = false;
+                StopCoroutine(_bulletCoroutine);
+            }
+
+            return;
         }
 
-        if (_target == null)
-            return;
-
-        Vector3 dirTarget = (_target.transform.position - transform.position).normalized;
-
-        // 시야각에 걸리는지 확인
-        if (Vector3.Angle(transform.forward, dirTarget) < _attackAngle / 2)
+        foreach (Collider target in targets)
         {
-            Vector3 dir = _target.transform.position - transform.position;
-            _tankTower.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir.normalized), 0.5f);
+            Vector3 dirTarget = (target.transform.position - transform.position).normalized;
 
-            if (!_check)
-                StartCoroutine(CreateBullet());
+            // 시야각에 걸리는지 확인
+            if (Vector3.Angle(transform.forward, dirTarget) < _attackAngle / 2)
+            {
+                if (_target == target.gameObject)
+                    return;
+            }
+        }
+
+        if (_check)
+        {
+            _check = false;
+            _target = null;
+            StopCoroutine(_bulletCoroutine);
+        }
+
+        foreach (Collider target in targets)
+        {
+            Vector3 dirTarget = (target.transform.position - transform.position).normalized;
+
+            // 시야각에 걸리는지 확인
+            if (Vector3.Angle(transform.forward, dirTarget) < _attackAngle / 2)
+            {
+                _target = target.gameObject;
+
+                Vector3 dir = _target.transform.position - transform.position;
+                _tankTower.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir.normalized), 0.5f);
+
+                if (!_check)
+                {
+                    _check = true;
+                    StartCoroutine(_bulletCoroutine);
+                }
+                    
+            }
+            else
+            {
+                if (_target == target)
+                {
+                    _target = null;
+                    return;
+                }
+            }
         }
     }
 
@@ -78,6 +118,16 @@ public class TankController : BaseController
         return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), 0f, Mathf.Cos(angle * Mathf.Deg2Rad));
     }
 
+    IEnumerator CreateBullet()
+    {
+        while (true)
+        {
+            _bullet = MainManager.Resource.Instantiate("Bullet/GreenBullet", _tankTower.transform).GetOrAddComponent<BulletController>();
+            _bullet.gameObject.GetOrAddComponent<PlayerStat>();
+            _bullet.SetPosition(new Vector3(0f, 0.3f, 1.7f));
+            _bullet.Target = _target;
 
-    protected virtual IEnumerator CreateBullet() { yield return null; }
+            yield return new WaitForSeconds(_bulletDelay);
+        }
+    }
 }

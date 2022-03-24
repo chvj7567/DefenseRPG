@@ -16,6 +16,10 @@ namespace Data
 		public float attackSpeed;
 		public int attack;
 		public int defense;
+		public int greenAttack;
+		public int yellowAttack;
+		public int blueAttack;
+		public int redAttack;
 		public int gold;
 		public int crystal;
 		public int maxExp;
@@ -31,6 +35,10 @@ namespace Data
 			attackSpeed = st.attackSpeed;
 			attack = st.attack;
 			defense = st.defense;
+			greenAttack = st.greenAttack;
+			yellowAttack = st.yellowAttack;
+			blueAttack = st.blueAttack;
+			redAttack = st.redAttack;
 			gold = st.gold;
 			crystal = st.crystal;
 			maxExp = st.maxExp;
@@ -51,10 +59,10 @@ namespace Data
 			return dict;
 		}
 
-		public List<Data.Stat> MakeList(Dictionary<string, Data.Stat> dict)
+		public List<Stat> MakeList(Dictionary<string, Stat> dict)
 		{
-			List<Data.Stat> list = new List<Data.Stat>();
-			foreach (Data.Stat stat in dict.Values)
+			List<Stat> list = new List<Stat>();
+			foreach (Stat stat in dict.Values)
 			{
 				list.Add(stat);
 			}

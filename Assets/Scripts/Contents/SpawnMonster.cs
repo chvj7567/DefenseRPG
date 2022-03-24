@@ -26,7 +26,7 @@ public class SpawnMonster : MonoBehaviour
         {
             foreach (GameObject go in _spawnPositions)
             {
-                MainManager.Game.Spawn(Define.GameObjects.Monster, "Mummy", go.transform);
+                MainManager.Game.Spawn(Define.GameObjects.Monster, "Monster", go.transform);
             }
 
             yield return new WaitForSeconds(_spawnTime);

@@ -27,24 +27,9 @@ public class MonsterController : BaseController
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "GreenBullet")
+        if (other.name.Contains("Bullet"))
         {
-            GetComponent<MonsterStat>().OnDamage(other.GetComponent<GreenStat>());
-        }
-
-        if (other.name == "YellowBullet")
-        {
-            GetComponent<MonsterStat>().OnDamage(other.GetComponent<YellowStat>());
-        }
-
-        if (other.name == "BlueBullet")
-        {
-            GetComponent<MonsterStat>().OnDamage(other.GetComponent<BlueStat>());
-        }
-
-        if (other.name == "RedBullet")
-        {
-            GetComponent<MonsterStat>().OnDamage(other.GetComponent<RedStat>());
+            GetComponent<MonsterStat>().OnDamage(other.GetComponent<PlayerStat>());
         }
     }
 }

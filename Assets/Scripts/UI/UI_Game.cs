@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class UI_Game : UI_Base
 {
-    string _player;
-    string[] _tanks;
+    PlayerStat _playerStat;
     Image[] _icon;
     Text[] _text;
 
@@ -33,9 +32,7 @@ public class UI_Game : UI_Base
 
     public override void Init()
     {
-        _player = "Player";
-        _tanks = Enum.GetNames(typeof(Define.Players));
-
+        _playerStat = MainManager.Game.Player.GetComponent<PlayerStat>();
         _icon = new Image[Enum.GetNames(typeof(Images)).Length];
         _text = new Text[Enum.GetNames(typeof(Texts)).Length];
 
@@ -55,20 +52,18 @@ public class UI_Game : UI_Base
         _text[(int)Texts.CrystalT] = GetText((int)Texts.CrystalT);
         _text[(int)Texts.LevelT] = GetText((int)Texts.LevelT);
 
-        
-
         BindEvent(_icon[(int)Images.Setting].gameObject, SettingGame, Define.UIEvent.Click);
         BindEvent(_icon[(int)Images.ResearchShop].gameObject, ResearchGame, Define.UIEvent.Click);
         BindEvent(_icon[(int)Images.GoldShop].gameObject, GoldGame, Define.UIEvent.Click);
         BindEvent(_icon[(int)Images.CrystalShop].gameObject, CrystalGame, Define.UIEvent.Click);
         BindEvent(_icon[(int)Images.Inventory].gameObject, InventoryGame, Define.UIEvent.Click);
-        BindEvent(_icon[(int)Images.ExpBar].gameObject, GetExp);
+        BindEvent(_icon[(int)Images.ExpBar].gameObject, SetExp);
 
-        BindEvent(_text[(int)Texts.AttackT].gameObject, GetAttack);
-        BindEvent(_text[(int)Texts.DefenseT].gameObject, GetDefense);
-        BindEvent(_text[(int)Texts.GoldT].gameObject, GetGold);
-        BindEvent(_text[(int)Texts.CrystalT].gameObject, GetCrystal);
-        BindEvent(_text[(int)Texts.LevelT].gameObject, GetLevel);
+        BindEvent(_text[(int)Texts.AttackT].gameObject, SetAttack);
+        BindEvent(_text[(int)Texts.DefenseT].gameObject, SetDefense);
+        BindEvent(_text[(int)Texts.GoldT].gameObject, SetGold);
+        BindEvent(_text[(int)Texts.CrystalT].gameObject, SetCrystal);
+        BindEvent(_text[(int)Texts.LevelT].gameObject, SetLevel);
     }
 
     void SettingGame(PointerEventData eventData)
@@ -117,6 +112,7 @@ public class UI_Game : UI_Base
             MainManager.UI.CurrentSubUI = null;
         }
     }
+
     void CrystalGame(PointerEventData eventData)
     {
         if (MainManager.UI.CurrentSubUI == null)
@@ -158,78 +154,23 @@ public class UI_Game : UI_Base
             MainManager.UI.CurrentSubUI = null;
         }
     }
-
-    public void GetAttack() { SetAttack(); }
-    public void GetDefense() { SetDefense(); }
-    public void GetGold() { SetGold(); }
-    public void GetCrystal() { SetCrystal(); }
-    public void GetLevel() { SetLevel(); }
-    public void GetExp() { SetExp(); }
-
-    public void SetAttack(string tank = null, int attack = 0)
+    
+    void SetExp()
     {
-        int totAttack = 0;
-
-        if (tank != null)
+        if (_playerStat.Level <= 1)
         {
-            foreach (string name in _tanks)
-            {
-                if (tank == name)
-                {
-                    MainManager.Data.PlayerStat[tank].attack += attack;
-                }
-            }
-        }
-
-        foreach (string name in _tanks)
-        {
-            totAttack += MainManager.Data.PlayerStat[name].attack;
-        }
-
-        _text[(int)Texts.AttackT].text = $"{totAttack}";
-    }
-
-    public void SetDefense(int defense = 0)
-    {
-        MainManager.Data.PlayerStat[_player].defense += defense;
-        _text[(int)Texts.DefenseT].text = $"{MainManager.Data.PlayerStat[_player].defense}";
-    }
-
-    public void SetGold(int gold = 0)
-    {
-        MainManager.Data.PlayerStat[_player].gold += gold;
-        _text[(int)Texts.GoldT].text = $"{MainManager.Data.PlayerStat[_player].gold}";
-    }
-
-    public void SetCrystal(int crystal = 0)
-    {
-        MainManager.Data.PlayerStat[_player].crystal += crystal;
-        _text[(int)Texts.CrystalT].text = $"{MainManager.Data.PlayerStat[_player].crystal}";
-    }
-
-    public void SetLevel(int level = 0)
-    {
-        MainManager.Data.PlayerStat[_player].level += level;
-        _text[(int)Texts.LevelT].text = $"{MainManager.Data.PlayerStat[_player].level}";
-    }
-
-    public void SetExp(int exp = 0)
-    {
-        MainManager.Data.PlayerStat[_player].exp += exp;
-        if (MainManager.Data.PlayerStat[_player].exp >= MainManager.Data.PlayerStat[_player].maxExp)
-        {
-            Debug.Log("Level Up!");
-            SetLevel(1);
-            MainManager.Data.PlayerStat[_player].maxExp *= 2;
-            MainManager.Data.PlayerStat[_player].maxHp *= 2;
-            MainManager.Data.PlayerStat[_player].hp = MainManager.Data.PlayerStat[_player].maxHp;
-            MainManager.Data.PlayerStat[_player].defense *= 2;
-            MainManager.Data.PlayerStat[_player].exp = 0;
-            //MainManager.Data.ChangeLevel();
+            _icon[(int)Images.ExpBar].fillAmount = _playerStat.Exp / (float)_playerStat.MaxExp;
         }
         else
         {
-            _icon[(int)Images.ExpBar].fillAmount = (MainManager.Data.PlayerStat[_player].exp) / (float)MainManager.Data.PlayerStat[_player].maxExp;
+            int before = _playerStat.MaxExp / 2;
+            _icon[(int)Images.ExpBar].fillAmount = (_playerStat.Exp - before) / (float)(_playerStat.MaxExp - before);
         }
     }
+
+    void SetAttack() { _text[(int)Texts.AttackT].text = $"{_playerStat.Attack}"; }
+    void SetDefense() { _text[(int)Texts.DefenseT].text = $"{_playerStat.Defense}"; }
+    void SetGold() { _text[(int)Texts.GoldT].text = $"{_playerStat.Gold}"; }
+    void SetCrystal() { _text[(int)Texts.CrystalT].text = $"{_playerStat.Crystal}"; }
+    void SetLevel() { _text[(int)Texts.LevelT].text = $"{_playerStat.Level}"; }
 }

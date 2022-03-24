@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public abstract class BaseScene : MonoBehaviour
 {
     public Define.Scenes SceneType { get; protected set; } = Define.Scenes.Unknown;
+    public GameObject Sun { get; private set; }
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public abstract class BaseScene : MonoBehaviour
         if (obj == null)
             MainManager.Resource.Instantiate("EventSystem").name = "@EventSystem";
         MainManager.Game.Spawn(Define.GameObjects.MainCamera, "Main Camera");
+        Sun = GameObject.Find("Directional Light");
     }
 
     public abstract void Clear();

@@ -4,20 +4,18 @@ using UnityEngine;
 
 public abstract class BaseStat : MonoBehaviour
 {
-    protected Data.Stat _stat;
-
-    public string Name { get { return _stat.name; } set { _stat.name = value; } }
-    public int Level { get { return _stat.level; } set { _stat.level = value; } }
-    public int MaxHp { get { return _stat.maxHp; } set { _stat.maxHp = value; } }
-    public int Hp { get { return _stat.hp; } set { _stat.hp = value; } }
-    public float MoveSpeed { get { return _stat.moveSpeed; } set { _stat.moveSpeed = value; } }
-    public float AttackSpeed { get { return _stat.attackSpeed; } set { _stat.attackSpeed = value; } }
-    public int Attack { get { return _stat.attack; } set { _stat.attack = value; } }
-    public int Defense { get { return _stat.defense; } set { _stat.defense = value; } }
-    public int Gold { get { return _stat.gold; } set { _stat.gold = value; } }
-    public int Crystal { get { return _stat.crystal; } set { _stat.crystal = value; } }
-    public int MaxExp { get { return _stat.maxExp; } set { _stat.maxExp = value; } }
-    public int Exp { get { return _stat.exp; } set { _stat.exp = value; } }
+    public abstract string Name { get; protected set; }
+    public virtual int Level { get; protected set; }
+    public virtual int MaxHp { get; protected set; }
+    public virtual int Hp { get; protected set; }
+    public virtual int Attack { get; protected set; }
+    public virtual int Defense { get; protected set; }
+    public virtual int Gold { get; protected set; }
+    public virtual int Crystal { get; protected set; }
+    public virtual int MaxExp { get; protected set; }
+    public virtual int Exp { get; protected set; }
+    public virtual float MoveSpeed { get; protected set; }
+    public virtual float AttackSpeed { get; protected set; }
 
     void Start()
     {
@@ -25,5 +23,6 @@ public abstract class BaseStat : MonoBehaviour
     }
 
     public abstract void Init();
+
     public virtual void OnDamage(BaseStat attacker) { }
 }

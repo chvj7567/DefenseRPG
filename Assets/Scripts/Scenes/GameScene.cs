@@ -10,9 +10,10 @@ public class GameScene : BaseScene
         base.Init();
 
         MainManager.Game.Spawn(Define.GameObjects.Map, "Ground");
+        MainManager.Game.Spawn(Define.GameObjects.Player, "Player");
         MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Green").transform.position = new Vector3(0, 1, -12);
-        MainManager.Game.Spawn(Define.GameObjects.MainCamera, "Player");
-        MainManager.Game.ChangeCamera(MainManager.Game.MainCamera);
+        //MainManager.Game.Spawn(Define.GameObjects.MainCamera, "Player");
+        //MainManager.Game.ChangeCamera(MainManager.Game.MainCamera);
         MainManager.UI.ShowUI("GameUI", Define.UI.Game);
 
         /*if (GameObject.Find("@Spawning") == null)
@@ -20,6 +21,13 @@ public class GameScene : BaseScene
             GameObject spawning = new GameObject { name = "@Spawning" };
             spawning.GetOrAddComponent<SpawnMonster>();
         }*/
+    }
+
+    private void Update()
+    {
+        Quaternion qua = Sun.transform.rotation;
+        qua.eulerAngles += new Vector3(Time.deltaTime, 0f, 0f);
+        Sun.transform.rotation = qua;
     }
 
     public override void Clear()

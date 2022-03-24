@@ -15,7 +15,7 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        if (Target == null || !Target.activeSelf)
+        if (Target == null)
         {
             MainManager.Game.Despawn(gameObject);
             return;
@@ -23,7 +23,7 @@ public class BulletController : MonoBehaviour
 
         transform.SetParent(null);
         _direction = (Target.transform.position + Vector3.up - transform.position).normalized;
-        transform.position += _direction * Time.deltaTime * _speed;
+        transform.position += _direction * Time.unscaledDeltaTime * _speed;
     }
 
     public void SetPosition(Vector3 pos)

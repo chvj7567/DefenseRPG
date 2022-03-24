@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class UI_HpBar : UI_Base
 {
     Slider _hpBar;
+    BaseStat _stat;
+
     enum GameObjects
     {
         HpBar,
     }
-
-    BaseStat _stat;
+    
     public override void Init()
     {
         Bind<Slider>(typeof(GameObjects));

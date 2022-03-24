@@ -1,10 +1,11 @@
 {
   "stats": [
     {
-      "name": "Mummy",
+      "name": "Monster",
       "level": 1,
       "maxHp": 100,
       "hp": 100,
+      "attackSpeed": 1.5,
       "moveSpeed": 1.5,
       "attack": 10,
       "defense": 3,
