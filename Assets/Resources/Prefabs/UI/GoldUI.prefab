@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 848281860324424665}
   - component: {fileID: 848281860324424664}
   - component: {fileID: 848281860324424667}
+  - component: {fileID: -7330797084658463825}
   m_Layer: 5
   m_Name: GoldUI
   m_TagString: Untagged
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-7330797084658463825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848281860324424666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a5bfcafdf77b243b4d4b4a1c6b6dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2512696222351442170
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9193273814216665260
 RectTransform:
   m_ObjectHideFlags: 0
@@ -187,7 +200,7 @@ GameObject:
   - component: {fileID: 3599880162790350529}
   - component: {fileID: 2591417633844564914}
   m_Layer: 5
-  m_Name: Cost
+  m_Name: GoldCostB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7974142553486551705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -418,7 +431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2850632895234110563
 RectTransform:
   m_ObjectHideFlags: 0
@@ -488,7 +501,7 @@ GameObject:
   - component: {fileID: 2957545518879420116}
   - component: {fileID: 6599327448352050018}
   m_Layer: 5
-  m_Name: GreenIncrease
+  m_Name: AddTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,7 +576,7 @@ GameObject:
   - component: {fileID: 7858006610909935015}
   - component: {fileID: 5385468401976354887}
   m_Layer: 5
-  m_Name: Text
+  m_Name: GoldCostT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -629,7 +642,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100A
+  m_Text: 100
 --- !u!1 &5714702787014241243
 GameObject:
   m_ObjectHideFlags: 0
