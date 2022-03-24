@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class TankController : BaseController
     protected float _bulletDelay;
     protected BulletController _bullet;
     IEnumerator _bulletCoroutine;
+    public string TankColor { get; private set; }
+
     public override void Init()
     {
         _targetMask = LayerMask.GetMask("Monster");
@@ -23,6 +26,20 @@ public class TankController : BaseController
         _bulletDelay = 1f;
         GameObjectType = Define.GameObjects.Player;
         _bulletCoroutine = CreateBullet();
+        TankColor = GetTankColor();
+    }
+
+    public string GetTankColor()
+    {
+        string[] tanks = Enum.GetNames(typeof(Define.Tank));
+
+        foreach (string tank in tanks)
+        {
+            if (name.Contains(tank))
+                return tank;
+        }
+
+        return null;
     }
 
     void OnDrawGizmos()
@@ -35,7 +52,6 @@ public class TankController : BaseController
     void Update()
     {
         AttackAble();
-        Debug.Log(_target);
     }
 
     void AttackAble()
@@ -99,7 +115,6 @@ public class TankController : BaseController
                     _check = true;
                     StartCoroutine(_bulletCoroutine);
                 }
-                    
             }
             else
             {
@@ -122,10 +137,11 @@ public class TankController : BaseController
     {
         while (true)
         {
-            _bullet = MainManager.Resource.Instantiate("Bullet/GreenBullet", _tankTower.transform).GetOrAddComponent<BulletController>();
+            _bullet = MainManager.Resource.Instantiate($"Bullet/{TankColor}Bullet", _tankTower.transform).GetOrAddComponent<BulletController>();
             _bullet.gameObject.GetOrAddComponent<PlayerStat>();
             _bullet.SetPosition(new Vector3(0f, 0.3f, 1.7f));
             _bullet.Target = _target;
+            _bullet.Color = TankColor;
 
             yield return new WaitForSeconds(_bulletDelay);
         }

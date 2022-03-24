@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Define
 {
+    public enum Tank
+    {
+        Green,
+        Yellow,
+        Blue,
+        Red,
+    }
     public enum Scenes
     {
         Unknown,

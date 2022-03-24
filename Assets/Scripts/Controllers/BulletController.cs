@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public GameObject Target { get; set; }
+    public string Color { get; set; }
     Vector3 _direction;
     float _speed;
 
@@ -33,7 +34,7 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Monster")
+        if (other.gameObject.layer == LayerMask.NameToLayer("Monster"))
             MainManager.Game.Despawn(gameObject);
     }
 }

@@ -257,8 +257,8 @@ GameObject:
   - component: {fileID: 6530804518502666957}
   - component: {fileID: 7464205693842996328}
   - component: {fileID: 321061240510839137}
-  - component: {fileID: 1008550551674549025}
-  - component: {fileID: 6111288042886737238}
+  - component: {fileID: 2638458291893681034}
+  - component: {fileID: 8660395271667284441}
   m_Layer: 0
   m_Name: Tank_Red
   m_TagString: Untagged
@@ -363,7 +363,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1008550551674549025
+--- !u!114 &2638458291893681034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -372,10 +372,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3503318476722469206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7340ed015dd1fca49adb14e5a0747309, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b80b38976d04234fb4ccc3964045bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6111288042886737238
+  IsUsing: 0
+--- !u!114 &8660395271667284441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -384,7 +385,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3503318476722469206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2c56845c02b2f468f53177a7980fd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4642a69ece3b2fb4f877d7fec0e1a6b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3745786531496338126

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,11 @@ public class GameManager
 
     public bool IsGamimg { get; private set; }
 
+    public int GreenNum { get; private set; }
+    public int YellowNum { get; private set; }
+    public int BlueNum { get; private set; }
+    public int RedNum { get; private set; }
+
     public GameObject Spawn(Define.GameObjects type, string path, Transform parent = null)
     {
         GameObject go = null;
@@ -27,13 +33,21 @@ public class GameManager
                 break;
             case Define.GameObjects.Monster:
                 go = MainManager.Resource.Instantiate($"Monster/{path}", parent);
-                break;
+                break; 
             case Define.GameObjects.Player:
                 Player = go = MainManager.Resource.Instantiate(path, parent);
                 break;
             case Define.GameObjects.Tank:
                 go = MainManager.Resource.Instantiate($"Tank/{path}", parent);
                 Tank.Add(go);
+                if (go.name.Contains(Enum.GetName(typeof(Define.Tank), (int)Define.Tank.Green)))
+                    GreenNum += 1;
+                else if (go.name.Contains(Enum.GetName(typeof(Define.Tank), (int)Define.Tank.Yellow)))
+                    YellowNum += 1;
+                else if (go.name.Contains(Enum.GetName(typeof(Define.Tank), (int)Define.Tank.Blue)))
+                    BlueNum += 1;
+                else if (go.name.Contains(Enum.GetName(typeof(Define.Tank), (int)Define.Tank.Red)))
+                    RedNum += 1;
                 break;
             case Define.GameObjects.MainCamera:
                 go = GameObject.Find(path);

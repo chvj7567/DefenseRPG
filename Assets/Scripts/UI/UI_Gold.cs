@@ -51,7 +51,22 @@ public class UI_Gold : UI_Base
 
     void AddTank(PointerEventData eventData)
     {
-        MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Green").transform.position = new Vector3(5, 1, -12);
+        if (_green.gameObject.activeSelf)
+        {
+            MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Green").transform.position = new Vector3(5, 1, -12);
+        }
+        else if (_yellow.gameObject.activeSelf)
+        {
+            MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Yellow").transform.position = new Vector3(5, 2, -12);
+        }
+        else if (_blue.gameObject.activeSelf)
+        {
+            MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Blue").transform.position = new Vector3(5, 3, -12);
+        }
+        else if (_red.gameObject.activeSelf)
+        {
+            MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Red").transform.position = new Vector3(5, 4, -12);
+        }
     }
 
     void LeftPage(PointerEventData eventData)

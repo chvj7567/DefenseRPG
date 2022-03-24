@@ -23,7 +23,27 @@ public class PlayerStat : BaseStat
 
     int GetAttack()
     {
-        return MainManager.Data.PlayerStat[Name].greenAttack;
+        BulletController bullet = GetComponent<BulletController>();
+
+        if (bullet == null)
+        {
+            int greenAttack = MainManager.Game.GreenNum * MainManager.Data.PlayerStat[Name].greenAttack;
+            int yellowAttack = MainManager.Game.YellowNum * MainManager.Data.PlayerStat[Name].yellowAttack;
+            int blueAttack = MainManager.Game.BlueNum * MainManager.Data.PlayerStat[Name].blueAttack;
+            int redAttack = MainManager.Game.RedNum * MainManager.Data.PlayerStat[Name].redAttack;
+            return greenAttack + yellowAttack + blueAttack + redAttack;
+        }
+
+        if (bullet.Color == Enum.GetName(typeof(Define.Tank), (int)Define.Tank.Green))
+            return MainManager.Data.PlayerStat[Name].greenAttack;
+        else if ((bullet.Color == Enum.GetName(typeof(Define.Tank), (int)Define.Tank.Yellow)))
+            return MainManager.Data.PlayerStat[Name].yellowAttack;
+        else if ((bullet.Color == Enum.GetName(typeof(Define.Tank), (int)Define.Tank.Blue)))
+            return MainManager.Data.PlayerStat[Name].blueAttack;
+        else if ((bullet.Color == Enum.GetName(typeof(Define.Tank), (int)Define.Tank.Red)))
+            return MainManager.Data.PlayerStat[Name].redAttack;
+
+        return -1;
     }
 
     public void AddAttack(int attack)
