@@ -60,8 +60,8 @@ public class UI_Research : UI_Base
 
     void AddAttackGoldAndIncrement()
     {
-        _attackGoldT.text = $"{int.Parse(_attackGoldT.text) + 10}";
-        _attackIncrementT.text = $"{int.Parse(_attackIncrementT.text) + 1}";
+        _attackGoldT.text = $"{int.Parse(_attackGoldT.text) * 2}";
+        _attackIncrementT.text = $"{int.Parse(_attackIncrementT.text) * 2}";
     }
 
     void AddDefense(PointerEventData eventData)
@@ -80,7 +80,7 @@ public class UI_Research : UI_Base
 
     void AddDefenseGoldAndIncrement()
     {
-        _defenseGoldT.text = $"{int.Parse(_defenseGoldT.text) + 10}";
-        _defenseIncrementT.text = $"{int.Parse(_defenseIncrementT.text) + 1}";
+        _defenseGoldT.text = $"{int.Parse(_defenseGoldT.text) * 2}";
+        _defenseIncrementT.text = $"{int.Parse(_defenseIncrementT.text) * 2}";
     }
 }

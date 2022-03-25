@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Define
 {
+    public enum Skill
+    {
+        Snow,
+        Strong,
+    }
     public enum Tank
     {
         Green,

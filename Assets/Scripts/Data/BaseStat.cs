@@ -16,6 +16,8 @@ public abstract class BaseStat : MonoBehaviour
     public virtual int Exp { get; protected set; }
     public virtual float MoveSpeed { get; protected set; }
     public virtual float AttackSpeed { get; protected set; }
+    public virtual int Snow { get; protected set; }
+    public virtual int Strong { get; protected set; }
 
     void Start()
     {

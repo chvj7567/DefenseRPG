@@ -15,6 +15,8 @@ public class PlayerStat : BaseStat
     public override int Crystal { get { return MainManager.Data.PlayerStat[Name].crystal; } }
     public override int MaxExp { get { return MainManager.Data.PlayerStat[Name].maxExp; } }
     public override int Exp { get { return MainManager.Data.PlayerStat[Name].exp; } }
+    public override int Snow { get { return MainManager.Data.PlayerStat[Name].snow; } }
+    public override int Strong { get { return MainManager.Data.PlayerStat[Name].strong; } }
 
     public override void Init()
     {
@@ -73,4 +75,7 @@ public class PlayerStat : BaseStat
             MainManager.Data.PlayerStat[Name].hp = MaxHp;
         }
     }
+
+    public void AddSnow(int snow) { MainManager.Data.PlayerStat[Name].snow += snow; }
+    public void AddStrong(int strong) { MainManager.Data.PlayerStat[Name].strong += strong; }
 }

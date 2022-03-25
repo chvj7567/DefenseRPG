@@ -24,6 +24,8 @@ namespace Data
 		public int crystal;
 		public int maxExp;
 		public int exp;
+		public int snow;
+		public int strong;
 
 		public Stat(Stat st)
         {
@@ -43,6 +45,8 @@ namespace Data
 			crystal = st.crystal;
 			maxExp = st.maxExp;
 			exp = st.exp;
+			snow = st.snow;
+			strong = st.strong;
         }
 	}
 

@@ -5,7 +5,7 @@
       "level": 1,
       "maxHp": 100,
       "hp": 100,
-      "greenAttack": 100,
+      "greenAttack": 10,
       "yellowAttack": 20,
       "blueAttack": 30,
       "redAttack": 40,
@@ -13,7 +13,9 @@
       "gold": 0,
       "crystal": 0,
       "maxExp": 100,
-      "exp": 0
+      "exp": 0,
+      "snow": 0,
+      "strong": 0
     }
   ]
 }
