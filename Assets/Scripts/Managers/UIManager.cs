@@ -17,7 +17,7 @@ public class UIManager
     public GameObject Gold { get; private set; }
     public GameObject Crystal { get; private set; }
     public GameObject Inventory { get; private set; }
-
+    public GameObject Skill { get; private set; }
     public GameObject CurrentSubUI { get; set; }
 
     int _order = 1;
@@ -178,6 +178,14 @@ public class UIManager
                     return Inventory;
                 }
                 Inventory = go = MainManager.Resource.Instantiate($"UI/{name}");
+                break;
+            case Define.UI.Skill:
+                if (Skill != null)
+                {
+                    Skill.SetActive(true);
+                    return Skill;
+                }
+                Skill = go = MainManager.Resource.Instantiate($"UI/{name}");
                 break;
         }
 

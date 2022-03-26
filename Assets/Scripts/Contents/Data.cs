@@ -25,7 +25,9 @@ namespace Data
 		public int maxExp;
 		public int exp;
 		public int snow;
+		public int snowCoolTime;
 		public int strong;
+		public int strongCoolTime;
 
 		public Stat(Stat st)
         {
@@ -46,7 +48,9 @@ namespace Data
 			maxExp = st.maxExp;
 			exp = st.exp;
 			snow = st.snow;
+			snowCoolTime = st.snowCoolTime;
 			strong = st.strong;
+			strongCoolTime = st.strongCoolTime;
         }
 	}
 

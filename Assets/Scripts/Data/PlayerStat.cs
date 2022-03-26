@@ -16,7 +16,9 @@ public class PlayerStat : BaseStat
     public override int MaxExp { get { return MainManager.Data.PlayerStat[Name].maxExp; } }
     public override int Exp { get { return MainManager.Data.PlayerStat[Name].exp; } }
     public override int Snow { get { return MainManager.Data.PlayerStat[Name].snow; } }
+    public override int SnowCoolTime { get { return MainManager.Data.PlayerStat[Name].snowCoolTime; } }
     public override int Strong { get { return MainManager.Data.PlayerStat[Name].strong; } }
+    public override int StrongCoolTime { get { return MainManager.Data.PlayerStat[Name].strongCoolTime; } }
 
     public override void Init()
     {

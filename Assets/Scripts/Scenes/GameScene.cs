@@ -15,6 +15,7 @@ public class GameScene : BaseScene
         //MainManager.Game.Spawn(Define.GameObjects.MainCamera, "Player");
         //MainManager.Game.ChangeCamera(MainManager.Game.MainCamera);
         MainManager.UI.ShowUI("GameUI", Define.UI.Game);
+        MainManager.UI.ShowUI("SkillUI", Define.UI.Skill);
 
         /*if (GameObject.Find("@Spawning") == null)
         {

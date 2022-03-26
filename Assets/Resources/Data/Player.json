@@ -11,11 +11,13 @@
       "redAttack": 40,
       "defense": 5,
       "gold": 0,
-      "crystal": 0,
+      "crystal": 1000,
       "maxExp": 100,
       "exp": 0,
       "snow": 0,
-      "strong": 0
+      "snowCoolTime": 10,
+      "strong": 0,
+      "strongCoolTime": 10
     }
   ]
 }

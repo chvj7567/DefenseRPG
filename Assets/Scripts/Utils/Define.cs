@@ -56,6 +56,7 @@ public class Define
         Gold,
         Crystal,
         Inventory,
+        Skill,
     }
 
     public enum UIEvent
@@ -64,6 +65,8 @@ public class Define
         Click,
         Down,
         Up,
+        Drag,
+        Enter,
     }
 
     public enum Audio
