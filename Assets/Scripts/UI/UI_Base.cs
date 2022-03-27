@@ -78,13 +78,21 @@ public abstract class UI_Base : MonoBehaviour
 				evt.OnUpHandler -= action;
 				evt.OnUpHandler += action;
 				break;
+			case Define.UIEvent.BeginDrag:
+				evt.OnBeginDragHandler -= action;
+				evt.OnBeginDragHandler += action;
+				break;
 			case Define.UIEvent.Drag:
 				evt.OnDragHandler -= action;
 				evt.OnDragHandler += action;
 				break;
-			case Define.UIEvent.Enter:
-				evt.OnEnterHandler -= action;
-				evt.OnEnterHandler += action;
+			case Define.UIEvent.EndDrag:
+				evt.OnEndDragHandler -= action;
+				evt.OnEndDragHandler += action;
+				break;
+			case Define.UIEvent.Drop:
+				evt.OnDropHandler -= action;
+				evt.OnDropHandler += action;
 				break;
 		}
 	}
@@ -116,11 +124,17 @@ public abstract class UI_Base : MonoBehaviour
 			case Define.UIEvent.Up:
 				evt.OnUpHandler -= action;
 				break;
+			case Define.UIEvent.BeginDrag:
+				evt.OnBeginDragHandler -= action;
+				break;
 			case Define.UIEvent.Drag:
 				evt.OnDragHandler -= action;
 				break;
-			case Define.UIEvent.Enter:
-				evt.OnEnterHandler -= action;
+			case Define.UIEvent.EndDrag:
+				evt.OnEndDragHandler -= action;
+				break;
+			case Define.UIEvent.Drop:
+				evt.OnDropHandler -= action;
 				break;
 		}
 	}

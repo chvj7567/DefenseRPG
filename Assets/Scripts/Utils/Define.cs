@@ -8,6 +8,7 @@ public class Define
     {
         Snow,
         Strong,
+        MaxCount,
     }
     public enum Tank
     {
@@ -65,8 +66,10 @@ public class Define
         Click,
         Down,
         Up,
+        BeginDrag,
         Drag,
-        Enter,
+        EndDrag,
+        Drop,
     }
 
     public enum Audio

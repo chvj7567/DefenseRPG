@@ -20,6 +20,7 @@ public class MainManager : MonoBehaviour
     AudioManager _audio = new AudioManager();
     DataManager _data = new DataManager();
     SceneManagerEx _scene = new SceneManagerEx();
+    SkillManager _skill = new SkillManager();
 
     public static PoolManager Pool { get { return Instance._pool; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
@@ -27,6 +28,7 @@ public class MainManager : MonoBehaviour
     public static AudioManager Audio { get { return Instance._audio; } }
     public static DataManager Data { get { return Instance._data; } }
     public static SceneManagerEx Scene { get { return Instance._scene; } }
+    public static SkillManager Skill { get { return Instance._skill; } }
     #endregion
 
     void Start()
@@ -56,6 +58,7 @@ public class MainManager : MonoBehaviour
             m_instance._pool.Init();
             m_instance._audio.Init();
             m_instance._data.Init();
+            m_instance._skill.Init();
         }
     }
 }

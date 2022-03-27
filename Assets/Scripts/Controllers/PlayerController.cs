@@ -48,7 +48,6 @@ public class PlayerController : BaseController
             _rb.MovePosition(_rb.position + transform.forward * _maxSpeed * vertical * Time.deltaTime);
         }
     }
-
     
     void Look()
     {

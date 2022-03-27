@@ -11,6 +11,10 @@ public class UI_Inventory : UI_Base
     Image[] _skillSpace;
     List<GameObject> _skillIcon;
 
+    public GameObject DragSkill { get; set; }
+    public Transform OriginPos { get; set; }
+    public bool IsDrop { get; set; }
+
     bool _isInit;
     enum Images
     {
@@ -18,6 +22,10 @@ public class UI_Inventory : UI_Base
         SkillSpace2,
         SkillSpace3,
         SkillSpace4,
+        SkillSpace5,
+        SkillSpace6,
+        SkillSpace7,
+        SkillSpace8,
     }
 
     public override void Init()
@@ -34,11 +42,10 @@ public class UI_Inventory : UI_Base
             for (int i = 0; i < _skillSpace.Length; i++)
             {
                 _skillSpace[i] = GetImage(i);
-                BindEvent(_skillSpace[i].gameObject, BeginDragSkill, Define.UIEvent.Drag);
-                BindEvent(_skillSpace[i].gameObject, EndDragSkill, Define.UIEvent.Up);
             }
         }
     }
+
     void OnEnable()
     {
         if (_playerStat == null)
@@ -47,23 +54,6 @@ public class UI_Inventory : UI_Base
         }
 
         InputSkill();
-
-    }
-
-    void BeginDragSkill(PointerEventData eventData)
-    {
-        Transform skill = eventData.pointerDrag.transform.GetChild(0);
-
-        skill.position = eventData.position;
-
-        MainManager.UI.Skill.GetComponent<UI_Skill>().SkillICon = skill.gameObject;
-    }
-
-    void EndDragSkill(PointerEventData eventData)
-    {
-        Transform skill = eventData.pointerDrag.transform.GetChild(0);
-
-        skill.localPosition = Vector3.zero;
     }
 
     public void InputSkill()
@@ -71,6 +61,7 @@ public class UI_Inventory : UI_Base
         if (_playerStat.Snow != 0 && !UsingSkill(Enum.GetName(typeof(Define.Skill), (int)Define.Skill.Snow)))
         {
             GameObject go = MainManager.Resource.Instantiate("Skill/Icon/Snow", GetLastSpace().transform);
+            go.GetComponent<Image>().raycastTarget = false;
             if (go != null)
                 _skillIcon.Add(go);
         }
@@ -78,8 +69,25 @@ public class UI_Inventory : UI_Base
         if (_playerStat.Strong != 0 && !UsingSkill(Enum.GetName(typeof(Define.Skill), (int)Define.Skill.Strong)))
         {
             GameObject go = MainManager.Resource.Instantiate("Skill/Icon/Strong", GetLastSpace().transform);
+            go.GetComponent<Image>().raycastTarget = false;
             if (go != null)
                 _skillIcon.Add(go);
+        }
+    }
+
+    public void SwapSkill(GameObject startSlot, GameObject destSlot)
+    {
+        if (destSlot != null)
+        {
+            if (destSlot.transform.childCount != 0)
+            {
+                Transform destSkill = destSlot.transform.GetChild(0);
+                destSlot.transform.GetChild(0).SetParent(startSlot.transform);
+                destSkill.localPosition = Vector3.zero;
+            }
+
+            DragSkill.transform.SetParent(destSlot.transform);
+            DragSkill.transform.localPosition = Vector3.zero;
         }
     }
 

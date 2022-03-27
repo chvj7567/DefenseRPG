@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1238157145426015777}
   - component: {fileID: 7337495039173538595}
   - component: {fileID: 2333628372021774128}
+  - component: {fileID: 3912344909997314981}
   m_Layer: 5
   m_Name: SkillSpace2
   m_TagString: Untagged
@@ -75,6 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3912344909997314981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652204774419211305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe45405eced4c44089b1d422d1986fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2619947287324625924
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -162,6 +175,7 @@ GameObject:
   - component: {fileID: 5703728988284857681}
   - component: {fileID: 3010905607579996473}
   - component: {fileID: 7703108769534047028}
+  - component: {fileID: 3202486334380605374}
   m_Layer: 5
   m_Name: SkillSpace8
   m_TagString: Untagged
@@ -226,6 +240,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3202486334380605374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503832883760313892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe45405eced4c44089b1d422d1986fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5831007126431319532
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +376,7 @@ GameObject:
   - component: {fileID: 3760366734414646917}
   - component: {fileID: 5937656761416194486}
   - component: {fileID: 5081136379508913134}
+  - component: {fileID: 8258348516067812188}
   m_Layer: 5
   m_Name: SkillSpace6
   m_TagString: Untagged
@@ -414,6 +441,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8258348516067812188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851525894568932029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe45405eced4c44089b1d422d1986fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6335919949766456795
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +464,7 @@ GameObject:
   - component: {fileID: 4719177762403282735}
   - component: {fileID: 6161636523614354819}
   - component: {fileID: 8021467498677039586}
+  - component: {fileID: 8562899645310808695}
   m_Layer: 5
   m_Name: SkillSpace4
   m_TagString: Untagged
@@ -489,6 +529,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8562899645310808695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6335919949766456795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe45405eced4c44089b1d422d1986fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7272674563411071137
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +552,7 @@ GameObject:
   - component: {fileID: 7462636159560638528}
   - component: {fileID: 7722464492234593942}
   - component: {fileID: 3541606257827327140}
+  - component: {fileID: 8805737238317100173}
   m_Layer: 5
   m_Name: SkillSpace5
   m_TagString: Untagged
@@ -564,6 +617,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8805737238317100173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7272674563411071137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe45405eced4c44089b1d422d1986fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7942149622555053473
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +640,7 @@ GameObject:
   - component: {fileID: 7059923910690288484}
   - component: {fileID: 7679856675199505538}
   - component: {fileID: 8458303537743238043}
+  - component: {fileID: 2376169612049764756}
   m_Layer: 5
   m_Name: SkillSpace1
   m_TagString: Untagged
@@ -639,6 +705,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2376169612049764756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942149622555053473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe45405eced4c44089b1d422d1986fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8093142079195431950
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +728,7 @@ GameObject:
   - component: {fileID: 8476755693162710779}
   - component: {fileID: 6228858022101381674}
   - component: {fileID: 7899311977182228786}
+  - component: {fileID: 3905528516849034937}
   m_Layer: 5
   m_Name: SkillSpace7
   m_TagString: Untagged
@@ -714,6 +793,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3905528516849034937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093142079195431950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe45405eced4c44089b1d422d1986fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8693060424648973202
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +816,7 @@ GameObject:
   - component: {fileID: 3295450510990764659}
   - component: {fileID: 9015121810095675519}
   - component: {fileID: 6502936721994437432}
+  - component: {fileID: 83588758173394635}
   m_Layer: 5
   m_Name: SkillSpace3
   m_TagString: Untagged
@@ -789,6 +881,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &83588758173394635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693060424648973202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe45405eced4c44089b1d422d1986fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8889861433825273825
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

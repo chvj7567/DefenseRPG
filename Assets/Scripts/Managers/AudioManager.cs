@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,8 +18,7 @@ public class AudioManager
         {
             root = new GameObject { name = "@Audio" };
 
-
-            string[] soundNames = System.Enum.GetNames(typeof(Define.Audio));
+            string[] soundNames = Enum.GetNames(typeof(Define.Audio));
             for (int i = 0; i < soundNames.Length - 1; i++)
             {
                 GameObject go = new GameObject { name = soundNames[i] };
@@ -28,7 +28,7 @@ public class AudioManager
 
             _audioSources[(int)Define.Audio.Bgm].loop = true;
 
-            Object.DontDestroyOnLoad(root);
+            UnityEngine.Object.DontDestroyOnLoad(root);
         }
     }
 
