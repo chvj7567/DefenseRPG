@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UI_Skill : UI_Base
 {
-    Image[] _skillSpace;
+    public Image[] SkillSlot;
     public GameObject SkillICon { get; set; }
 
     enum Images
@@ -18,14 +18,14 @@ public class UI_Skill : UI_Base
     }
     public override void Init()
     {
-        _skillSpace = new Image[Enum.GetNames(typeof(Images)).Length];
+        SkillSlot = new Image[Enum.GetNames(typeof(Images)).Length];
 
         Bind<Image>(typeof(Images));
 
-        for (int i = 0; i < _skillSpace.Length; i++)
+        for (int i = 0; i < SkillSlot.Length; i++)
         {
-            _skillSpace[i] = GetImage(i);
-            BindEvent(_skillSpace[i].gameObject, AddSkill, Define.UIEvent.Drop);
+            SkillSlot[i] = GetImage(i);
+            BindEvent(SkillSlot[i].gameObject, AddSkill, Define.UIEvent.Drop);
         }
     }
 
@@ -54,7 +54,7 @@ public class UI_Skill : UI_Base
 
     public GameObject UsingSkill(string name)
     {
-        foreach (Image image in _skillSpace)
+        foreach (Image image in SkillSlot)
         {
             if (image.transform.childCount != 0)
             {

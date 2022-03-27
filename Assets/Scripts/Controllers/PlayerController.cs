@@ -11,6 +11,9 @@ public class PlayerController : BaseController
     float _rotationX;
     float _limitY;
 
+    bool _check;
+    IEnumerator _skillCoroutine;
+    UI_Skill _skillUI;
     public override void Init()
     {
         _mouseSensitivity = 3f;
@@ -19,12 +22,28 @@ public class PlayerController : BaseController
         _rb = gameObject.GetOrAddComponent<Rigidbody>();
         _maxSpeed = 10f;
         GameObjectType = Define.GameObjects.Player;
+        _skillCoroutine = AutoSkill();
+        _skillUI = MainManager.UI.Skill.GetComponent<UI_Skill>();
     }
 
     void Update()
     {
         Move();
         Look();
+
+        if (!_check)
+            StartCoroutine(_skillCoroutine);
+    }
+
+    IEnumerator AutoSkill()
+    {
+        while (true)
+        {
+            _check = true;
+            MainManager.Skill.EndSkill(Define.Skill.Snow);
+            MainManager.Skill.StartSkill(Define.Skill.Snow);
+            yield return new WaitForSeconds(10f);
+        }
     }
 
     void Move()
