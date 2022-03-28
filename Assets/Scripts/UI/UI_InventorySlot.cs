@@ -6,11 +6,11 @@ using UnityEngine.EventSystems;
 
 public class UI_InventorySlot : UI_Base
 {
-    GameObject _dragSkill;
-    Transform _originPos;
+    UI_Inventory _Inventory;
 
     public override void Init()
     {
+        _Inventory = MainManager.UI.Inventory.GetComponent<UI_Inventory>();
         BindEvent(gameObject, BeginDragSkill, Define.UIEvent.BeginDrag);
         BindEvent(gameObject, DragSkill, Define.UIEvent.Drag);
         BindEvent(gameObject, EndDragSkill, Define.UIEvent.EndDrag);
@@ -19,47 +19,46 @@ public class UI_InventorySlot : UI_Base
 
     void CheckSkill(GameObject skill)
     {
-        _dragSkill = skill;
-        if (_dragSkill == null || _dragSkill.transform.childCount == 0)
+        _Inventory.DragSkill = skill;
+        if (_Inventory.DragSkill == null || _Inventory.DragSkill.transform.childCount == 0)
         {
-            _dragSkill = null;
+            _Inventory.DragSkill = null;
+            _Inventory.OriginPos = null;
             return;
         }
 
-        _originPos = _dragSkill.transform;
-        _dragSkill = _dragSkill.transform.GetChild(0).gameObject;
+        _Inventory.OriginPos = _Inventory.DragSkill.transform;
+        _Inventory.DragSkill = _Inventory.DragSkill.transform.GetChild(0).gameObject;
     }
 
     void BeginDragSkill(PointerEventData eventData)
     {
+        _Inventory.DragSkill = null;
+        _Inventory.OriginPos = null;
+        _Inventory.IsDrop = false;
+
         CheckSkill(eventData.pointerEnter);
-        if (_dragSkill == null)
+        if (_Inventory.DragSkill == null)
             return;
-        _dragSkill.transform.SetParent(gameObject.transform.parent.parent, false);
-        
-        MainManager.UI.Inventory.GetComponent<UI_Inventory>().DragSkill = _dragSkill;
-        MainManager.UI.Inventory.GetComponent<UI_Inventory>().OriginPos = _originPos;
+        _Inventory.DragSkill.transform.SetParent(gameObject.transform.parent.parent, false);
     }
 
     void DragSkill(PointerEventData eventData)
     {
-        if (_dragSkill == null)
+        if (_Inventory.DragSkill == null)
             return;
-        _dragSkill.transform.position = eventData.position;
+        _Inventory.DragSkill.transform.position = eventData.position;
 
-        MainManager.UI.Skill.GetComponent<UI_Skill>().SkillICon = _dragSkill;
+        MainManager.UI.Skill.GetComponent<UI_Skill>().SkillICon = _Inventory.DragSkill;
     }
 
     void EndDragSkill(PointerEventData eventData)
     {
-        if (_dragSkill == null || MainManager.UI.Inventory.GetComponent<UI_Inventory>().IsDrop)
+        if (_Inventory.DragSkill == null || _Inventory.IsDrop)
             return;
 
-        _dragSkill.transform.SetParent(_originPos);
-        _dragSkill.transform.localPosition = Vector3.zero;
-
-        MainManager.UI.Inventory.GetComponent<UI_Inventory>().DragSkill = null;
-        MainManager.UI.Inventory.GetComponent<UI_Inventory>().OriginPos = null;
+        _Inventory.DragSkill.transform.SetParent(_Inventory.OriginPos);
+        _Inventory.DragSkill.transform.localPosition = Vector3.zero;
     }
 
     void DropSkill(PointerEventData eventData)
@@ -70,8 +69,5 @@ public class UI_InventorySlot : UI_Base
             return;
 
         MainManager.UI.Inventory.GetComponent<UI_Inventory>().SwapSkill(eventData.pointerDrag, gameObject);
-
-        MainManager.UI.Inventory.GetComponent<UI_Inventory>().DragSkill = null;
-        MainManager.UI.Inventory.GetComponent<UI_Inventory>().OriginPos = null;
     }
 }
