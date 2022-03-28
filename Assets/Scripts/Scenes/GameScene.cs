@@ -17,11 +17,11 @@ public class GameScene : BaseScene
         MainManager.UI.ShowUI("GameUI", Define.UI.Game);
         MainManager.UI.ShowUI("SkillUI", Define.UI.Skill);
 
-        /*if (GameObject.Find("@Spawning") == null)
+        if (GameObject.Find("@Spawning") == null)
         {
             GameObject spawning = new GameObject { name = "@Spawning" };
             spawning.GetOrAddComponent<SpawnMonster>();
-        }*/
+        }
     }
 
     private void Update()

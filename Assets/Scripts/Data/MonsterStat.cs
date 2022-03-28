@@ -32,14 +32,25 @@ public class MonsterStat : BaseStat
         Init();
     }
 
-    public override void OnDamage(BaseStat attacker)
+    public override void OnDamage(BaseStat attacker, string name)
     {
         if (attacker as PlayerStat)
         {
-            if (attacker.Attack - Defense <= 0)
-                Hp -= 1;
-            else
-                Hp -= attacker.Attack - Defense;
+            if (name == "Bullet")
+            {
+                if (attacker.Attack - Defense <= 0)
+                    Hp -= 1;
+                else
+                    Hp -= attacker.Attack - Defense;
+            }
+            else if (name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Snow))
+                Hp -= attacker.Snow;
+            else if (name == "Smoke")
+                Hp -= 20;
+            else if (name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Laser))
+                Hp -= attacker.Laser;
+            else if (name == "Flash")
+                Hp -= 20;
 
             if (Hp <= 0)
             {

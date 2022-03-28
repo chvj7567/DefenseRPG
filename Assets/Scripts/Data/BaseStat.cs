@@ -34,5 +34,5 @@ public abstract class BaseStat : MonoBehaviour
 
     public abstract void Init();
 
-    public virtual void OnDamage(BaseStat attacker) { }
+    public virtual void OnDamage(BaseStat attacker, string name) { }
 }

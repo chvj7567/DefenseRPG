@@ -142,7 +142,6 @@ public class TankController : BaseController
             _bullet.SetPosition(new Vector3(0f, 0.3f, 1.7f));
             _bullet.Target = _target;
             _bullet.Color = TankColor;
-            Debug.Log(_playerStat.AttackSpeed);
             yield return new WaitForSeconds(_playerStat.AttackSpeed);
         }
     }

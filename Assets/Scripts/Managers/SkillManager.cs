@@ -38,6 +38,7 @@ public class SkillManager
 
     public void StartSkill(Skill.Area type)
     {
+        _areaSkills[(int)type].GetOrAddComponent<PlayerStat>();
         _areaSkills[(int)type].SetActive(false);
         _areaSkills[(int)type].SetActive(true);
     }

@@ -76,6 +76,7 @@ public class SkillController : MonoBehaviour
     IEnumerator StrongSkill(GameObject skill)
     {
         _strongCoroutine = true;
+        
         while (true)
         {
             GameObject coolTime = skill.transform.GetChild(0).gameObject;
