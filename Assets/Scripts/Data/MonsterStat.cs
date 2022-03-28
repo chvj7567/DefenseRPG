@@ -36,6 +36,7 @@ public class MonsterStat : BaseStat
     {
         if (attacker as PlayerStat)
         {
+            Debug.Log(name);
             if (name == "Bullet")
             {
                 if (attacker.Attack - Defense <= 0)

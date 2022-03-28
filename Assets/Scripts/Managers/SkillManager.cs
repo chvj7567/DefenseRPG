@@ -6,7 +6,6 @@ using UnityEngine;
 public class SkillManager
 {
     GameObject[] _areaSkills = new GameObject[(int)Skill.Area.MaxCount];
-    GameObject[] _buffSkills = new GameObject[(int)Skill.Buff.MaxCount];
 
     public void Init()
     {
@@ -26,7 +25,9 @@ public class SkillManager
                 {
                     _areaSkills[i] = go;
                     go.transform.parent = root.transform;
-                    go.SetActive(false);
+                    ParticleSystem[] particles = go.GetComponentsInChildren<ParticleSystem>();
+                    foreach (ParticleSystem particle in particles)
+                        particle.Stop();
                 }
                 else
                     Debug.Log($"SkillObject Missing! {path}");
@@ -39,7 +40,8 @@ public class SkillManager
     public void StartSkill(Skill.Area type)
     {
         _areaSkills[(int)type].GetOrAddComponent<PlayerStat>();
-        _areaSkills[(int)type].SetActive(false);
-        _areaSkills[(int)type].SetActive(true);
+        ParticleSystem[] particles = _areaSkills[(int)type].GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem particle in particles)
+            particle.Play();
     }
 }

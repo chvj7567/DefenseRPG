@@ -12,9 +12,9 @@ public class MonsterController : BaseController
 
     public override void Init()
     {
-        _target = GameObject.Find("Tank_Green");
+        _target = GameObject.FindGameObjectWithTag("Finish");
         _agent = gameObject.GetOrAddComponent<NavMeshAgent>();
-        _agent.SetDestination(_target.transform.position);
+        StartCoroutine(ReTargeting());
         GameObjectType = Define.GameObjects.Monster;
 
         if (GetComponentInChildren<UI_HpBar>() == null)
@@ -26,6 +26,14 @@ public class MonsterController : BaseController
         Init();
     }
 
+    IEnumerator ReTargeting()
+    {
+        while (true)
+        {
+            _agent.SetDestination(_target.transform.position);
+            yield return new WaitForSeconds(1f);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.name.Contains("Bullet"))
@@ -36,6 +44,7 @@ public class MonsterController : BaseController
 
     private void OnParticleCollision(GameObject other)
     {
+        Debug.Log(other.name);
         if (other.transform.parent.parent.name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Snow)
             || other.transform.parent.name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Snow))
         {

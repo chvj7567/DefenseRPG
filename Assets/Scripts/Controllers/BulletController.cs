@@ -16,13 +16,12 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        if (Target == null)
+        if (Target == null || !Target.activeSelf)
         {
+            Target = null;
             MainManager.Game.Despawn(gameObject);
-            return;
         }
 
-        transform.SetParent(null);
         _direction = (Target.transform.position + Vector3.up - transform.position).normalized;
         transform.position += _direction * Time.unscaledDeltaTime * _speed;
     }
