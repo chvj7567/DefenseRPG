@@ -26,8 +26,14 @@ namespace Data
 		public int exp;
 		public int snow;
 		public int snowCoolTime;
+		public int laser;
+		public int laserCoolTime;
 		public int strong;
 		public int strongCoolTime;
+		public int strongStay;
+		public float fastAttack;
+		public int fastAttackStay;
+		public int fastAttackCoolTime;
 
 		public Stat(Stat st)
         {
@@ -49,8 +55,14 @@ namespace Data
 			exp = st.exp;
 			snow = st.snow;
 			snowCoolTime = st.snowCoolTime;
+			laser = st.laser;
+			laserCoolTime = st.laserCoolTime;
 			strong = st.strong;
+			strongStay = st.strongStay;
 			strongCoolTime = st.strongCoolTime;
+			fastAttack = st.fastAttack;
+			fastAttackStay = st.fastAttackStay;
+			fastAttackCoolTime = st.fastAttackCoolTime;
         }
 	}
 

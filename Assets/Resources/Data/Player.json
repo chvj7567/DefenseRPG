@@ -5,6 +5,7 @@
       "level": 1,
       "maxHp": 100,
       "hp": 100,
+      "attackSpeed": 1.0,
       "greenAttack": 10,
       "yellowAttack": 20,
       "blueAttack": 30,
@@ -16,8 +17,14 @@
       "exp": 0,
       "snow": 0,
       "snowCoolTime": 10,
+      "laser": 0,
+      "laserCoolTime": 10,
       "strong": 0,
-      "strongCoolTime": 10
+      "strongStay": 5,
+      "strongCoolTime": 10,
+      "fastAttack": 0.0,
+      "fastAttackStay": 5,
+      "fastAttackCoolTime": 10
     }
   ]
 }

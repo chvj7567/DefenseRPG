@@ -18,8 +18,14 @@ public abstract class BaseStat : MonoBehaviour
     public virtual float AttackSpeed { get; protected set; }
     public virtual int Snow { get; protected set; }
     public virtual int SnowCoolTime { get; protected set; }
+    public virtual int Laser { get; protected set; }
+    public virtual int LaserCoolTime { get; protected set; }
     public virtual int Strong { get; protected set; }
+    public virtual int StrongStay { get; protected set; }
     public virtual int StrongCoolTime { get; protected set; }
+    public virtual float FastAttack { get; protected set; }
+    public virtual int FastAttackStay { get; protected set; }
+    public virtual int FastAttackCoolTime { get; protected set; }
 
     void Start()
     {

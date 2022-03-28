@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Define
 {
-    public enum Skill
-    {
-        Snow,
-        Strong,
-        MaxCount,
-    }
     public enum Tank
     {
         Green,
@@ -17,6 +11,7 @@ public class Define
         Blue,
         Red,
     }
+
     public enum Scenes
     {
         Unknown,

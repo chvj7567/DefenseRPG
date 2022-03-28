@@ -5,25 +5,25 @@ using UnityEngine;
 
 public class TankController : BaseController
 {
+    PlayerStat _playerStat;
     protected GameObject _target;
     protected LayerMask _targetMask;
     protected float _attackAngle;
     protected float _attackRange;
     protected GameObject _tankTower;
     protected bool _check;
-    protected float _bulletDelay;
     protected BulletController _bullet;
     IEnumerator _bulletCoroutine;
     public string TankColor { get; private set; }
 
     public override void Init()
     {
+        _playerStat = MainManager.Game.Player.GetComponent<PlayerStat>();
         _targetMask = LayerMask.GetMask("Monster");
         _attackAngle = 90f;
         _attackRange = 10f;
         _tankTower = Util.FindChild(gameObject, "Tank_Tower");
         _check = false;
-        _bulletDelay = 1f;
         GameObjectType = Define.GameObjects.Player;
         _bulletCoroutine = CreateBullet();
         TankColor = GetTankColor();
@@ -142,8 +142,8 @@ public class TankController : BaseController
             _bullet.SetPosition(new Vector3(0f, 0.3f, 1.7f));
             _bullet.Target = _target;
             _bullet.Color = TankColor;
-
-            yield return new WaitForSeconds(_bulletDelay);
+            Debug.Log(_playerStat.AttackSpeed);
+            yield return new WaitForSeconds(_playerStat.AttackSpeed);
         }
     }
 }

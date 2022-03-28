@@ -7,20 +7,25 @@ using UnityEngine.UI;
 public class UI_Crystal : UI_Base
 {
     PlayerStat _playerStat;
-    Text _snowCost, _strongCost;
-    Image _snow, _strong;
+    Text _snowCost, _laserCost, _strongCost, _fastAttackCost;
+    Image _snow, _laser, _strong, _fastAttack;
     Image _increment, _left, _right;
     int _currentPage;
+
     enum Texts
     {
         SnowCost,
+        LaserCost,
         StrongCost,
+        FastAttackCost,
     }
 
     enum Images
     {
         Snow,
+        Laser,
         Strong,
+        FastAttack,
         Increment,
         Left,
         Right,
@@ -35,10 +40,15 @@ public class UI_Crystal : UI_Base
         Bind<Image>(typeof(Images));
 
         _snowCost = GetText((int)Texts.SnowCost);
+        _laserCost = GetText((int)Texts.LaserCost);
         _strongCost = GetText((int)Texts.StrongCost);
+        _fastAttackCost = GetText((int)Texts.FastAttackCost);
 
         _snow = GetImage((int)Images.Snow);
+        _laser = GetImage((int)Images.Laser);
         _strong = GetImage((int)Images.Strong);
+        _fastAttack = GetImage((int)Images.FastAttack);
+
         _increment = GetImage((int)Images.Increment);
         _left = GetImage((int)Images.Left);
         _right = GetImage((int)Images.Right);
@@ -47,8 +57,12 @@ public class UI_Crystal : UI_Base
         BindEvent(_left.gameObject, LeftPage, Define.UIEvent.Click);
         BindEvent(_right.gameObject, RightPage, Define.UIEvent.Click);
 
+        _laserCost.gameObject.SetActive(false);
         _strongCost.gameObject.SetActive(false);
+        _fastAttackCost.gameObject.SetActive(false);
+        _laser.gameObject.SetActive(false);
         _strong.gameObject.SetActive(false);
+        _fastAttack.gameObject.SetActive(false);
     }
 
     void IncrementSkill(PointerEventData eventData)
@@ -59,11 +73,23 @@ public class UI_Crystal : UI_Base
             _playerStat.AddCrystal(-int.Parse(_snowCost.text));
             _snowCost.text = $"{int.Parse(_snowCost.text) * 2}";
         }
+        else if (_currentPage == (int)Images.Laser && _playerStat.Crystal >= int.Parse(_laserCost.text))
+        {
+            _playerStat.AddLaser(10);
+            _playerStat.AddCrystal(-int.Parse(_laserCost.text));
+            _laserCost.text = $"{int.Parse(_laserCost.text) * 2}";
+        }
         else if (_currentPage == (int)Images.Strong && _playerStat.Crystal >= int.Parse(_strongCost.text))
         {
             _playerStat.AddStrong(10);
             _playerStat.AddCrystal(-int.Parse(_strongCost.text));
             _strongCost.text = $"{int.Parse(_strongCost.text) * 2}";
+        }
+        else if (_currentPage == (int)Images.FastAttack && _playerStat.Crystal >= int.Parse(_fastAttackCost.text))
+        {
+            _playerStat.AddFastAttack(0.5f);
+            _playerStat.AddCrystal(-int.Parse(_fastAttackCost.text));
+            _fastAttackCost.text = $"{int.Parse(_fastAttackCost.text) * 2}";
         }
     }
 
@@ -72,22 +98,42 @@ public class UI_Crystal : UI_Base
         if (_currentPage == (int)Images.Snow)
         {
             _snow.gameObject.SetActive(false);
-            _strong.gameObject.SetActive(true);
+            _fastAttack.gameObject.SetActive(true);
 
             _snowCost.gameObject.SetActive(false);
-            _strongCost.gameObject.SetActive(true);
+            _fastAttackCost.gameObject.SetActive(true);
 
-            _currentPage = (int)Images.Strong;
+            _currentPage = (int)Images.FastAttack;
+        }
+        else if (_currentPage == (int)Images.Laser)
+        {
+            _snow.gameObject.SetActive(true);
+            _laser.gameObject.SetActive(false);
+
+            _snowCost.gameObject.SetActive(true);
+            _laserCost.gameObject.SetActive(false);
+
+            _currentPage = (int)Images.Snow;
         }
         else if (_currentPage == (int)Images.Strong)
         {
+            _laser.gameObject.SetActive(true);
             _strong.gameObject.SetActive(false);
-            _snow.gameObject.SetActive(true);
 
+            _laserCost.gameObject.SetActive(true);
             _strongCost.gameObject.SetActive(false);
-            _snowCost.gameObject.SetActive(true);
 
-            _currentPage = (int)Images.Snow;
+            _currentPage = (int)Images.Laser;
+        }
+        else if (_currentPage == (int)Images.FastAttack)
+        {
+            _strong.gameObject.SetActive(true);
+            _fastAttack.gameObject.SetActive(false);
+
+            _strongCost.gameObject.SetActive(true);
+            _fastAttackCost.gameObject.SetActive(false);
+
+            _currentPage = (int)Images.Strong;
         }
     }
 
@@ -96,9 +142,19 @@ public class UI_Crystal : UI_Base
         if (_currentPage == (int)Images.Snow)
         {
             _snow.gameObject.SetActive(false);
-            _strong.gameObject.SetActive(true);
+            _laser.gameObject.SetActive(true);
 
             _snowCost.gameObject.SetActive(false);
+            _laserCost.gameObject.SetActive(true);
+
+            _currentPage = (int)Images.Laser;
+        }
+        else if (_currentPage == (int)Images.Laser)
+        {
+            _laser.gameObject.SetActive(false);
+            _strong.gameObject.SetActive(true);
+
+            _laserCost.gameObject.SetActive(false);
             _strongCost.gameObject.SetActive(true);
 
             _currentPage = (int)Images.Strong;
@@ -106,9 +162,19 @@ public class UI_Crystal : UI_Base
         else if (_currentPage == (int)Images.Strong)
         {
             _strong.gameObject.SetActive(false);
-            _snow.gameObject.SetActive(true);
+            _fastAttack.gameObject.SetActive(true);
 
             _strongCost.gameObject.SetActive(false);
+            _fastAttackCost.gameObject.SetActive(true);
+
+            _currentPage = (int)Images.FastAttack;
+        }
+        else if (_currentPage == (int)Images.FastAttack)
+        {
+            _fastAttack.gameObject.SetActive(false);
+            _snow.gameObject.SetActive(true);
+
+            _fastAttackCost.gameObject.SetActive(false);
             _snowCost.gameObject.SetActive(true);
 
             _currentPage = (int)Images.Snow;

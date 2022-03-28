@@ -7,6 +7,7 @@ public class PlayerStat : BaseStat
 {
     public override string Name { get; protected set; }
     public override int Attack { get { return GetAttack(); } }
+    public override float AttackSpeed { get { return MainManager.Data.PlayerStat[Name].attackSpeed; } }
     public override int Defense { get { return MainManager.Data.PlayerStat[Name].defense; } }
     public override int Level { get { return MainManager.Data.PlayerStat[Name].level; } }
     public override int MaxHp { get { return MainManager.Data.PlayerStat[Name].maxHp; } }
@@ -17,8 +18,14 @@ public class PlayerStat : BaseStat
     public override int Exp { get { return MainManager.Data.PlayerStat[Name].exp; } }
     public override int Snow { get { return MainManager.Data.PlayerStat[Name].snow; } }
     public override int SnowCoolTime { get { return MainManager.Data.PlayerStat[Name].snowCoolTime; } }
+    public override int Laser { get { return MainManager.Data.PlayerStat[Name].laser; } }
+    public override int LaserCoolTime { get { return MainManager.Data.PlayerStat[Name].laserCoolTime; } }
     public override int Strong { get { return MainManager.Data.PlayerStat[Name].strong; } }
+    public override int StrongStay { get { return MainManager.Data.PlayerStat[Name].strongStay; } }
     public override int StrongCoolTime { get { return MainManager.Data.PlayerStat[Name].strongCoolTime; } }
+    public override float FastAttack { get { return MainManager.Data.PlayerStat[Name].fastAttack; } }
+    public override int FastAttackStay { get { return MainManager.Data.PlayerStat[Name].fastAttackStay; } }
+    public override int FastAttackCoolTime { get { return MainManager.Data.PlayerStat[Name].fastAttackCoolTime; } }
 
     public override void Init()
     {
@@ -57,7 +64,7 @@ public class PlayerStat : BaseStat
         MainManager.Data.PlayerStat[Name].blueAttack += attack;
         MainManager.Data.PlayerStat[Name].redAttack += attack;
     }
-
+    public void AddAttackSpeed(float attackSpeed) { MainManager.Data.PlayerStat[Name].attackSpeed -= attackSpeed; }
     public void AddDefense(int defense) { MainManager.Data.PlayerStat[Name].defense += defense; }
     public void AddLevel(int level) { MainManager.Data.PlayerStat[Name].level += level; }
     public void AddMaxHp(int maxHp) { MainManager.Data.PlayerStat[Name].maxHp += maxHp; }
@@ -79,5 +86,7 @@ public class PlayerStat : BaseStat
     }
 
     public void AddSnow(int snow) { MainManager.Data.PlayerStat[Name].snow += snow; }
+    public void AddLaser(int laser) { MainManager.Data.PlayerStat[Name].laser += laser; }
     public void AddStrong(int strong) { MainManager.Data.PlayerStat[Name].strong += strong; }
+    public void AddFastAttack(float fastAttack) { MainManager.Data.PlayerStat[Name].fastAttack += fastAttack; }
 }

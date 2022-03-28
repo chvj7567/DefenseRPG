@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class SkillManager
 {
-    GameObject[] _skills = new GameObject[(int)Define.Skill.MaxCount];
+    GameObject[] _areaSkills = new GameObject[(int)Skill.Area.MaxCount];
+    GameObject[] _buffSkills = new GameObject[(int)Skill.Buff.MaxCount];
 
     public void Init()
     {
@@ -14,7 +15,7 @@ public class SkillManager
         {
             root = new GameObject { name = "@Skill" };
 
-            string[] skillNames = Enum.GetNames(typeof(Define.Skill));
+            string[] skillNames = Enum.GetNames(typeof(Skill.Area));
             for (int i = 0; i < skillNames.Length - 1; i++)
             {
                 string path = $"Skill/Effect/{skillNames[i]}";
@@ -23,7 +24,7 @@ public class SkillManager
 
                 if (go != null)
                 {
-                    _skills[i] = go;
+                    _areaSkills[i] = go;
                     go.transform.parent = root.transform;
                     go.SetActive(false);
                 }
@@ -35,13 +36,9 @@ public class SkillManager
         }
     }
 
-    public void StartSkill(Define.Skill type)
+    public void StartSkill(Skill.Area type)
     {
-        _skills[(int)type].SetActive(true);
-    }
-
-    public void EndSkill(Define.Skill type)
-    {
-        _skills[(int)type].SetActive(false);
+        _areaSkills[(int)type].SetActive(false);
+        _areaSkills[(int)type].SetActive(true);
     }
 }
