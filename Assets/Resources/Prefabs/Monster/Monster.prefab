@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 7531376025742762169}
   - component: {fileID: 3079363124678692033}
   - component: {fileID: 8088316246201714556}
-  - component: {fileID: -2168577002674165974}
+  - component: {fileID: 1285515046179268009}
   m_Layer: 7
   m_Name: Monster
   m_TagString: Monster
@@ -633,7 +633,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-2168577002674165974
+--- !u!114 &1285515046179268009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

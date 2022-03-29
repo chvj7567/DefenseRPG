@@ -8,7 +8,7 @@ public class GameScene : BaseScene
     protected override void Init()
     {
         base.Init();
-
+        SceneType = Define.Scenes.Game;
         MainManager.Game.Spawn(Define.GameObjects.Map, "Ground");
         MainManager.Game.Spawn(Define.GameObjects.Player, "Player");
         MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Green").transform.position = new Vector3(0, 1, -12);
