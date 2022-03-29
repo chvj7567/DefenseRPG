@@ -20,6 +20,7 @@ public class BulletController : MonoBehaviour
         {
             Target = null;
             MainManager.Game.Despawn(gameObject);
+            return;
         }
 
         _direction = (Target.transform.position + Vector3.up - transform.position).normalized;
