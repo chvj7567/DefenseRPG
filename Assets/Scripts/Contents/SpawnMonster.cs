@@ -22,11 +22,16 @@ public class SpawnMonster : MonoBehaviour
 
     IEnumerator CreateMonster()
     {
+        GameObject target = GameObject.FindGameObjectWithTag("Finish");
         while (true)
         {
             foreach (GameObject go in _spawnPositions)
             {
-                MainManager.Game.Spawn(Define.GameObjects.Monster, "Monster", go.transform);
+                GameObject monster = MainManager.Game.Spawn(Define.GameObjects.Monster, "Monster", go.transform);
+                monster.transform.localPosition = Vector3.zero;
+                NavMeshAgent nma = monster.GetOrAddComponent<NavMeshAgent>();
+                
+                nma.SetDestination(target.transform.position);
             }
 
             yield return new WaitForSeconds(_spawnTime);

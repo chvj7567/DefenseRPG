@@ -11,6 +11,7 @@ public class PlayerController : BaseController
     float _rotationY;
     float _rotationX;
     float _limitY;
+    float _maxSpeed;
 
     public override void Init()
     {

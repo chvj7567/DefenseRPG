@@ -27,16 +27,10 @@ public class MonsterStat : BaseStat
         _player = MainManager.Game.Player.GetComponent<PlayerStat>();
     }
 
-    void OnEnable()
-    {
-        Init();
-    }
-
     public override void OnDamage(BaseStat attacker, string name)
     {
         if (attacker as PlayerStat)
         {
-            Debug.Log(name);
             if (name == "Bullet")
             {
                 if (attacker.Attack - Defense <= 0)

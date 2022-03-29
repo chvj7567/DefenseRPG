@@ -27,7 +27,7 @@ public abstract class BaseStat : MonoBehaviour
     public virtual int FastAttackStay { get; protected set; }
     public virtual int FastAttackCoolTime { get; protected set; }
 
-    void Start()
+    void OnEnable()
     {
         Init();
     }
