@@ -11,7 +11,6 @@ public class UI_Start : UI_Base
     public Action onStartAction = null;
     enum Images
     {
-        Background,
         Title,
         Game,
         Setting,
@@ -20,7 +19,6 @@ public class UI_Start : UI_Base
     public override void Init()
     {
         Bind<Image>(typeof(Images));
-        _background = GetImage((int)Images.Background);
         _title = GetImage((int)Images.Title);
         _game = GetImage((int)Images.Game);
         _setting = GetImage((int)Images.Setting);
