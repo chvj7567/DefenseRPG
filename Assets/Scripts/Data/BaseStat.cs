@@ -8,6 +8,10 @@ public abstract class BaseStat : MonoBehaviour
     public virtual int Level { get; protected set; }
     public virtual int MaxHp { get; protected set; }
     public virtual int Hp { get; protected set; }
+    public virtual int GreenTank { get; protected set; }
+    public virtual int YellowTank { get; protected set; }
+    public virtual int BlueTank { get; protected set; }
+    public virtual int RedTank { get; protected set; }
     public virtual int Attack { get; protected set; }
     public virtual int Defense { get; protected set; }
     public virtual int Gold { get; protected set; }

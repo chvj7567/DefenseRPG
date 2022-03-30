@@ -1,10 +1,24 @@
 {
-  "stats": [
+  "infos": [
     {
       "name": "Player",
       "level": 1,
       "maxHp": 100,
       "hp": 100,
+      "greenTank": 1,
+      "yelloTank": 0,
+      "blueTank": 0,
+      "redTank": 0,
+      "gold": 0,
+      "crystal": 1000,
+      "maxExp": 100,
+      "exp": 0
+    }
+  ],
+  "stats": [
+    {
+      "name": "Player",
+      "level": 1,
       "attackSpeed": 1.0,
       "greenAttack": 10,
       "yellowAttack": 20,
@@ -13,8 +27,6 @@
       "defense": 5,
       "gold": 0,
       "crystal": 1000,
-      "maxExp": 100,
-      "exp": 0,
       "snow": 0,
       "snowCoolTime": 10,
       "laser": 0,

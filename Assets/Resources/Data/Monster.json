@@ -1,17 +1,26 @@
 {
-  "stats": [
+  "infos": [
     {
       "name": "Monster",
       "level": 1,
       "maxHp": 100,
       "hp": 100,
-      "attackSpeed": 1.5,
-      "moveSpeed": 1.5,
-      "attack": 10,
-      "defense": 3,
+      "greenTank": 1,
+      "yelloTank": 0,
+      "blueTank": 0,
+      "redTank": 0,
       "gold": 10,
       "crystal": 1,
       "exp": 50
+    }
+  ],
+  "stats": [
+    {
+      "name": "Monster",
+      "attackSpeed": 1.5,
+      "moveSpeed": 1.5,
+      "attack": 10,
+      "defense": 3
     }
   ]
 }

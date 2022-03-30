@@ -9,13 +9,17 @@ public class PlayerStat : BaseStat
     public override int Attack { get { return GetAttack(); } }
     public override float AttackSpeed { get { return MainManager.Data.PlayerStat[Name].attackSpeed; } }
     public override int Defense { get { return MainManager.Data.PlayerStat[Name].defense; } }
-    public override int Level { get { return MainManager.Data.PlayerStat[Name].level; } }
-    public override int MaxHp { get { return MainManager.Data.PlayerStat[Name].maxHp; } }
-    public override int Hp { get { return MainManager.Data.PlayerStat[Name].hp; } }
-    public override int Gold { get { return MainManager.Data.PlayerStat[Name].gold; } }
-    public override int Crystal { get { return MainManager.Data.PlayerStat[Name].crystal; } }
-    public override int MaxExp { get { return MainManager.Data.PlayerStat[Name].maxExp; } }
-    public override int Exp { get { return MainManager.Data.PlayerStat[Name].exp; } }
+    public override int Level { get { return MainManager.Data.PlayerInfo[Name].level; } }
+    public override int MaxHp { get { return MainManager.Data.PlayerInfo[Name].maxHp; } }
+    public override int Hp { get { return MainManager.Data.PlayerInfo[Name].hp; } }
+    public override int GreenTank { get { return MainManager.Data.PlayerInfo [Name].greenTank; } }
+    public override int YellowTank { get { return MainManager.Data.PlayerInfo[Name].yellowTank; } }
+    public override int BlueTank { get { return MainManager.Data.PlayerInfo[Name].blueTank; } }
+    public override int RedTank { get { return MainManager.Data.PlayerInfo[Name].redTank; } }
+    public override int Gold { get { return MainManager.Data.PlayerInfo[Name].gold; } }
+    public override int Crystal { get { return MainManager.Data.PlayerInfo[Name].crystal; } }
+    public override int MaxExp { get { return MainManager.Data.PlayerInfo[Name].maxExp; } }
+    public override int Exp { get { return MainManager.Data.PlayerInfo[Name].exp; } }
     public override int Snow { get { return MainManager.Data.PlayerStat[Name].snow; } }
     public override int SnowCoolTime { get { return MainManager.Data.PlayerStat[Name].snowCoolTime; } }
     public override int Laser { get { return MainManager.Data.PlayerStat[Name].laser; } }
@@ -66,22 +70,34 @@ public class PlayerStat : BaseStat
     }
     public void AddAttackSpeed(float attackSpeed) { MainManager.Data.PlayerStat[Name].attackSpeed -= attackSpeed; }
     public void AddDefense(int defense) { MainManager.Data.PlayerStat[Name].defense += defense; }
-    public void AddLevel(int level) { MainManager.Data.PlayerStat[Name].level += level; }
-    public void AddMaxHp(int maxHp) { MainManager.Data.PlayerStat[Name].maxHp += maxHp; }
-    public void AddHp(int hp) { MainManager.Data.PlayerStat[Name].hp += hp; }
-    public void AddGold(int gold) { MainManager.Data.PlayerStat[Name].gold += gold; }
-    public void AddCrystal(int crystal) { MainManager.Data.PlayerStat[Name].crystal += crystal; }
-    public void AddMaxExp(int maxExp) { MainManager.Data.PlayerStat[Name].maxExp += maxExp; }
+    public void AddLevel(int level)
+    {
+        MainManager.Data.PlayerInfo[Name].level += level;
+        AddAttack(10);
+        AddDefense(10);
+        AddMaxHp(100);
+        SetHp(MaxHp);
+    }
+    public void AddMaxHp(int maxHp) { MainManager.Data.PlayerInfo[Name].maxHp += maxHp; }
+    void SetHp(int hp) { MainManager.Data.PlayerInfo[Name].hp = hp; }
+    public void AddHp(int hp) { MainManager.Data.PlayerInfo[Name].hp += hp; }
+    public void AddGreenTank(int green) { MainManager.Data.PlayerInfo[Name].greenTank += green; }
+    public void AddYellowTank(int yellow) { MainManager.Data.PlayerInfo[Name].greenTank += yellow; }
+    public void AddBlueTank(int blue) { MainManager.Data.PlayerInfo[Name].greenTank += blue; }
+    public void AddRedTank(int red) { MainManager.Data.PlayerInfo[Name].greenTank += red; }
+    public void AddGold(int gold) { MainManager.Data.PlayerInfo[Name].gold += gold; }
+    public void AddCrystal(int crystal) { MainManager.Data.PlayerInfo[Name].crystal += crystal; }
+    public void AddMaxExp(int maxExp) { MainManager.Data.PlayerInfo[Name].maxExp += maxExp; }
     public void AddExp(int exp)
     {
-        MainManager.Data.PlayerStat[Name].exp += exp;
+        MainManager.Data.PlayerInfo[Name].exp += exp;
 
         while (Exp >= MaxExp)
         {
             AddLevel(1);
             AddMaxExp(MaxExp);
             AddMaxHp(MaxHp);
-            MainManager.Data.PlayerStat[Name].hp = MaxHp;
+            MainManager.Data.PlayerInfo[Name].hp = MaxHp;
         }
     }
 
