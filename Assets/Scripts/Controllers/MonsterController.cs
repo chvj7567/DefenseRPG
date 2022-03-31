@@ -14,7 +14,13 @@ public class MonsterController : BaseController
             MainManager.UI.MakeWorldSpaceUI<UI_HpBar>(transform);
     }
 
-    private void OnTriggerEnter(Collider other)
+    void Update()
+    {
+        if (transform.position.z < -30f)
+            MainManager.Game.Despawn(gameObject);
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         if (other.name.Contains("Bullet"))
         {
@@ -22,7 +28,7 @@ public class MonsterController : BaseController
         }
     }
 
-    private void OnParticleCollision(GameObject other)
+    void OnParticleCollision(GameObject other)
     {
         if (other.transform.parent.parent.name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Snow)
             || other.transform.parent.name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Snow))

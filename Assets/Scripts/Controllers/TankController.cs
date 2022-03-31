@@ -52,9 +52,6 @@ public class TankController : BaseController
     void Update()
     {
         Attack();
-
-        if (_target != null)
-            Debug.Log("Àû¹ß°ß");
     }
 
     Vector3 Angle(float angle)

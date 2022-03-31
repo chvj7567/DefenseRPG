@@ -16,11 +16,11 @@ public class GameScene : BaseScene
         MainManager.UI.ShowUI("GameUI", Define.UI.Game);
         MainManager.UI.ShowUI("SkillUI", Define.UI.Skill);
 
-        /*if (GameObject.Find("@MonsterSpawning") == null)
+        if (GameObject.Find("@MonsterSpawning") == null)
         {
             GameObject spawning = new GameObject { name = "@MonsterSpawning" };
             spawning.GetOrAddComponent<SpawnMonster>();
-        }*/
+        }
         if (GameObject.Find("@TankSpawning") == null)
         {
             GameObject spawning = new GameObject { name = "@TankSpawning" };

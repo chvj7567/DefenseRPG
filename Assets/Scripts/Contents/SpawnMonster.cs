@@ -30,7 +30,6 @@ public class SpawnMonster : MonoBehaviour
                 GameObject monster = MainManager.Game.Spawn(Define.GameObjects.Monster, "Monster", go.transform);
                 monster.transform.localPosition = Vector3.zero;
                 NavMeshAgent nma = monster.GetOrAddComponent<NavMeshAgent>();
-                
                 nma.SetDestination(target.transform.position);
             }
 
