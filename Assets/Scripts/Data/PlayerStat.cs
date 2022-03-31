@@ -82,9 +82,9 @@ public class PlayerStat : BaseStat
     void SetHp(int hp) { MainManager.Data.PlayerInfo[Name].hp = hp; }
     public void AddHp(int hp) { MainManager.Data.PlayerInfo[Name].hp += hp; }
     public void AddGreenTank(int green) { MainManager.Data.PlayerInfo[Name].greenTank += green; }
-    public void AddYellowTank(int yellow) { MainManager.Data.PlayerInfo[Name].greenTank += yellow; }
-    public void AddBlueTank(int blue) { MainManager.Data.PlayerInfo[Name].greenTank += blue; }
-    public void AddRedTank(int red) { MainManager.Data.PlayerInfo[Name].greenTank += red; }
+    public void AddYellowTank(int yellow) { MainManager.Data.PlayerInfo[Name].yellowTank += yellow; }
+    public void AddBlueTank(int blue) { MainManager.Data.PlayerInfo[Name].blueTank += blue; }
+    public void AddRedTank(int red) { MainManager.Data.PlayerInfo[Name].redTank += red; }
     public void AddGold(int gold) { MainManager.Data.PlayerInfo[Name].gold += gold; }
     public void AddCrystal(int crystal) { MainManager.Data.PlayerInfo[Name].crystal += crystal; }
     public void AddMaxExp(int maxExp) { MainManager.Data.PlayerInfo[Name].maxExp += maxExp; }

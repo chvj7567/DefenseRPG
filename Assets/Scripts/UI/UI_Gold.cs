@@ -66,25 +66,25 @@ public class UI_Gold : UI_Base
         {
             _playerStat.AddGold(-int.Parse(_greenCost.text));
             _playerStat.AddGreenTank(1);
-            MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Green").transform.position = new Vector3(5, 1, -12);
+            MainManager.Game.TankSpawning.CreateTank(Define.Tank.Green, _playerStat.GreenTank);
         }
         else if (_currentPage == (int)Images.Yellow && _playerStat.Gold >= int.Parse(_yellowCost.text))
         {
             _playerStat.AddGold(-int.Parse(_yellowCost.text));
             _playerStat.AddYellowTank(1);
-            MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Yellow").transform.position = new Vector3(5, 2, -12);
+            MainManager.Game.TankSpawning.CreateTank(Define.Tank.Yellow, _playerStat.YellowTank);
         }
         else if (_currentPage == (int)Images.Blue && _playerStat.Gold >= int.Parse(_blueCost.text))
         {
             _playerStat.AddGold(-int.Parse(_blueCost.text));
             _playerStat.AddBlueTank(1);
-            MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Blue").transform.position = new Vector3(5, 3, -12);
+            MainManager.Game.TankSpawning.CreateTank(Define.Tank.Blue, _playerStat.BlueTank);
         }
         else if (_currentPage == (int)Images.Red && _playerStat.Gold >= int.Parse(_redCost.text))
         {
             _playerStat.AddGold(-int.Parse(_redCost.text));
             _playerStat.AddRedTank(1);
-            MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Red").transform.position = new Vector3(5, 4, -12);
+            MainManager.Game.TankSpawning.CreateTank(Define.Tank.Red, _playerStat.RedTank);
         }
     }
 

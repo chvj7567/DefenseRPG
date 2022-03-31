@@ -19,6 +19,9 @@ public class GameManager
     public int BlueNum { get; private set; }
     public int RedNum { get; private set; }
 
+    public SpawnMonster MonsterSpawning { get; set; }
+    public SpawnTank TankSpawning { get; set; }
+
     public GameObject Spawn(Define.GameObjects type, string path, Transform parent = null)
     {
         GameObject go = null;

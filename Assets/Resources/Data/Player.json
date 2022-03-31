@@ -6,10 +6,10 @@
       "maxHp": 100,
       "hp": 100,
       "greenTank": 1,
-      "yelloTank": 0,
+      "yellowTank": 0,
       "blueTank": 0,
       "redTank": 0,
-      "gold": 0,
+      "gold": 1000,
       "crystal": 1000,
       "maxExp": 100,
       "exp": 0

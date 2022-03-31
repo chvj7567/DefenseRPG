@@ -12,7 +12,7 @@ public class SpawnMonster : MonoBehaviour
     void Awake()
     {
         _spawnTime = .5f;
-        _spawnPositions = GameObject.FindGameObjectsWithTag("Respawn");
+        _spawnPositions = GameObject.FindGameObjectsWithTag("MonsterSpawn");
     }
 
     void Start()

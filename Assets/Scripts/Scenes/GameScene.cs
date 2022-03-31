@@ -11,16 +11,21 @@ public class GameScene : BaseScene
         SceneType = Define.Scenes.Game;
         MainManager.Game.Spawn(Define.GameObjects.Map, "Ground");
         MainManager.Game.Spawn(Define.GameObjects.Player, "Player");
-        MainManager.Game.Spawn(Define.GameObjects.Tank, "Tank_Green").transform.position = new Vector3(0, 1, -12);
         //MainManager.Game.Spawn(Define.GameObjects.MainCamera, "Player");
         //MainManager.Game.ChangeCamera(MainManager.Game.MainCamera);
         MainManager.UI.ShowUI("GameUI", Define.UI.Game);
         MainManager.UI.ShowUI("SkillUI", Define.UI.Skill);
 
-        if (GameObject.Find("@Spawning") == null)
+        /*if (GameObject.Find("@MonsterSpawning") == null)
         {
-            GameObject spawning = new GameObject { name = "@Spawning" };
+            GameObject spawning = new GameObject { name = "@MonsterSpawning" };
             spawning.GetOrAddComponent<SpawnMonster>();
+        }*/
+        if (GameObject.Find("@TankSpawning") == null)
+        {
+            GameObject spawning = new GameObject { name = "@TankSpawning" };
+            MainManager.Game.TankSpawning = spawning.GetOrAddComponent<SpawnTank>();
+            MainManager.Game.TankSpawning.CreateAllTank();
         }
     }
 
