@@ -30,6 +30,10 @@ public abstract class BaseStat : MonoBehaviour
     public virtual float FastAttack { get; protected set; }
     public virtual int FastAttackStay { get; protected set; }
     public virtual int FastAttackCoolTime { get; protected set; }
+    public virtual int AddHp { get; protected set; }
+    public virtual int AddDefense { get; protected set; }
+    public virtual int SpawnNumber { get; protected set; }
+    public virtual float SpawnTime { get; protected set; }
 
     void OnEnable()
     {

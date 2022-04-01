@@ -67,6 +67,10 @@ namespace Data
 		public int crystal;
 		public int maxExp;
 		public int exp;
+		public int addHp;
+		public int addDefense;
+		public int spawnNumber;
+		public float spawnTime;
 
 		public Info(Info info)
 		{
@@ -82,6 +86,10 @@ namespace Data
 			crystal = info.crystal;
 			maxExp = info.maxExp;
 			exp = info.exp;
+			addHp = info.addHp;
+			addDefense = info.addDefense;
+			spawnNumber = info.spawnNumber;
+			spawnTime = info.spawnTime;
 		}
 	}
 

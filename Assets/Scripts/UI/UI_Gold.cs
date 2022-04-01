@@ -62,25 +62,25 @@ public class UI_Gold : UI_Base
 
     void AddTank(PointerEventData eventData)
     {
-        if (_currentPage == (int)Images.Green && _playerStat.Gold >= int.Parse(_greenCost.text))
+        if (_currentPage == (int)Images.Green && _playerStat.Gold >= int.Parse(_greenCost.text) && _playerStat.GreenTank < 11)
         {
             _playerStat.AddGold(-int.Parse(_greenCost.text));
             _playerStat.AddGreenTank(1);
             MainManager.Game.TankSpawning.CreateTank(Define.Tank.Green, _playerStat.GreenTank);
         }
-        else if (_currentPage == (int)Images.Yellow && _playerStat.Gold >= int.Parse(_yellowCost.text))
+        else if (_currentPage == (int)Images.Yellow && _playerStat.Gold >= int.Parse(_yellowCost.text) && _playerStat.YellowTank < 11)
         {
             _playerStat.AddGold(-int.Parse(_yellowCost.text));
             _playerStat.AddYellowTank(1);
             MainManager.Game.TankSpawning.CreateTank(Define.Tank.Yellow, _playerStat.YellowTank);
         }
-        else if (_currentPage == (int)Images.Blue && _playerStat.Gold >= int.Parse(_blueCost.text))
+        else if (_currentPage == (int)Images.Blue && _playerStat.Gold >= int.Parse(_blueCost.text) && _playerStat.BlueTank < 11)
         {
             _playerStat.AddGold(-int.Parse(_blueCost.text));
             _playerStat.AddBlueTank(1);
             MainManager.Game.TankSpawning.CreateTank(Define.Tank.Blue, _playerStat.BlueTank);
         }
-        else if (_currentPage == (int)Images.Red && _playerStat.Gold >= int.Parse(_redCost.text))
+        else if (_currentPage == (int)Images.Red && _playerStat.Gold >= int.Parse(_redCost.text) && _playerStat.RedTank < 11)
         {
             _playerStat.AddGold(-int.Parse(_redCost.text));
             _playerStat.AddRedTank(1);

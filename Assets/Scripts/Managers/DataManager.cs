@@ -12,6 +12,7 @@ public interface ILoader<Key, Value>
 
 public class DataManager
 {
+    public Dictionary<string, Data.Info> StageInfo = new Dictionary<string, Data.Info>();
     public Dictionary<string, Data.Info> PlayerInfo = new Dictionary<string, Data.Info>();
     public Dictionary<string, Data.Stat> PlayerStat = new Dictionary<string, Data.Stat>();
     public Dictionary<string, Data.Info> MonsterInfo = new Dictionary<string, Data.Info>();
@@ -19,6 +20,7 @@ public class DataManager
 
     public void Init()
     {
+        StageInfo = LoadJson<Data.ExtractData<Data.Info>, string, Data.Info>("Stage").MakeDict();
         PlayerInfo = LoadJson<Data.ExtractData<Data.Info>, string, Data.Info>(Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)).MakeDict();
         PlayerStat = LoadJson<Data.ExtractData<Data.Stat>, string, Data.Stat>(Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)).MakeDict();
         MonsterInfo = LoadJson<Data.ExtractData<Data.Info>, string, Data.Info>(Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)).MakeDict();

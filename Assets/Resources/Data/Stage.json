@@ -1,0 +1,12 @@
+{
+  "infos": [
+    {
+      "name": "Stage",
+      "level": 1,
+      "addHp": 100,
+      "addDefense": 10,
+      "spawnNumber": 2,
+      "spawnTime": 1.0
+    }
+  ]
+}

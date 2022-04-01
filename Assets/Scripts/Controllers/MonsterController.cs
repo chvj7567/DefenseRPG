@@ -17,7 +17,10 @@ public class MonsterController : BaseController
     void Update()
     {
         if (transform.position.z < -30f)
+        {
             MainManager.Game.Despawn(gameObject);
+            MainManager.Game.Player.GetComponent<PlayerStat>().AddDefense(-1);
+        }
     }
 
     void OnTriggerEnter(Collider other)

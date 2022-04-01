@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 4543148418298342717}
   - component: {fileID: 5399274351467696182}
   - component: {fileID: 9103886770429856544}
+  - component: {fileID: -1558022859786405400}
   m_Layer: 0
   m_Name: Tank_Green
   m_TagString: Untagged
@@ -306,6 +307,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsUsing: 0
+--- !u!208 &-1558022859786405400
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354916976622783175}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.95500004, y: 0.563, z: 1.332}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0.063, z: -0.039}
+  m_TimeToStationary: 0.5
 --- !u!1 &3916225007155662313
 GameObject:
   m_ObjectHideFlags: 0

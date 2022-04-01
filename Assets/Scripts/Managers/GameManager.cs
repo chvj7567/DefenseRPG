@@ -8,6 +8,7 @@ public class GameManager
 {
     public GameObject Background { get; private set; }
     public GameObject Map { get; private set; }
+    public HashSet<GameObject> Monster { get; private set; } = new HashSet<GameObject>();
     public GameObject Player { get; private set; }
     public HashSet<GameObject> Tank { get; private set; } = new HashSet<GameObject>();
     public Camera MainCamera { get; private set; }
@@ -36,6 +37,7 @@ public class GameManager
                 break;
             case Define.GameObjects.Monster:
                 go = MainManager.Resource.Instantiate($"Monster/{path}", parent);
+                Monster.Add(go);
                 break; 
             case Define.GameObjects.Player:
                 Player = go = MainManager.Resource.Instantiate(path, parent);
@@ -81,6 +83,9 @@ public class GameManager
                 break;
             case Define.GameObjects.Map:
                 Map = null;
+                break;
+            case Define.GameObjects.Monster:
+                Monster.Remove(go);
                 break;
             case Define.GameObjects.Player:
                 Player = null;

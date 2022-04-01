@@ -31,9 +31,12 @@ public class PlayerStat : BaseStat
     public override int FastAttackStay { get { return MainManager.Data.PlayerStat[Name].fastAttackStay; } }
     public override int FastAttackCoolTime { get { return MainManager.Data.PlayerStat[Name].fastAttackCoolTime; } }
 
+    int resetDefense;
+
     public override void Init()
     {
         Name = MainManager.Data.PlayerStat[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)].name;
+        resetDefense = MainManager.Data.PlayerStat[Name].defense;
     }
 
     int GetAttack()
@@ -69,7 +72,18 @@ public class PlayerStat : BaseStat
         MainManager.Data.PlayerStat[Name].redAttack += attack;
     }
     public void AddAttackSpeed(float attackSpeed) { MainManager.Data.PlayerStat[Name].attackSpeed -= attackSpeed; }
-    public void AddDefense(int defense) { MainManager.Data.PlayerStat[Name].defense += defense; }
+    public new void AddDefense(int defense)
+    {
+        MainManager.Data.PlayerStat[Name].defense += defense;
+        if (defense > 0)
+            resetDefense += defense;
+    }
+
+    public void ResetDefense()
+    {
+        MainManager.Data.PlayerStat[Name].defense = resetDefense;
+    }
+
     public void AddLevel(int level)
     {
         MainManager.Data.PlayerInfo[Name].level += level;
@@ -80,7 +94,7 @@ public class PlayerStat : BaseStat
     }
     public void AddMaxHp(int maxHp) { MainManager.Data.PlayerInfo[Name].maxHp += maxHp; }
     void SetHp(int hp) { MainManager.Data.PlayerInfo[Name].hp = hp; }
-    public void AddHp(int hp) { MainManager.Data.PlayerInfo[Name].hp += hp; }
+    public new void AddHp(int hp) { MainManager.Data.PlayerInfo[Name].hp += hp; }
     public void AddGreenTank(int green) { MainManager.Data.PlayerInfo[Name].greenTank += green; }
     public void AddYellowTank(int yellow) { MainManager.Data.PlayerInfo[Name].yellowTank += yellow; }
     public void AddBlueTank(int blue) { MainManager.Data.PlayerInfo[Name].blueTank += blue; }

@@ -29,7 +29,7 @@ public class GameScene : BaseScene
         }
     }
 
-    private void Update()
+    void Update()
     {
         Quaternion qua = Sun.transform.rotation;
         qua.eulerAngles += new Vector3(Time.deltaTime, 0f, 0f);
