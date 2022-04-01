@@ -20,7 +20,7 @@ public class TankController : BaseController
     {
         _playerStat = MainManager.Game.Player.GetComponent<PlayerStat>();
         _targetMask = LayerMask.GetMask("Monster");
-        _attackAngle = 90f;
+        _attackAngle = 180f;
         _attackRange = 10f;
         _tankTower = Util.FindChild(gameObject, "Tank_Tower");
         _tankTowerSpeed = 3f;
