@@ -6,7 +6,7 @@ public abstract class BaseController : MonoBehaviour
 {
     public Define.GameObjects GameObjectType { get; protected set; } = Define.GameObjects.Unknown;
 
-    void OnEnable()
+    void Start()
     {
         Init();
     }

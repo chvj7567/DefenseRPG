@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillController : MonoBehaviour
+public class SkillController : BaseController
 {
     bool _snowCoroutine, _laserCoroutine;
     bool _strongCoroutine, _fastAttackCoroutine;
@@ -11,7 +11,7 @@ public class SkillController : MonoBehaviour
     GameObject[] _usingSkill;
     PlayerStat _playerStat;
 
-    void Start()
+    public override void Init()
     {
         _skillUI = MainManager.UI.Skill.GetComponent<UI_Skill>();
         _usingSkill = new GameObject[MainManager.UI.Skill.transform.GetComponentsInChildren<Image>().Length - 1];
@@ -48,7 +48,7 @@ public class SkillController : MonoBehaviour
         _snowCoroutine = true;
         while (true)
         {
-            MainManager.Skill.StartSkill(Skill.Area.Snow);
+            MainManager.Skill.StartSkill(Define.AreaSkill.Snow);
             GameObject coolTime = skill.transform.GetChild(0).gameObject;
             Animator anim = coolTime.GetComponent<Animator>();
             anim.speed = 1f / _playerStat.SnowCoolTime;
@@ -63,7 +63,7 @@ public class SkillController : MonoBehaviour
         _laserCoroutine = true;
         while (true)
         {
-            MainManager.Skill.StartSkill(Skill.Area.Laser);
+            MainManager.Skill.StartSkill(Define.AreaSkill.Laser);
             GameObject coolTime = skill.transform.GetChild(0).gameObject;
             Animator anim = coolTime.GetComponent<Animator>();
             anim.speed = 1f / _playerStat.LaserCoolTime;

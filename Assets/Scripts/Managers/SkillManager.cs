@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SkillManager
 {
-    GameObject[] _areaSkills = new GameObject[(int)Skill.Area.MaxCount];
+    GameObject[] _areaSkills = new GameObject[(int)Define.AreaSkill.MaxCount];
 
     public void Init()
     {
@@ -14,7 +14,7 @@ public class SkillManager
         {
             root = new GameObject { name = "@Skill" };
 
-            string[] skillNames = Enum.GetNames(typeof(Skill.Area));
+            string[] skillNames = Enum.GetNames(typeof(Define.AreaSkill));
             for (int i = 0; i < skillNames.Length - 1; i++)
             {
                 string path = $"Skill/Effect/{skillNames[i]}";
@@ -37,7 +37,7 @@ public class SkillManager
         }
     }
 
-    public void StartSkill(Skill.Area type)
+    public void StartSkill(Define.AreaSkill type)
     {
         _areaSkills[(int)type].GetOrAddComponent<PlayerStat>();
         ParticleSystem[] particles = _areaSkills[(int)type].GetComponentsInChildren<ParticleSystem>();

@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class BulletController : BaseController
 {
     public GameObject Target { get; set; }
     public string Color { get; set; }
     Vector3 _direction;
     float _speed;
 
-    private void Awake()
+    public override void Init()
     {
         _speed = 10f;
     }

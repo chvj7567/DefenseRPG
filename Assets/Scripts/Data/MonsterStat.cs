@@ -40,11 +40,11 @@ public class MonsterStat : BaseStat
                 else
                     Hp -= attacker.Attack - Defense;
             }
-            else if (name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Snow))
+            else if (name == Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Snow))
                 Hp -= attacker.Snow;
             else if (name == "Smoke")
                 Hp -= 20;
-            else if (name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Laser))
+            else if (name == Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Laser))
                 Hp -= attacker.Laser;
             else if (name == "Flash")
                 Hp -= 20;

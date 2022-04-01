@@ -74,4 +74,18 @@ public class Define
         Die,
         MaxCount,
     }
+
+    public enum AreaSkill
+    {
+        Snow,
+        Laser,
+        MaxCount
+    }
+
+    public enum BuffSkill
+    {
+        Strong,
+        FastAttack,
+        MaxCount
+    }
 }

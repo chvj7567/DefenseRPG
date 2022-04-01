@@ -33,21 +33,21 @@ public class MonsterController : BaseController
 
     void OnParticleCollision(GameObject other)
     {
-        if (other.transform.parent.parent.name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Snow)
-            || other.transform.parent.name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Snow))
+        if (other.transform.parent.parent.name == Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Snow)
+            || other.transform.parent.name == Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Snow))
         {
             if (other.name == "Smoke")
                 GetComponent<MonsterStat>().OnDamage(other.transform.parent.parent.GetComponent<PlayerStat>(), other.name);
             else
-                GetComponent<MonsterStat>().OnDamage(other.transform.parent.GetComponent<PlayerStat>(), Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Snow));
+                GetComponent<MonsterStat>().OnDamage(other.transform.parent.GetComponent<PlayerStat>(), Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Snow));
         }
 
-        if (other.transform.parent.name == Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Laser))
+        if (other.transform.parent.name == Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Laser))
         {
             if (other.name == "Flash")
                 GetComponent<MonsterStat>().OnDamage(other.transform.parent.GetComponent<PlayerStat>(), other.name);
             else
-                GetComponent<MonsterStat>().OnDamage(other.transform.parent.GetComponent<PlayerStat>(), Enum.GetName(typeof(Skill.Area), (int)Skill.Area.Laser));
+                GetComponent<MonsterStat>().OnDamage(other.transform.parent.GetComponent<PlayerStat>(), Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Laser));
         }
     }
 }
