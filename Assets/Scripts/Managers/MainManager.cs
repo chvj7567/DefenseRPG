@@ -47,18 +47,25 @@ public class MainManager : MonoBehaviour
         {
             GameObject go = GameObject.Find("@MainManager");
             if (go == null)
-            {
                 go = new GameObject { name = "@MainManager" };
-                go.AddComponent<MainManager>();
-            }
 
             DontDestroyOnLoad(go);
-            m_instance = go.GetComponent<MainManager>();
+            m_instance = go.GetOrAddComponent<MainManager>();
 
             m_instance._pool.Init();
             m_instance._audio.Init();
             m_instance._data.Init();
             m_instance._skill.Init();
         }
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        Data.SaveJson();
+    }
+   
+    void OnApplicationQuit()
+    {
+        Data.SaveJson();
     }
 }

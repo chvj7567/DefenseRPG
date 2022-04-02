@@ -3,12 +3,8 @@
     {
       "name": "Monster",
       "level": 1,
-      "maxHp": 100,
-      "hp": 100,
-      "greenTank": 1,
-      "yelloTank": 0,
-      "blueTank": 0,
-      "redTank": 0,
+      "maxHp": 10,
+      "hp": 10,
       "gold": 10,
       "crystal": 1,
       "exp": 50

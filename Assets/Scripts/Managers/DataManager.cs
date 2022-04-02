@@ -18,8 +18,13 @@ public class DataManager
     public Dictionary<string, Data.Info> MonsterInfo = new Dictionary<string, Data.Info>();
     public Dictionary<string, Data.Stat> MonsterStat = new Dictionary<string, Data.Stat>();
 
+    string _playerPath;
+    string _monsterPath;
     public void Init()
     {
+        _playerPath = $"{Application.persistentDataPath}/Player.json";
+        _monsterPath = $"{Application.persistentDataPath}/Monster.json";
+        Debug.Log(_playerPath);
         PlayerGame = LoadJson<Data.ExtractData<Data.Game>, string, Data.Game>(Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)).MakeDict();
         PlayerInfo = LoadJson<Data.ExtractData<Data.Info>, string, Data.Info>(Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)).MakeDict();
         PlayerStat = LoadJson<Data.ExtractData<Data.Stat>, string, Data.Stat>(Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)).MakeDict();
@@ -29,11 +34,35 @@ public class DataManager
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
     {
-        TextAsset textAsset = MainManager.Resource.Load<TextAsset>($"Data/{path}");
-        return JsonUtility.FromJson<Loader>(textAsset.text);
+        if (path == Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player))
+        {
+            if (!File.Exists(_playerPath))
+            {
+                TextAsset textAsset = MainManager.Resource.Load<TextAsset>($"Data/{path}");
+                return JsonUtility.FromJson<Loader>(textAsset.text);
+            }
+            else
+            {
+                return JsonUtility.FromJson<Loader>(File.ReadAllText(_playerPath));
+            }
+        }
+        else if (path == Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster))
+        {
+            if (!File.Exists(_monsterPath))
+            {
+                TextAsset textAsset = MainManager.Resource.Load<TextAsset>($"Data/{path}");
+                return JsonUtility.FromJson<Loader>(textAsset.text);
+            }
+            else
+            {
+                return JsonUtility.FromJson<Loader>(File.ReadAllText(_monsterPath));
+            }
+        }
+
+        return default(Loader);
     }
 
-    public void SaveData()
+    public void SaveJson()
     {
         Data.ExtractData<Data.Game> gamePlayerData = new Data.ExtractData<Data.Game>();
         Data.ExtractData<Data.Stat> statPlayerData = new Data.ExtractData<Data.Stat>();
@@ -52,11 +81,9 @@ public class DataManager
         statMonsterData.infos = infoMonsterData.infos;
 
         string json = JsonUtility.ToJson(gamePlayerData);
-        string path = $"{Application.dataPath}/Resources/Data/Player.json";
-        File.WriteAllText(path, json);
+        File.WriteAllText(_playerPath, json);
 
         json = JsonUtility.ToJson(statMonsterData);
-        path = $"{Application.dataPath}/Resources/Data/Monster.json";
-        File.WriteAllText(path, json);
+        File.WriteAllText(_monsterPath, json);
     }
 }

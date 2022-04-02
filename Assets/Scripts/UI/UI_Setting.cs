@@ -43,8 +43,6 @@ public class UI_Setting : UI_Base
 
     void ExitGame(PointerEventData data)
     {
-        Debug.Log("데이터 저장 후 종료");
-        MainManager.Data.SaveData();
         MainManager.Game.ExitGame();
     }
 }

@@ -66,6 +66,7 @@ public class UI_Research : UI_Base
     {
         _gameStat.AddAttackGold(int.Parse(_attackGoldT.text));
         _attackGoldT.text = $"{_gameStat.AttackGold}";
+        _attackIncrementT.text = $"{int.Parse(_attackIncrementT.text) + 1}";
     }
 
     void AddDefense(PointerEventData eventData)
@@ -86,5 +87,6 @@ public class UI_Research : UI_Base
     {
         _gameStat.AddDefenseGold(int.Parse(_defenseGoldT.text));
         _defenseGoldT.text = $"{_gameStat.DefenseGold}";
+        _defenseIncrementT.text = $"{int.Parse(_defenseIncrementT.text) + 1}";
     }
 }

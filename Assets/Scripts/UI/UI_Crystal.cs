@@ -95,7 +95,7 @@ public class UI_Crystal : UI_Base
         }
         else if (_currentPage == (int)Images.FastAttack && _playerStat.Crystal >= int.Parse(_fastAttackCost.text))
         {
-            _playerStat.AddFastAttack(0.5f);
+            _playerStat.AddFastAttack(0.1f);
             _playerStat.AddCrystal(-int.Parse(_fastAttackCost.text));
             _gameStat.AddFastAttackCrystal(int.Parse(_fastAttackCost.text));
             _fastAttackCost.text = $"{_gameStat.FastAttackCrystal}";
