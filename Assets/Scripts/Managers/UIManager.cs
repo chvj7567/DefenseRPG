@@ -30,7 +30,6 @@ public class UIManager
             if (root == null)
             {
                 root = new GameObject { name = "@UI_Root" };
-
             }
             return root;
         }

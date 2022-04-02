@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UI_Skill : UI_Base
 {
     public Image[] SkillSlot;
-    public GameObject SkillICon { get; set; }
+    public GameObject SkillIcon { get; set; }
 
     enum Images
     {
@@ -32,23 +32,32 @@ public class UI_Skill : UI_Base
     public void AddSkill(PointerEventData eventData)
     {
         GameObject skillSpace = eventData.pointerEnter;
-        if (SkillICon != null)
+
+        if (SkillIcon != null)
         {
-            GameObject skill = UsingSkill(SkillICon.name);
+            GameObject skill = UsingSkill(SkillIcon.name);
             if (skill != null)
             {
-                MainManager.Game.Despawn(skill.transform.GetChild(0).gameObject);
+                skill.transform.GetChild(0).SetParent(skillSpace.transform, false);
             }
-
-            GameObject go = MainManager.Resource.Instantiate($"Skill/Icon/{SkillICon.name}", skillSpace.transform);
-            go.GetComponent<Image>().raycastTarget = false;
+            else
+            {
+                if (SkillIcon.name == Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Snow))
+                    MainManager.Skill.ShowIcon(MainManager.Skill.SnowIcon, skillSpace.transform);
+                else if (SkillIcon.name == Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Laser))
+                    MainManager.Skill.ShowIcon(MainManager.Skill.LaserIcon, skillSpace.transform);
+                else if (SkillIcon.name == Enum.GetName(typeof(Define.BuffSkill), (int)Define.BuffSkill.Strong))
+                    MainManager.Skill.ShowIcon(MainManager.Skill.StrongIcon, skillSpace.transform);
+                else if (SkillIcon.name == Enum.GetName(typeof(Define.BuffSkill), (int)Define.BuffSkill.FastAttack))
+                    MainManager.Skill.ShowIcon(MainManager.Skill.FastAttackIcon, skillSpace.transform);
+            }
 
             if (skillSpace.transform.childCount >= 2)
             {
-                MainManager.Game.Despawn(skillSpace.transform.GetChild(0).gameObject);
+                MainManager.Skill.HideIcon(skillSpace.transform.GetChild(0).gameObject);
             }
 
-            SkillICon = null;
+            SkillIcon = null;
         }
     }
 

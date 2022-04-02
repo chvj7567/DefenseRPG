@@ -63,32 +63,35 @@ public class UI_Inventory : UI_Base
         if (_playerStat.Snow != 0 && !UsingSkill(Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Snow)))
         {
             path = $"Skill/Icon/{Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Snow)}";
-            GameObject go = MainManager.Resource.Instantiate(path, GetLastSpace().transform);
-            go.GetComponent<Image>().raycastTarget = false;
-            go.transform.GetChild(0).gameObject.SetActive(false);
-            _skillIcon.Add(go);
+            CreateSkillICon(path);
         }
         if (_playerStat.Laser != 0 && !UsingSkill(Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Laser)))
         {
             path = $"Skill/Icon/{Enum.GetName(typeof(Define.AreaSkill), (int)Define.AreaSkill.Laser)}";
-            GameObject go = MainManager.Resource.Instantiate(path, GetLastSpace().transform);
-            go.GetComponent<Image>().raycastTarget = false;
-            go.transform.GetChild(0).gameObject.SetActive(false);
-            _skillIcon.Add(go);
+            CreateSkillICon(path);
         }
         if(_playerStat.Strong != 0 && !UsingSkill(Enum.GetName(typeof(Define.BuffSkill), (int)Define.BuffSkill.Strong)))
         {
             path = $"Skill/Icon/{Enum.GetName(typeof(Define.BuffSkill), (int)Define.BuffSkill.Strong)}";
-            GameObject go = MainManager.Resource.Instantiate(path, GetLastSpace().transform);
-            go.GetComponent<Image>().raycastTarget = false;
-            go.transform.GetChild(0).gameObject.SetActive(false);
-            _skillIcon.Add(go);
+            CreateSkillICon(path);
         }
         if(_playerStat.FastAttack != 0 && !UsingSkill(Enum.GetName(typeof(Define.BuffSkill), (int)Define.BuffSkill.FastAttack)))
         {
             path = $"Skill/Icon/{Enum.GetName(typeof(Define.BuffSkill), (int)Define.BuffSkill.FastAttack)}";
+            CreateSkillICon(path);
+        }
+
+        
+    }
+
+    public void CreateSkillICon(string path)
+    {
+        if (path != null)
+        {
             GameObject go = MainManager.Resource.Instantiate(path, GetLastSpace().transform);
-            go.GetComponent<Image>().raycastTarget = false;
+            Image[] images = go.GetComponentsInChildren<Image>();
+            foreach (Image image in images)
+                image.raycastTarget = false;
             go.transform.GetChild(0).gameObject.SetActive(false);
             _skillIcon.Add(go);
         }

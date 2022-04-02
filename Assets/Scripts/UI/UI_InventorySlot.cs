@@ -49,7 +49,7 @@ public class UI_InventorySlot : UI_Base
             return;
         _Inventory.DragSkill.transform.position = eventData.position;
 
-        MainManager.UI.Skill.GetComponent<UI_Skill>().SkillICon = _Inventory.DragSkill;
+        MainManager.UI.Skill.GetComponent<UI_Skill>().SkillIcon = _Inventory.DragSkill;
     }
 
     void EndDragSkill(PointerEventData eventData)
