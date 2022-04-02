@@ -10,19 +10,7 @@ public class SkillManager
     public GameObject LaserIcon { get; private set; }
     public GameObject StrongIcon { get; private set; }
     public GameObject FastAttackIcon { get; private set; }
-    public GameObject Root
-    {
-        get
-        {
-            GameObject root = GameObject.Find("@Skill_Root");
-
-            if (root == null)
-            {
-                root = new GameObject { name = "@Skill_Root" };
-            }
-            return root;
-        }
-    }
+    public GameObject Root { get; private set; }
 
     public GameObject Effect { get; private set; }
     public GameObject Icon { get; private set; }
@@ -31,6 +19,14 @@ public class SkillManager
 
     public void Init()
     {
+        Root = GameObject.Find("@Skill_Root");
+
+        if (Root == null)
+        {
+            Root = new GameObject { name = "@Skill_Root" };
+        }
+        UnityEngine.Object.DontDestroyOnLoad(Root);
+
         Effect = new GameObject { name = "Effect" };
         Icon = new GameObject { name = "Icon" };
         Effect.transform.SetParent(Root.transform);

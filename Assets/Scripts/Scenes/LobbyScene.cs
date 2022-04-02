@@ -16,6 +16,7 @@ public class LobbyScene : BaseScene
     {
         base.Init();
         SceneType = Define.Scenes.Lobby;
+        MainManager.Audio.Play("Bgm", Define.Audio.Bgm);
         MainManager.Game.Spawn(Define.GameObjects.Map, "StartMap");
         _startUI = MainManager.UI.ShowUI("StartUI", Define.UI.Start).GetComponent<UI_Start>();
         _startUI.onStartAction -= LoadGameScene;

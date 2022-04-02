@@ -124,6 +124,7 @@ public class SkillController : BaseController
         while (true)
         {
             MainManager.Skill.StartSkill(Define.AreaSkill.Laser);
+            MainManager.Audio.Play("Laser", Define.Audio.Effect);
             yield return new WaitForSeconds(_playerStat.LaserCoolTime);
         }
     }
@@ -140,6 +141,7 @@ public class SkillController : BaseController
         while (true)
         {
             _playerStat.AddAttack(_playerStat.Strong);
+            MainManager.Audio.Play("Strong", Define.Audio.Effect);
             _backStrong = false;
             yield return new WaitForSeconds(_playerStat.StrongStay);
             _playerStat.AddAttack(-_playerStat.Strong);
@@ -159,6 +161,7 @@ public class SkillController : BaseController
         while (true)
         {   
             _playerStat.AddAttackSpeed(_playerStat.FastAttack);
+            MainManager.Audio.Play("FastAttack", Define.Audio.Effect);
             _backFastAttack = false;
             yield return new WaitForSeconds(_playerStat.StrongStay);
             _playerStat.AddAttackSpeed(-_playerStat.FastAttack);

@@ -8,7 +8,7 @@ public class AudioManager
     AudioSource[] _audioSources = new AudioSource[(int)Define.Audio.MaxCount];
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
     float _bgmVolume = 0.2f;
-    float _effectVolume = 0.5f;
+    float _effectVolume = 0.2f;
     public float Ratio { get; private set; } = 0.5f;
 
     public void Init()

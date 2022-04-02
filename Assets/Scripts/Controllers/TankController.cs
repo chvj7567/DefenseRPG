@@ -116,7 +116,7 @@ public class TankController : BaseController
         if (_target == null)
         {
             _target = SearchTarget();
-            _tankTower.transform.rotation = Quaternion.Lerp(_tankTower.transform.rotation, Quaternion.LookRotation(transform.forward - transform.position), _tankTowerSpeed * Time.deltaTime);
+            _tankTower.transform.rotation = Quaternion.Lerp(_tankTower.transform.rotation, Quaternion.LookRotation(transform.forward + transform.position - transform.position), _tankTowerSpeed * Time.deltaTime);
         }
         else
         {
@@ -135,11 +135,10 @@ public class TankController : BaseController
         }
     }
 
-    
-
     IEnumerator CreateBullet()
     {
         _bulletCoroutineCheck = true;
+        MainManager.Audio.Play("Tank", Define.Audio.Effect);
         _bullet = MainManager.Resource.Instantiate($"Bullet/{TankColor}Bullet", _tankTower.transform).GetOrAddComponent<BulletController>();
         _bullet.gameObject.GetOrAddComponent<PlayerStat>();
         _bullet.SetPosition(new Vector3(0f, 0.3f, 1.7f));

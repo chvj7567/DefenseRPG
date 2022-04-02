@@ -79,6 +79,7 @@ public class SpawnMonster : MonoBehaviour
         MainManager.UI.ShowUI("StageUI", Define.UI.Stage);
         UI_Stage stage = MainManager.UI.Stage.GetComponent<UI_Stage>();
         yield return new WaitForSeconds(1f);
+        MainManager.Audio.Play("Stage", Define.Audio.Effect);
         stage.SetStage(_stageStat.Level);
         yield return new WaitForSeconds(2f);
         MainManager.UI.HideUI(MainManager.UI.Stage);

@@ -71,8 +71,7 @@ public class Define
     public enum Audio
     {
         Bgm,
-        Shoot,
-        Die,
+        Effect,
         MaxCount,
     }
 
