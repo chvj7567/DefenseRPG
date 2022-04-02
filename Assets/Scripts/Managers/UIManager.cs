@@ -18,6 +18,7 @@ public class UIManager
     public GameObject Crystal { get; private set; }
     public GameObject Inventory { get; private set; }
     public GameObject Skill { get; private set; }
+    public GameObject Stage { get; private set; }
     public GameObject CurrentSubUI { get; set; }
 
     int _order = 1;
@@ -185,6 +186,14 @@ public class UIManager
                     return Skill;
                 }
                 Skill = go = MainManager.Resource.Instantiate($"UI/{name}");
+                break;
+            case Define.UI.Stage:
+                if (Stage != null)
+                {
+                    Stage.SetActive(true);
+                    return Stage;
+                }
+                Stage = go = MainManager.Resource.Instantiate($"UI/{name}");
                 break;
         }
 

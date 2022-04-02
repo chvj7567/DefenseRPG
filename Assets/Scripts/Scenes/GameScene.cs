@@ -29,12 +29,12 @@ public class GameScene : BaseScene
         }
     }
 
-    float x = 50;
+    /*float x = 50;
     void Update()
     {
         x += Time.deltaTime;
         Sun.transform.rotation = Quaternion.Euler(x, 0f, 0f);
-    }
+    }*/
 
     public override void Clear()
     {

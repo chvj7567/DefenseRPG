@@ -53,6 +53,7 @@ public class Define
         Crystal,
         Inventory,
         Skill,
+        Stage,
     }
 
     public enum UIEvent

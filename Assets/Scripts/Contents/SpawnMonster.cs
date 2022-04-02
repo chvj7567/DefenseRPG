@@ -30,7 +30,7 @@ public class SpawnMonster : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Stage " + _stageStat.Level);
+            StartCoroutine(Stage());
             while (_spawnNumber > 0)
             {
                 foreach (GameObject go in _spawnPositions)
@@ -72,5 +72,15 @@ public class SpawnMonster : MonoBehaviour
         MainManager.Data.MonsterInfo[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)].hp += _stageStat.AddHp;
         MainManager.Data.MonsterStat[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)].defense += _stageStat.AddDefense;
         _spawnNumber = _stageStat.SpawnNumber;
+    }
+
+    IEnumerator Stage()
+    {
+        MainManager.UI.ShowUI("StageUI", Define.UI.Stage);
+        UI_Stage stage = MainManager.UI.Stage.GetComponent<UI_Stage>();
+        yield return new WaitForSeconds(1f);
+        stage.SetStage(_stageStat.Level);
+        yield return new WaitForSeconds(2f);
+        MainManager.UI.HideUI(MainManager.UI.Stage);
     }
 }
