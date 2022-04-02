@@ -67,10 +67,6 @@ namespace Data
 		public int crystal;
 		public int maxExp;
 		public int exp;
-		public int addHp;
-		public int addDefense;
-		public int spawnNumber;
-		public float spawnTime;
 
 		public Info(Info info)
 		{
@@ -86,16 +82,60 @@ namespace Data
 			crystal = info.crystal;
 			maxExp = info.maxExp;
 			exp = info.exp;
-			addHp = info.addHp;
-			addDefense = info.addDefense;
-			spawnNumber = info.spawnNumber;
-			spawnTime = info.spawnTime;
+		}
+	}
+
+	[Serializable]
+	public class Game
+	{
+		public string name;
+		public int stage;
+		public int addHp;
+		public int addDefense;
+		public int spawnNumber;
+		public float spawnTime;
+		public int attackGold;
+		public int defenseGold;
+		public int greenGold;
+		public int yellowGold;
+		public int blueGold;
+		public int redGold;
+		public int snowCrystal;
+		public int laserCrystal;
+		public int strongCrystal;
+		public int fastAttackCrystal;
+		public string skillSlot1;
+		public string skillSlot2;
+		public string skillSlot3;
+
+		public Game(Game game)
+		{
+			name = game.name;
+			stage = game.stage;
+			addHp = game.addHp;
+			addDefense = game.addDefense;
+			spawnNumber = game.spawnNumber;
+			spawnTime = game.spawnTime;
+			attackGold = game.attackGold;
+			defenseGold = game.defenseGold;
+			greenGold = game.greenGold;
+			yellowGold = game.yellowGold;
+			blueGold = game.blueGold;
+			redGold = game.redGold;
+			snowCrystal = game.snowCrystal;
+			laserCrystal = game.laserCrystal;
+			strongCrystal = game.strongCrystal;
+			fastAttackCrystal = game.fastAttackCrystal;
+			skillSlot1 = game.skillSlot1;
+			skillSlot2 = game.skillSlot2;
+			skillSlot3 = game.skillSlot3;
 		}
 	}
 
 	[Serializable]
 	public class ExtractData<T> : ILoader<string, T> where T : class
 	{
+		public List<Game> games = new List<Game>();
 		public List<Info> infos = new List<Info>();
 		public List<Stat> stats = new List<Stat>();
 
@@ -112,6 +152,11 @@ namespace Data
             {
 				foreach (Stat stat in stats)
 					dict.Add(stat.name, stat as T);
+			}
+			else if (typeof (T) == typeof(Game))
+            {
+				foreach (Game game in games)
+					dict.Add(game.name, game as T);
 			}
 
 			return dict;
@@ -130,6 +175,11 @@ namespace Data
 			{
 				foreach (T stat in dict.Values)
 					list.Add(stat);
+			}
+			else if (typeof(T) == typeof(Game))
+			{
+				foreach (T game in dict.Values)
+					list.Add(game);
 			}
 
 			return list;

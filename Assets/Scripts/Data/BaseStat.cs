@@ -6,6 +6,7 @@ public abstract class BaseStat : MonoBehaviour
 {
     public abstract string Name { get; protected set; }
     public virtual int Level { get; protected set; }
+    public virtual int Stage { get; protected set; }
     public virtual int MaxHp { get; protected set; }
     public virtual int Hp { get; protected set; }
     public virtual int GreenTank { get; protected set; }
@@ -34,6 +35,19 @@ public abstract class BaseStat : MonoBehaviour
     public virtual int AddDefense { get; protected set; }
     public virtual int SpawnNumber { get; protected set; }
     public virtual float SpawnTime { get; protected set; }
+    public virtual int AttackGold { get; protected set; }
+    public virtual int DefenseGold { get; protected set; }
+    public virtual int GreenGold { get; protected set; }
+    public virtual int YellowGold { get; protected set; }
+    public virtual int BlueGold { get; protected set; }
+    public virtual int RedGold { get; protected set; }
+    public virtual int SnowCrystal { get; protected set; }
+    public virtual int LaserCrystal { get; protected set; }
+    public virtual int StrongCrystal { get; protected set; }
+    public virtual int FastAttackCrystal { get; protected set; }
+    public virtual string SkillSlot1 { get; protected set; }
+    public virtual string SkillSlot2 { get; protected set; }
+    public virtual string SkillSlot3 { get; protected set; }
 
     void OnEnable()
     {

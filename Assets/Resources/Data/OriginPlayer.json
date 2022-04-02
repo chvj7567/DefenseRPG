@@ -1,4 +1,27 @@
 {
+  "games": [
+    {
+      "name": "Player",
+      "stage": 1,
+      "addHp": 100,
+      "addDefense": 10,
+      "spawnNumber": 2,
+      "spawnTime": 1.0,
+      "attackGold": 100,
+      "defenseGold": 100,
+      "greenGold": 1000,
+      "yellowGold": 1000,
+      "blueGold": 1000,
+      "redGold": 1000,
+      "snowCrystal": 1000,
+      "laserCrystal": 1000,
+      "strongCrystal": 1000,
+      "fastAttackCrystal": 1000,
+      "skillSlot1": null,
+      "skillSlot2": null,
+      "skillSlot3": null
+    }
+  ],
   "infos": [
     {
       "name": "Player",

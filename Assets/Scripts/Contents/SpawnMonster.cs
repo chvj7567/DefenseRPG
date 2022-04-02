@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class SpawnMonster : MonoBehaviour
 {
-    StageStat _stageStat;
+    GameStat _gameStat;
     int _spawnNumber;
     float _spawnTime;
     GameObject target;
@@ -14,9 +14,9 @@ public class SpawnMonster : MonoBehaviour
 
     void Awake()
     {
-        _stageStat = GameObject.Find("@GameScene").GetComponent<StageStat>();
-        _spawnNumber = MainManager.Data.StageInfo["Stage"].spawnNumber;
-        _spawnTime = MainManager.Data.StageInfo["Stage"].spawnTime;
+        _gameStat = MainManager.Game.Player.GetComponent<GameStat>();
+        _spawnNumber = MainManager.Data.PlayerGame[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)].spawnNumber;
+        _spawnTime = MainManager.Data.PlayerGame[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)].spawnTime;
         _spawnPositions = GameObject.FindGameObjectsWithTag("MonsterSpawn");
         target = GameObject.FindGameObjectWithTag("Finish");
     }
@@ -53,7 +53,7 @@ public class SpawnMonster : MonoBehaviour
                     if (playerStat.Defense > 0)
                         StartCoroutine(NextStage());
                     playerStat.ResetDefense();
-                    _spawnNumber = _stageStat.SpawnNumber;
+                    _spawnNumber = _gameStat.SpawnNumber;
                     break;
                 }
                 yield return new WaitForEndOfFrame();
@@ -66,12 +66,12 @@ public class SpawnMonster : MonoBehaviour
     IEnumerator NextStage()
     {
         yield return null;
-        _stageStat.AddLevel(1);
-        _stageStat.AddSpawnNumber(1);
-        MainManager.Data.MonsterInfo[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)].maxHp += _stageStat.AddHp;
-        MainManager.Data.MonsterInfo[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)].hp += _stageStat.AddHp;
-        MainManager.Data.MonsterStat[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)].defense += _stageStat.AddDefense;
-        _spawnNumber = _stageStat.SpawnNumber;
+        _gameStat.AddStage(1);
+        _gameStat.AddSpawnNumber(1);
+        MainManager.Data.MonsterInfo[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)].maxHp += _gameStat.AddHp;
+        MainManager.Data.MonsterInfo[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)].hp += _gameStat.AddHp;
+        MainManager.Data.MonsterStat[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Monster)].defense += _gameStat.AddDefense;
+        _spawnNumber = _gameStat.SpawnNumber;
     }
 
     IEnumerator Stage()
@@ -80,7 +80,7 @@ public class SpawnMonster : MonoBehaviour
         UI_Stage stage = MainManager.UI.Stage.GetComponent<UI_Stage>();
         yield return new WaitForSeconds(1f);
         MainManager.Audio.Play("Stage", Define.Audio.Effect);
-        stage.SetStage(_stageStat.Level);
+        stage.SetStage(_gameStat.Stage);
         yield return new WaitForSeconds(2f);
         MainManager.UI.HideUI(MainManager.UI.Stage);
     }

@@ -61,7 +61,7 @@ public class PlayerStat : BaseStat
         else if ((bullet.Color == Enum.GetName(typeof(Define.Tank), (int)Define.Tank.Red)))
             return MainManager.Data.PlayerStat[Name].redAttack;
 
-        return -1;
+        return 0;
     }
 
     public void AddAttack(int attack)

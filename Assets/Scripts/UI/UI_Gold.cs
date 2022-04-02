@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class UI_Gold : UI_Base
 {
+    GameStat _gameStat;
     PlayerStat _playerStat;
     Text _greenCost, _yellowCost, _blueCost, _redCost;
     Image _green, _yellow, _blue, _red;
@@ -30,6 +31,7 @@ public class UI_Gold : UI_Base
     }
     public override void Init()
     {
+        _gameStat = MainManager.Game.Player.GetComponent<GameStat>();
         _playerStat = MainManager.Game.Player.GetComponent<PlayerStat>();
         _currentPage = (int)Images.Green;
 
@@ -47,6 +49,11 @@ public class UI_Gold : UI_Base
         _addTank = GetImage((int)Images.AddTank);
         _left = GetImage((int)Images.Left);
         _right = GetImage((int)Images.Right);
+
+        _greenCost.text = $"{_gameStat.GreenGold}";
+        _yellowCost.text = $"{_gameStat.YellowGold}";
+        _blueCost.text = $"{_gameStat.BlueGold}";
+        _redCost.text = $"{_gameStat.RedGold}";
 
         BindEvent(_addTank.gameObject, AddTank, Define.UIEvent.Click);
         BindEvent(_left.gameObject, LeftPage, Define.UIEvent.Click);

@@ -30,6 +30,8 @@ public class SkillController : BaseController
         _usingStrong = false; _usingFastAttack = false;
         for (int i = 0; i < _usingSkill.Length; i++)
         {
+            if (_skillUI.SkillSlot[i] == null)
+                continue;
             if (_skillUI.SkillSlot[i].transform.childCount == 0)
                 _usingSkill[i] = null;
             else

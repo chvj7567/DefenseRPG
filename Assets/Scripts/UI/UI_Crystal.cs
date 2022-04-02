@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UI_Crystal : UI_Base
 {
+    GameStat _gameStat;
     PlayerStat _playerStat;
     Text _snowCost, _laserCost, _strongCost, _fastAttackCost;
     Image _snow, _laser, _strong, _fastAttack;
@@ -33,6 +34,7 @@ public class UI_Crystal : UI_Base
 
     public override void Init()
     {
+        _gameStat = MainManager.Game.Player.GetComponent<GameStat>();
         _playerStat = MainManager.Game.Player.GetComponent<PlayerStat>();
         _currentPage = (int)Images.Snow;
 
@@ -43,15 +45,18 @@ public class UI_Crystal : UI_Base
         _laserCost = GetText((int)Texts.LaserCost);
         _strongCost = GetText((int)Texts.StrongCost);
         _fastAttackCost = GetText((int)Texts.FastAttackCost);
-
         _snow = GetImage((int)Images.Snow);
         _laser = GetImage((int)Images.Laser);
         _strong = GetImage((int)Images.Strong);
         _fastAttack = GetImage((int)Images.FastAttack);
-
         _increment = GetImage((int)Images.Increment);
         _left = GetImage((int)Images.Left);
         _right = GetImage((int)Images.Right);
+
+        _snowCost.text = $"{_gameStat.SnowCrystal}";
+        _laserCost.text = $"{_gameStat.LaserCrystal}";
+        _strongCost.text = $"{_gameStat.StrongCrystal}";
+        _fastAttackCost.text = $"{_gameStat.FastAttackCrystal}";
 
         BindEvent(_increment.gameObject, IncrementSkill, Define.UIEvent.Click);
         BindEvent(_left.gameObject, LeftPage, Define.UIEvent.Click);
@@ -71,25 +76,29 @@ public class UI_Crystal : UI_Base
         {
             _playerStat.AddSnow(10);
             _playerStat.AddCrystal(-int.Parse(_snowCost.text));
-            _snowCost.text = $"{int.Parse(_snowCost.text) * 2}";
+            _gameStat.AddSnowCrystal(int.Parse(_snowCost.text));
+            _snowCost.text = $"{_gameStat.SnowCrystal}";
         }
         else if (_currentPage == (int)Images.Laser && _playerStat.Crystal >= int.Parse(_laserCost.text))
         {
             _playerStat.AddLaser(10);
             _playerStat.AddCrystal(-int.Parse(_laserCost.text));
-            _laserCost.text = $"{int.Parse(_laserCost.text) * 2}";
+            _gameStat.AddLaserCrystal(int.Parse(_laserCost.text));
+            _laserCost.text = $"{_gameStat.LaserCrystal}";
         }
         else if (_currentPage == (int)Images.Strong && _playerStat.Crystal >= int.Parse(_strongCost.text))
         {
             _playerStat.AddStrong(10);
             _playerStat.AddCrystal(-int.Parse(_strongCost.text));
-            _strongCost.text = $"{int.Parse(_strongCost.text) * 2}";
+            _gameStat.AddStrongCrystal(int.Parse(_strongCost.text));
+            _strongCost.text = $"{_gameStat.StrongCrystal}";
         }
         else if (_currentPage == (int)Images.FastAttack && _playerStat.Crystal >= int.Parse(_fastAttackCost.text))
         {
             _playerStat.AddFastAttack(0.5f);
             _playerStat.AddCrystal(-int.Parse(_fastAttackCost.text));
-            _fastAttackCost.text = $"{int.Parse(_fastAttackCost.text) * 2}";
+            _gameStat.AddFastAttackCrystal(int.Parse(_fastAttackCost.text));
+            _fastAttackCost.text = $"{_gameStat.FastAttackCrystal}";
         }
     }
 

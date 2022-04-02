@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class UI_Research : UI_Base
 {
+    GameStat _gameStat;
     PlayerStat _playerStat;
     Text _attackGoldT, _defenseGoldT, _attackIncrementT, _defenseIncrementT;
     Image _attackIncrease, _defenseIncrease;
@@ -27,6 +28,7 @@ public class UI_Research : UI_Base
 
     public override void Init()
     {
+        _gameStat = MainManager.Game.Player.GetComponent<GameStat>();
         _playerStat = MainManager.Game.Player.GetComponent<PlayerStat>();
 
         Bind<Text>(typeof(Texts));
@@ -36,9 +38,11 @@ public class UI_Research : UI_Base
         _defenseGoldT = GetText((int)Texts.DefenseGoldT);
         _attackIncrementT = GetText((int)Texts.AttackIncrementT);
         _defenseIncrementT = GetText((int)Texts.DefenseIncrementT);
-
         _attackIncrease = GetImage((int)Images.AttackIncrease);
         _defenseIncrease = GetImage((int)Images.DefenseIncrease);
+
+        _attackGoldT.text = $"{_gameStat.AttackGold}";
+        _defenseGoldT.text = $"{_gameStat.DefenseGold}";
 
         BindEvent(_attackIncrease.gameObject, AddAttack, Define.UIEvent.Click);
         BindEvent(_defenseIncrease.gameObject, AddDefense, Define.UIEvent.Click);
@@ -60,13 +64,13 @@ public class UI_Research : UI_Base
 
     void AddAttackGoldAndIncrement()
     {
-        _attackGoldT.text = $"{int.Parse(_attackGoldT.text) * 2}";
-        _attackIncrementT.text = $"{int.Parse(_attackIncrementT.text) * 2}";
+        _gameStat.AddAttackGold(int.Parse(_attackGoldT.text));
+        _attackGoldT.text = $"{_gameStat.AttackGold}";
     }
 
     void AddDefense(PointerEventData eventData)
     {
-        if (_playerStat.Gold >= int.Parse(_attackGoldT.text))
+        if (_playerStat.Gold >= int.Parse(_defenseGoldT.text))
         {
             _playerStat.AddGold(-int.Parse(_defenseGoldT.text));
             _playerStat.AddDefense(int.Parse(_defenseIncrementT.text));
@@ -80,7 +84,7 @@ public class UI_Research : UI_Base
 
     void AddDefenseGoldAndIncrement()
     {
-        _defenseGoldT.text = $"{int.Parse(_defenseGoldT.text) * 2}";
-        _defenseIncrementT.text = $"{int.Parse(_defenseIncrementT.text) * 2}";
+        _gameStat.AddDefenseGold(int.Parse(_defenseGoldT.text));
+        _defenseGoldT.text = $"{_gameStat.DefenseGold}";
     }
 }
