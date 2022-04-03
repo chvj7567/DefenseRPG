@@ -19,6 +19,11 @@ public class LobbyScene : BaseScene
         MainManager.Audio.Play("Bgm", Define.Audio.Bgm);
         MainManager.Game.Spawn(Define.GameObjects.Map, "StartMap");
         _startUI = MainManager.UI.ShowUI("StartUI", Define.UI.Start).GetComponent<UI_Start>();
+
+        if (MainManager.Data.PlayerGame["Player"].lastTime != "")
+        {
+            MainManager.UI.ShowUI("TimeRewardUI", Define.UI.TimeReward);
+        }
         _startUI.onStartAction -= LoadGameScene;
         _startUI.onStartAction += LoadGameScene;
     }

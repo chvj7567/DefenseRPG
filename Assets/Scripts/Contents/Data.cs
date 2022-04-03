@@ -107,6 +107,8 @@ namespace Data
 		public string skillSlot1;
 		public string skillSlot2;
 		public string skillSlot3;
+		public string lastTime;
+		//public string currentTime;
 
 		public Game(Game game)
 		{
@@ -129,6 +131,8 @@ namespace Data
 			skillSlot1 = game.skillSlot1;
 			skillSlot2 = game.skillSlot2;
 			skillSlot3 = game.skillSlot3;
+			lastTime = game.lastTime;
+			//currentTime = game.currentTime;
 		}
 	}
 

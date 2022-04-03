@@ -48,6 +48,8 @@ public abstract class BaseStat : MonoBehaviour
     public virtual string SkillSlot1 { get; protected set; }
     public virtual string SkillSlot2 { get; protected set; }
     public virtual string SkillSlot3 { get; protected set; }
+    public virtual string LastTime { get; protected set; }
+    //public virtual string CurrentTime { get; protected set; }
 
     void OnEnable()
     {

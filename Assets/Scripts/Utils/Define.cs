@@ -54,6 +54,7 @@ public class Define
         Inventory,
         Skill,
         Stage,
+        TimeReward,
     }
 
     public enum UIEvent

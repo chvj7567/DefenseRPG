@@ -19,6 +19,7 @@ public class UIManager
     public GameObject Inventory { get; private set; }
     public GameObject Skill { get; private set; }
     public GameObject Stage { get; private set; }
+    public GameObject TimeReward { get; private set; }
     public GameObject CurrentSubUI { get; set; }
 
     int _order = 1;
@@ -194,6 +195,14 @@ public class UIManager
                     return Stage;
                 }
                 Stage = go = MainManager.Resource.Instantiate($"UI/{name}");
+                break;
+            case Define.UI.TimeReward:
+                if (TimeReward != null)
+                {
+                    TimeReward.SetActive(true);
+                    return TimeReward;
+                }
+                TimeReward = go = MainManager.Resource.Instantiate($"UI/{name}");
                 break;
         }
 

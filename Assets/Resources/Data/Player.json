@@ -19,7 +19,8 @@
       "fastAttackCrystal": 100,
       "skillSlot1": null,
       "skillSlot2": null,
-      "skillSlot3": null
+      "skillSlot3": null,
+      "lastTime": null
     }
   ],
   "infos": [

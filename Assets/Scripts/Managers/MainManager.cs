@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -61,11 +62,21 @@ public class MainManager : MonoBehaviour
 
     void OnApplicationPause(bool pauseStatus)
     {
+        if (Game.Player != null)
+        {
+            GameStat gameStat = Game.Player.GetComponent<GameStat>();
+            gameStat.SetLastTime(DateTime.Now.ToString());
+        }
         Data.SaveJson();
     }
    
     void OnApplicationQuit()
     {
+        if (Game.Player != null)
+        {
+            GameStat gameStat = Game.Player.GetComponent<GameStat>();
+            gameStat.SetLastTime(DateTime.Now.ToString());
+        }
         Data.SaveJson();
     }
 }

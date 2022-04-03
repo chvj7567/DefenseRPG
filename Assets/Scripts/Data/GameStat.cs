@@ -24,6 +24,8 @@ public class GameStat : BaseStat
     public override string SkillSlot1 { get { return MainManager.Data.PlayerGame[Name].skillSlot1; } protected set { MainManager.Data.PlayerGame[Name].skillSlot1 = value; } }
     public override string SkillSlot2 { get { return MainManager.Data.PlayerGame[Name].skillSlot2; } protected set { MainManager.Data.PlayerGame[Name].skillSlot2 = value; } }
     public override string SkillSlot3 { get { return MainManager.Data.PlayerGame[Name].skillSlot3; } protected set { MainManager.Data.PlayerGame[Name].skillSlot3 = value; } }
+    public override string LastTime { get { return MainManager.Data.PlayerGame[Name].lastTime; } }
+    //public override string CurrentTime { get { return MainManager.Data.PlayerGame[Name].currentTime; } }
     public override void Init()
     {
         Name = MainManager.Data.PlayerStat[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)].name;
@@ -45,4 +47,6 @@ public class GameStat : BaseStat
     public void SetSkillSlot1(string skill) { SkillSlot1 = skill; }
     public void SetSkillSlot2(string skill) { SkillSlot2 = skill; }
     public void SetSkillSlot3(string skill) { SkillSlot3 = skill; }
+    public void SetLastTime(string lastTime) { MainManager.Data.PlayerGame[Name].lastTime = lastTime; }
+    //public void SetCurrentTime(string currentTime) { MainManager.Data.PlayerGame[Name].currentTime = currentTime; }
 }
