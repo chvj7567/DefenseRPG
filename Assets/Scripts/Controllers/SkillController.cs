@@ -84,8 +84,8 @@ public class SkillController : BaseController
             }
         }
 
-        if (_snowCoroutine && !_usingSnow) { MainManager.Skill.AreaSkills[(int)Define.AreaSkill.Snow].SetActive(false); }
-        if (_laserCoroutine && !_usingLaser) { MainManager.Skill.AreaSkills[(int)Define.AreaSkill.Laser].SetActive(false); }
+        if (_snowCoroutine && !_usingSnow) { StopCoroutine(_areaSkillCoroutine[(int)Define.AreaSkill.Snow]); _snowCoroutine = false; }
+        if (_laserCoroutine && !_usingLaser) { StopCoroutine(_areaSkillCoroutine[(int)Define.AreaSkill.Laser]); _laserCoroutine = false; }
         if (_strongCoroutine && !_usingStrong)
         {
             StopCoroutine(_buffSkillCoroutine[(int)Define.BuffSkill.Strong]); _strongCoroutine = false;

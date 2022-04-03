@@ -102,7 +102,6 @@ public class UI_Skill : UI_Base
     {
         for (int i = 0; i < SkillSlot.Length; i++)
         {
-            Debug.Log(SkillSlot[i].transform.childCount);
             if (SkillSlot[i].transform.childCount > 0)
             {
                 switch (i)

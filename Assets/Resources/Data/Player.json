@@ -33,8 +33,8 @@
       "yellowTank": 0,
       "blueTank": 0,
       "redTank": 0,
-      "gold": 300,
-      "crystal": 0,
+      "gold": 10000,
+      "crystal": 10000,
       "maxExp": 100,
       "exp": 0
     }
