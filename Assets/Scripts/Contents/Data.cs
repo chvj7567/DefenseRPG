@@ -96,6 +96,8 @@ namespace Data
 		public float spawnTime;
 		public int attackGold;
 		public int defenseGold;
+		public int attackIncrement;
+		public int defenseIncrement;
 		public int greenGold;
 		public int yellowGold;
 		public int blueGold;
@@ -120,6 +122,8 @@ namespace Data
 			spawnTime = game.spawnTime;
 			attackGold = game.attackGold;
 			defenseGold = game.defenseGold;
+			attackIncrement = game.attackIncrement;
+			defenseIncrement = game.defenseIncrement;
 			greenGold = game.greenGold;
 			yellowGold = game.yellowGold;
 			blueGold = game.blueGold;

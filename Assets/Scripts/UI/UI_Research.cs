@@ -43,6 +43,8 @@ public class UI_Research : UI_Base
 
         _attackGoldT.text = $"{_gameStat.AttackGold}";
         _defenseGoldT.text = $"{_gameStat.DefenseGold}";
+        _attackIncrementT.text = $"{_gameStat.AttackIncrement}";
+        _defenseIncrementT.text = $"{_gameStat.DefenseIncrement}";
 
         BindEvent(_attackIncrease.gameObject, AddAttack, Define.UIEvent.Click);
         BindEvent(_defenseIncrease.gameObject, AddDefense, Define.UIEvent.Click);
@@ -64,9 +66,10 @@ public class UI_Research : UI_Base
 
     void AddAttackGoldAndIncrement()
     {
-        _gameStat.AddAttackGold(int.Parse(_attackGoldT.text));
+        _gameStat.AddAttackGold(1000);
         _attackGoldT.text = $"{_gameStat.AttackGold}";
-        _attackIncrementT.text = $"{int.Parse(_attackIncrementT.text) + 1}";
+        _gameStat.AddAttackIncrement(10);
+        _attackIncrementT.text = $"{_gameStat.AttackIncrement}";
     }
 
     void AddDefense(PointerEventData eventData)
@@ -85,8 +88,9 @@ public class UI_Research : UI_Base
 
     void AddDefenseGoldAndIncrement()
     {
-        _gameStat.AddDefenseGold(int.Parse(_defenseGoldT.text));
+        _gameStat.AddDefenseGold(1000);
         _defenseGoldT.text = $"{_gameStat.DefenseGold}";
-        _defenseIncrementT.text = $"{int.Parse(_defenseIncrementT.text) + 1}";
+        _gameStat.AddDefenseIncrement(1);
+        _defenseIncrementT.text = $"{_gameStat.DefenseIncrement}";
     }
 }

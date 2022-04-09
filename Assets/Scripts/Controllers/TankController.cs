@@ -57,14 +57,14 @@ public class TankController : BaseController
     Vector3 Angle(float angle)
     {
         angle += transform.eulerAngles.y;
-        return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), 0f, Mathf.Cos(angle * Mathf.Deg2Rad));
+        return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad),
+            0f, Mathf.Cos(angle * Mathf.Deg2Rad));
     }
 
     Transform SearchTarget()
     {
         Transform mainTarget = null;
 
-        // 범위에 걸린 타겟들
         Collider[] targets = Physics.OverlapSphere(transform.position, _attackRange, _targetMask);
 
         if (targets.Length > 0)
@@ -75,7 +75,6 @@ public class TankController : BaseController
             {
                 Vector3 direction = target.transform.position - transform.position;
 
-                // 시야각에 걸리는지 확인
                 if (Vector3.Angle(transform.forward, direction.normalized) < _attackAngle / 2)
                 {
                     float distance = direction.magnitude;
@@ -116,12 +115,16 @@ public class TankController : BaseController
         if (_target == null)
         {
             _target = SearchTarget();
-            _tankTower.transform.rotation = Quaternion.Lerp(_tankTower.transform.rotation, Quaternion.LookRotation(transform.forward + transform.position - transform.position), _tankTowerSpeed * Time.deltaTime);
+            _tankTower.transform.rotation = Quaternion.Lerp(_tankTower.transform.rotation,
+                Quaternion.LookRotation(transform.forward + transform.position - transform.position),
+                _tankTowerSpeed * Time.deltaTime);
         }
         else
         {
             Debug.DrawRay(transform.position, _target.transform.position - transform.position, Color.red);
-            _tankTower.transform.rotation = Quaternion.Lerp(_tankTower.transform.rotation, Quaternion.LookRotation(_target.position - transform.position), _tankTowerSpeed * Time.deltaTime);
+            _tankTower.transform.rotation = Quaternion.Lerp(_tankTower.transform.rotation,
+                Quaternion.LookRotation(_target.position - transform.position),
+                _tankTowerSpeed * Time.deltaTime);
         }
 
         if (!IsAttackRange(_target))
@@ -139,7 +142,8 @@ public class TankController : BaseController
     {
         _bulletCoroutineCheck = true;
         MainManager.Audio.Play("Tank", Define.Audio.Effect);
-        _bullet = MainManager.Resource.Instantiate($"Bullet/{TankColor}Bullet", _tankTower.transform).GetOrAddComponent<BulletController>();
+        _bullet = MainManager.Resource.Instantiate($"Bullet/{TankColor}Bullet",
+            _tankTower.transform).GetOrAddComponent<BulletController>();
         _bullet.gameObject.GetOrAddComponent<PlayerStat>();
         _bullet.SetPosition(new Vector3(0f, 0.3f, 1.7f));
         _bullet.Target = _target.gameObject;

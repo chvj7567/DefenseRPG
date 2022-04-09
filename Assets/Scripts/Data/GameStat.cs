@@ -13,6 +13,8 @@ public class GameStat : BaseStat
     public override float SpawnTime { get { return MainManager.Data.PlayerGame[Name].spawnTime; } }
     public override int AttackGold { get { return MainManager.Data.PlayerGame[Name].attackGold; } }
     public override int DefenseGold { get { return MainManager.Data.PlayerGame[Name].defenseGold; } }
+    public override int AttackIncrement { get { return MainManager.Data.PlayerGame[Name].attackIncrement; } }
+    public override int DefenseIncrement { get { return MainManager.Data.PlayerGame[Name].defenseIncrement; } }
     public override int GreenGold { get { return MainManager.Data.PlayerGame[Name].greenGold; } }
     public override int YellowGold { get { return MainManager.Data.PlayerGame[Name].yellowGold; } }
     public override int BlueGold { get { return MainManager.Data.PlayerGame[Name].blueGold; } }
@@ -25,7 +27,7 @@ public class GameStat : BaseStat
     public override string SkillSlot2 { get { return MainManager.Data.PlayerGame[Name].skillSlot2; } protected set { MainManager.Data.PlayerGame[Name].skillSlot2 = value; } }
     public override string SkillSlot3 { get { return MainManager.Data.PlayerGame[Name].skillSlot3; } protected set { MainManager.Data.PlayerGame[Name].skillSlot3 = value; } }
     public override string LastTime { get { return MainManager.Data.PlayerGame[Name].lastTime; } }
-    //public override string CurrentTime { get { return MainManager.Data.PlayerGame[Name].currentTime; } }
+
     public override void Init()
     {
         Name = MainManager.Data.PlayerStat[Enum.GetName(typeof(Define.GameObjects), (int)Define.GameObjects.Player)].name;
@@ -36,6 +38,8 @@ public class GameStat : BaseStat
     public void AddSpawnTime(float spawnTime) { MainManager.Data.PlayerGame[Name].spawnTime += spawnTime; }
     public void AddAttackGold(int attackGold) { MainManager.Data.PlayerGame[Name].attackGold += attackGold; }
     public void AddDefenseGold(int defenseGold) { MainManager.Data.PlayerGame[Name].defenseGold += defenseGold; }
+    public void AddAttackIncrement(int attackIncrement) { MainManager.Data.PlayerGame[Name].attackIncrement += attackIncrement; }
+    public void AddDefenseIncrement(int defenseIncrement) { MainManager.Data.PlayerGame[Name].defenseIncrement += defenseIncrement; }
     public void AddGreenGold(int greenGold) { MainManager.Data.PlayerGame[Name].greenGold += greenGold; }
     public void AddYellowGold(int yellowGold) { MainManager.Data.PlayerGame[Name].yellowGold += yellowGold; }
     public void AddBlueGold(int blueGold) { MainManager.Data.PlayerGame[Name].blueGold += blueGold; }

@@ -37,6 +37,8 @@ public abstract class BaseStat : MonoBehaviour
     public virtual float SpawnTime { get; protected set; }
     public virtual int AttackGold { get; protected set; }
     public virtual int DefenseGold { get; protected set; }
+    public virtual int AttackIncrement { get; protected set; }
+    public virtual int DefenseIncrement { get; protected set; }
     public virtual int GreenGold { get; protected set; }
     public virtual int YellowGold { get; protected set; }
     public virtual int BlueGold { get; protected set; }
